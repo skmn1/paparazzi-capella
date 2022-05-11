@@ -1,0 +1,11 @@
+;; Function main (main, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
+
+main () {
+  getName();
+  getName1();
+  x = 5;
+  //if (_1 != 0) goto <D.12228>; else goto <D.12229>;
+  whatup();
+  _1 = pthread_create (&tid, 0B, i2c_thread, p);
+  _1 = pthread_create (&tid, 0B, i2c_thread5, p);
+}
