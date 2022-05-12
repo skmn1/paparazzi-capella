@@ -7,14 +7,14 @@ import org.antlr.v4.runtime.tree.ParseTree;
 
 import helpers.FileHelper;
 
-public class JSONParserTest
+public class CPPXMLTransformer
 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner useDelimiter = new Scanner(new File("target/generated-sources/antlr4/input.txt")).useDelimiter("\\Z");
 		String content = useDelimiter.next();
-        System.out.println( "JSON File:\n" + content + "\n\n");
+        System.out.println( "File:\n" + content + "\n\n");
         
         ANTLRInputStream input = new ANTLRInputStream( content );
         
@@ -54,7 +54,7 @@ public class JSONParserTest
         
         
         System.err.println(listener.functionSet);
-        System.err.println(listener.threadSet);
+//        System.err.println(listener.threadSet);
         
         System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
     }

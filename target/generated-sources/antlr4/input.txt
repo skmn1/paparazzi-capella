@@ -7,5 +7,48 @@ main () {
   //if (_1 != 0) goto <D.12228>; else goto <D.12229>;
   whatup();
   _1 = pthread_create (&tid, 0B, i2c_thread, p);
-  _1 = pthread_create (&tid, 0B, i2c_thread5, p);
+  _1 = pthread_create (&tid, 0B, i2c_threafgfgd5, p);
+  try {
+  whatup2();
+  whatup13();
+  }
+ finally{
+  whatup3();
+  
+  }
+}
+
+;; Function i2c_arch_init (i2c_arch_init, funcdef_no=58, decl_uid=11220, cgraph_uid=59, symbol_order=58)
+
+__attribute__((unused))
+i2c_arch_init (struct i2c_periph * p)
+{
+  pthread_t tid;
+  
+
+  try
+    {
+	  getage();
+      # DEBUG BEGIN_STMT
+      # DEBUG BEGIN_STMT
+      _1 = pthread_create (&tid, 0B, i2c_thread, p);
+      if (_1 != 0) goto <D.11289>; else goto <D.11290>;
+      <D.11289>:
+      # DEBUG BEGIN_STMT
+      stderr.0_2 = stderr;
+      fprintf (stderr.0_2, "i2c_arch_init: Could not create I2C thread.\n");
+      # DEBUG BEGIN_STMT
+      // predicted unlikely by early return (on trees) predictor.
+      goto <D.11291>;
+      <D.11290>:
+      # DEBUG BEGIN_STMT
+      tid.1_3 = tid;
+      pthread_setname_np ();
+    }
+  finally
+    {
+      tid = {CLOBBER};
+    }
+  <D.11291>:
+  return;
 }

@@ -27,6 +27,11 @@ public class AADLFunction {
 		return parentName;
 	}
 
+	public AADLFunction(String functionName) {
+		super();
+		this.functionName = functionName;
+	}
+
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}

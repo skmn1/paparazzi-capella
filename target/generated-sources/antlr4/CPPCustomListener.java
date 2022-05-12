@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -16,27 +17,48 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 
 	@Override
 	public void exitDeclaration(CPP14Parser.DeclarationContext ctx) {
-		// TODO Auto-generated method stub
-//		super.exitDeclaration(ctx);
-//		System.out.println("");
+		
+		
+		// find all functions during the definition and save them in memory
+		
+//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
+		
+		String currrentfunctionName = ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText();
+		AADLFunction currentFunction = new AADLFunction(currrentfunctionName);
+		ArrayList<String> subFunctionSet = new ArrayList<>();
+
 		CPP14Parser.StatementSeqContext statementSeq = getStatmentSeq(ctx);
-//		while (true) {
-////			if()
-//		}
-		System.out.println("count " + statementSeq.getChildCount());
+
 		for(int i=0; i < statementSeq.getChildCount(); i++) {
+//			System.out.println("statement " + statementSeq.getChild(i).getText());
 			
+			if(statementSeq.getChild(i).getText().contains("try{")) {
+//				System.err.println("count : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChildCount());	
+				for (int j = 0; j < statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChildCount(); j++) {
+					boolean trySubStatementFunction = isStatementFuntion((CPP14Parser.StatementContext) statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j));
+					if(trySubStatementFunction) {
+						String trySubFunctionName = statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getChild(0).getChild(0).getChild(0)
+								.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
+						subFunctionSet.add(trySubFunctionName);
+					}
+//					System.err.println(" try sub statement : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getText());	
+				}
+			}
 			
-			boolean statementFuntion = isStatementFuntion((CPP14Parser.StatementContext) statementSeq.getChild(i));
-			System.out.println("isStatementFuntion "+statementFuntion);
-			if(statementFuntion)
-				functionSet.put(statementSeq.getChild(i).getText(), null);
-			
+			boolean statementFunction = isStatementFuntion((CPP14Parser.StatementContext) statementSeq.getChild(i));
+//			System.out.println("isStatementFuntion "+statementFuntion);
+			if(statementFunction) {
+				String subFunctionName = statementSeq.getChild(i).getChild(0).getChild(0).getChild(0)
+						.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
+				subFunctionSet.add(subFunctionName);
+			}
 			// get the threadfunctions and save them in the threadSet map
 			if(!statementSeq.getChild(i).getText().contains("try{") && statementSeq.getChild(i).getText().contains("pthread_create"))
 				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), null);
 		}
-		
+		currentFunction.setSubFunctionSet(subFunctionSet);
+		functionSet.put(currrentfunctionName, currentFunction);
+		System.out.println(currentFunction);
 	}
 
 	@Override
@@ -61,7 +83,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			
 			threadSet.put(threadFunctionName, GrammarHelper.getThread(ctx));
 		
-			System.out.println(this);
+//			System.out.println(this);
 		}
 		
 	}
