@@ -1,3 +1,5 @@
+
+
 ;; Function main (main, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
 
 main () {
@@ -6,11 +8,12 @@ main () {
   x = 5;
   //if (_1 != 0) goto <D.12228>; else goto <D.12229>;
   whatup();
-  _1 = pthread_create (&tid, 0B, i2c_thread, p);
   _1 = pthread_create (&tid, 0B, i2c_threafgfgd5, p);
+  _1 = pthread_create (&tid, 0B, i2c_thread, p);
+  _1 = pthread_create (&tid, 0B, test, p);
   try {
   whatup2();
-  whatup13();
+  whatup3();
   }
  finally{
   whatup3();
@@ -18,14 +21,13 @@ main () {
   }
 }
 
-;; Function i2c_arch_init (i2c_arch_init, funcdef_no=58, decl_uid=11220, cgraph_uid=59, symbol_order=58)
+;; Function i2c_thread (i2c_thread, funcdef_no=58, decl_uid=11220, cgraph_uid=59, symbol_order=58)
 
 __attribute__((unused))
-i2c_arch_init (struct i2c_periph * p)
+i2c_thread (struct i2c_periph * p)
 {
   pthread_t tid;
-  
-
+  setGoal();
   try
     {
 	  getage();
@@ -44,6 +46,7 @@ i2c_arch_init (struct i2c_periph * p)
       # DEBUG BEGIN_STMT
       tid.1_3 = tid;
       pthread_setname_np ();
+      getCar();
     }
   finally
     {
@@ -52,3 +55,79 @@ i2c_arch_init (struct i2c_periph * p)
   <D.11291>:
   return;
 }
+
+;; Function test (test, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
+
+test () {
+    _1 = pthread_create (&tid, 0B, helloWorld, p);
+	getSet();
+}
+
+;; Function test (i2c_threafgfgd5, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
+
+i2c_threafgfgd5 () {
+
+	getSeti2c_threafgfgd5();
+}
+
+;; Function helloWorld (helloWorld, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
+
+helloWorld () {
+
+	foo();
+	bar();
+}
+
+
+;; Function foo (foo, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
+
+foo () {
+	_1 = pthread_create (&tid, 0B, bar, p);
+	getSetisss2c_threafgfgd5();
+}
+
+;; Function bar (bar, funcdef_no=263, decl_uid=12859, cgraph_uid=264, symbol_order=263)
+
+bar () {
+
+	getTheWorld();
+}
+
+;; Function udp_arch_init (udp_arch_init, funcdef_no=70, decl_uid=9099, cgraph_uid=71, symbol_order=71)
+
+udp_thread ()
+{
+  pthread_t tid;
+
+  try
+    {
+      # DEBUG BEGIN_STMT
+      pthread_mutex_init (&udp_mutex, 0B);
+      # DEBUG BEGIN_STMT
+      udp_periph_init (&udp0, "192.168.42.255", 4242, 4243, 1);
+      # DEBUG BEGIN_STMT
+      # DEBUG BEGIN_STMT
+      _1 = pthread_create (&tid, 0B, udp_thread, 0B);
+      if (_1 != 0) goto <D.12228>; else goto <D.12229>;
+      <D.12228>:
+      # DEBUG BEGIN_STMT
+      stderr.0_2 = stderr;
+      fprintf (stderr.0_2, "udp_arch_init: Could not create UDP reading thread.\n");
+      # DEBUG BEGIN_STMT
+      // predicted unlikely by early return (on trees) predictor.
+      goto <D.12230>;
+      <D.12229>:
+      # DEBUG BEGIN_STMT
+      tid.1_3 = tid;
+      pthread_setname_np (tid.1_3, "udp");
+    }
+  finally
+    {
+      tid = {CLOBBER};
+    }
+  <D.12230>:
+  return;
+}
+
+
+

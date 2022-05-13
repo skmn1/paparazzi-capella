@@ -1,6 +1,7 @@
 package businessStructure;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class AADLThread {
 	
@@ -51,11 +52,26 @@ public class AADLThread {
 	public void setThreadfunctionName(String threadfunctionName) {
 		this.threadfunctionName = threadfunctionName;
 	}
+	
+	
+	private String ThreadFunctionSetPattern () {
+		String temp = "functionSet [";
+		for (Entry<String, AADLFunction> functionEntry : ThreadFunctionSet.entrySet()) {
+			for (String subFunctionName : functionEntry.getValue().getSubFunctionSet()) {				
+				temp += subFunctionName +",\n\t\t\t\t\t\t ";
+			}
+		}
+		temp+="]\n";
+		return temp;
+	}
 
 	@Override
 	public String toString() {
-		return "AADLThread [threadName=" + threadName + ", threadfunctionName=" + threadfunctionName
-				+ ", ThreadFunctionSet=" + ThreadFunctionSet + "]";
+		return " AADLThread [ "
+				+ "\n\t\tthreadName = " + threadName
+				+ "\n\t\tthreadfunctionName = " + threadfunctionName
+				+ "\n\t\tThreadFunctionSet = " +
+				ThreadFunctionSetPattern() + "]";
 	}
 
 }

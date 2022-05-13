@@ -54,11 +54,17 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 			// get the threadfunctions and save them in the threadSet map
 			if(!statementSeq.getChild(i).getText().contains("try{") && statementSeq.getChild(i).getText().contains("pthread_create"))
-				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), null);
+				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), new AADLThread());
 		}
 		currentFunction.setSubFunctionSet(subFunctionSet);
+		// insert entry in the functionSet
 		functionSet.put(currrentfunctionName, currentFunction);
-		System.out.println(currentFunction);
+		
+		// join the thread with its subfunctions
+		if(threadSet.containsKey(currrentfunctionName))
+			threadSet.get(currrentfunctionName).getThreadFunctionSet().put(currrentfunctionName, currentFunction);
+		else System.out.println("thread not found yet");
+//		System.out.println(currentFunction);
 	}
 
 	@Override
