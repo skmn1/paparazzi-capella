@@ -8,5 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/kamnis/AppData/Local/Temp/antlr-4.4-complete.jar"/>
+	<classpathentry kind="lib" path="Z:/poi-ooxml-5.2.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

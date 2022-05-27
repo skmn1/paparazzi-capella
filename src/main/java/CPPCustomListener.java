@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import businessStructure.AADLFunction;
@@ -11,9 +10,9 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	
 	
 	public HashMap<String, AADLThread>  threadSet = new HashMap<String,AADLThread>();
-	
 	public HashMap<String,AADLFunction> functionSet = new HashMap<String,AADLFunction>();
-	
+	public HashMap<String,String> functionFileMap = new HashMap<String,String>();
+
 
 	@Override
 	public void exitDeclaration(CPP14Parser.DeclarationContext ctx) {
@@ -34,11 +33,20 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			
 			if(statementSeq.getChild(i).getText().contains("try{")) {
 //				System.err.println("count : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChildCount());	
-				for (int j = 0; j < statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChildCount(); j++) {
-					boolean trySubStatementFunction = isStatementFuntion((CPP14Parser.StatementContext) statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j));
+				System.err.println("class " + statementSeq.getChild(i).getChild(0).getClass());
+				CPP14Parser.StatementSeqContext tryStatementSeq = null;
+				if (!statementSeq.getChild(i).getChild(0).getClass().toString().contains("LabeledStatement"))
+					tryStatementSeq = (CPP14Parser.StatementSeqContext) statementSeq.getChild(i).getChild(0).getChild(1).getChild(1);
+				else
+					tryStatementSeq = (CPP14Parser.StatementSeqContext) statementSeq.getChild(i).getChild(0).getChild(2).getChild(0).getChild(1).getChild(1);
+				for (int j = 0; j < tryStatementSeq.getChildCount(); j++) {
+					boolean trySubStatementFunction = isStatementFuntion((CPP14Parser.StatementContext) tryStatementSeq.getChild(j));
 					if(trySubStatementFunction) {
 						String trySubFunctionName = statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getChild(0).getChild(0).getChild(0)
 								.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
+						System.out.println("debug = " + statementSeq.getChild(i).getChild(0).getChild(1).getClass());
+//						String trySubFunctionName = statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getChild(0).getChild(0).getChild(0)
+//								.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
 						subFunctionSet.add(trySubFunctionName);
 					}
 //					System.err.println(" try sub statement : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getText());	
@@ -121,6 +129,15 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				flag = true;
 				break;
 			}
+			if(grammarElement instanceof CPP14Parser.TrailingTypeSpecifierContext &&  grammarElement.getChild(0).getChild(0).getChild(0) instanceof CPP14Parser.ClassNameContext) {
+				flag = true;
+				break;
+			}
+			
+//			if(grammarElement instanceof CPP14Parser.InitDeclaratorContext &&  grammarElement.getChild(1) instanceof CPP14Parser.InitializerContext) {
+//				flag = true;
+//				break;
+//			}
 			
 		}
 		return flag;

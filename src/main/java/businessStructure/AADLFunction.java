@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class AADLFunction {
 	private String functionName;
+	private String containingFile;
 	private ArrayList<String> parameters;
 	private ArrayList<String> subFunctionSet;
 	private String parentName;
@@ -14,14 +15,17 @@ public class AADLFunction {
 		super();
 	}
 
-	public AADLFunction(String functionName, ArrayList<String> parameters, ArrayList<String> subFunctionSet,
-			String parentName) {
+	public AADLFunction(String functionName, String containingFile, ArrayList<String> parameters,
+			ArrayList<String> subFunctionSet, String parentName) {
 		super();
 		this.functionName = functionName;
+		this.containingFile = containingFile;
 		this.parameters = parameters;
 		this.subFunctionSet = subFunctionSet;
 		this.parentName = parentName;
 	}
+
+
 
 	public String getParentName() {
 		return parentName;
@@ -30,6 +34,12 @@ public class AADLFunction {
 	public AADLFunction(String functionName) {
 		super();
 		this.functionName = functionName;
+	}
+
+	public AADLFunction(String functionName, String containingFile) {
+		super();
+		this.functionName = functionName;
+		this.containingFile = containingFile;
 	}
 
 	public void setParentName(String parentName) {
@@ -42,6 +52,14 @@ public class AADLFunction {
 	
 	public void setFunctionName(String functionName) {
 		this.functionName = functionName;
+	}
+	
+	public String getContainingFile() {
+		return containingFile;
+	}
+
+	public void setContainingFile(String containingFile) {
+		this.containingFile = containingFile;
 	}
 	
 	public ArrayList<String> getParameters() {
@@ -62,8 +80,8 @@ public class AADLFunction {
 	
 	@Override
 	public String toString() {
-		return "AADLFunction [functionName=" + functionName + ", parameters=" + parameters + ", subFunctionSet="
-				+ subFunctionSet + ", parentName=" + parentName + "]";
+		return "AADLFunction [functionName=" + functionName + ", containingFile=" + containingFile + ", parameters="
+				+ parameters + ", subFunctionSet=" + subFunctionSet + ", parentName=" + parentName + "]";
 	}
 	
 	
