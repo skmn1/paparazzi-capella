@@ -1,7 +1,4 @@
-import java.awt.desktop.ScreenSleepEvent;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -19,6 +16,8 @@ public class CPPXMLTransformer
 {
 
 	public static HashMap<String,String> functionFileMap = new HashMap<String,String>();
+	public static HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
+
 
 	public static void listFilesForFolder(final File folder) {
 		for (final File fileEntry : folder.listFiles()) {
@@ -37,74 +36,39 @@ public class CPPXMLTransformer
 
 		final File folder = new File("C:\\Users\\kamnis\\Downloads\\lower");
 		//    	System.out.println(FileHelper.listFilesForFolder(folder));
-		    	String wholeFolderContent = FileHelper.getFolderTextContent(folder);
+		String wholeFolderContent = FileHelper.getFolderTextContent(folder);
 
 
-//		String content = FileHelper.getFolderTextContent(folder);
+		//		String content = FileHelper.getFolderTextContent(folder);
 
+		fileDecompositionMap = FileHelper.convertFileToMap(new File("Z:\\xtextWS\\ANTLR4\\HelloANTLR\\src\\main\\java\\paparazzi files.csv"));
+		//		System.out.println(fileDecompositionMap);
 
-		//    	System.out.println(FileHelper.convertFileToMap(new File("Z:\\xtextWS\\ANTLR4\\HelloANTLR\\src\\main\\java\\paparazzi files.csv")));
+		//		for (Entry<String,Integer> entry : fileDecompositionMap.entrySet()) {
+		//			System.out.println(entry.getKey() + " value =====> " + entry.getValue());
+		//		}
 
 		//    	HashMap<String, Integer> datamap = new HashMap<String, Integer>();
 
 		//        Scanner useDelimiter = new Scanner(new File("Z:\\xtextWS\\ANTLR4\\HelloANTLR\\src\\main\\java\\input.txt")).useDelimiter("\\Z");
 		//		String content = useDelimiter.next();
-		
+
 		String content = "";
 		for (final File fileEntry : folder.listFiles()) {
 
-//			fileName = "\n\n//" + asterisks + fileEntry.getName() + asterisks +"\n\n";
-			System.err.println(fileEntry.getName());
 			@SuppressWarnings("resource")
 			Scanner useDelimiter = new Scanner(fileEntry).useDelimiter("\\Z");
-			
 			content = useDelimiter.next();
-			
-			
-//			allFilesContent += fileName + content;
-			//	    		allFilesContent +=  content;
-			//	            System.out.println(  content + "\n\n");
-
-//		}
-		
-//		System.out.println( "File:\n" + content + "\n\n");
-
-		ANTLRInputStream input = new ANTLRInputStream( content );
-
-		CPP14Lexer lexer = new CPP14Lexer(input);
-
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
-
-		CPP14Parser parser = new CPP14Parser(tokens);
-
-//		CPPCustomListener listener = new CPPCustomListener();
-		CPPFunctionFileListener listenerff = new CPPFunctionFileListener();
-
-
-
-		parser.addParseListener(listenerff);
-		//        parser.addParseListener(listener);
-
-
-		ParseTree tree = parser.translationUnit();
-
-//		System.err.println(listenerff.functionList);
-		
-		
-		addEntriesToFunctionMap(listenerff.functionList, fileEntry.getName());
-		
-
+			ANTLRInputStream input = new ANTLRInputStream( content );
+			CPP14Lexer lexer = new CPP14Lexer(input);
+			CommonTokenStream tokens = new CommonTokenStream(lexer);
+			CPP14Parser parser = new CPP14Parser(tokens);
+			CPPFunctionFileListener listenerff = new CPPFunctionFileListener();
+			parser.addParseListener(listenerff);
+			ParseTree tree = parser.translationUnit();
+			addEntriesToFunctionMap(listenerff.functionList, fileEntry.getName());
 		}
-		
-		
-		System.out.println("****************************************");
-		System.out.println("****************************************");
-		System.out.println("printing the the map that contains the functions and their files");
-		
-		System.err.println("number of functions : " + functionFileMap.size());
-		// print the functionFileMap 
-		printFunctionFileMap();
-		
+
 		ANTLRInputStream input = new ANTLRInputStream( wholeFolderContent );
 
 		CPP14Lexer lexer = new CPP14Lexer(input);
@@ -113,28 +77,19 @@ public class CPPXMLTransformer
 
 		CPP14Parser parser = new CPP14Parser(tokens);
 
-		CPPCustomListener listener = new CPPCustomListener();
-//		CPPFunctionFileListener listenerff = new CPPFunctionFileListener();
-
-		
+		CPPCustomListener listener = new CPPCustomListener(fileDecompositionMap);
+		//		CPPFunctionFileListener listenerff = new CPPFunctionFileListener();
 
 		parser.addParseListener(listener);
 
-
 		ParseTree tree = parser.translationUnit();
-		
-		
+
 		String XMLTags = getXMLfromThreadDataStructure(listener.threadSet);
-     
+
 		String FileName = "Z:\\capella-1.4.2.latest\\capella\\eclipse\\workspace\\test-papparrazi\\test-papparrazi.melodymodeller";
 		String startpoint = "\"deployment:AADLProcess\"";
-		
+
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
-
-
-		//        System.err.println(listener.functionSet);
-//		System.err.println(listener.threadSet);
-		//        System.err.println(getXMLfromThreadDataStructure(listener.threadSet));
 
 		//        System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
 	}
@@ -142,40 +97,32 @@ public class CPPXMLTransformer
 	private static String getXMLfromThreadDataStructure(HashMap<String, AADLThread>  threadSet) {
 		String str = "";
 		final String functionTabs = "\t";
-		//    	String openthreadXMLTag = "<AADLThreadSet xsi:type=\"deployment:AADLThread\" id=\"_T_SWgNA7Eey3zKUaIaFcdg\"\r\n"
-		//    			+ "                name=\"Thread\" timeBudgetUnit=\"ms\">\r\n"
-		//    			+ "              <ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
-		//    			+ "                  name=\"sys_time_thread_main\"/>\r\n";
-		//    			
-		//		String closeThreadXMLTag = "              <header xsi:type=\"deployment:AADLThreadHeader\" id=\"_T_SWgdA7Eey3zKUaIaFcdg\"/>\r\n"
-		//    			+ "            </AADLThreadSet>\n";
 
+		Integer functionDecompositionLevel;
 		for (Entry<String, AADLThread>  threadEntry : threadSet.entrySet()) {
 			str += "<AADLThreadSet xsi:type=\"deployment:AADLThread\" id=\"_T_SWgNA7Eey3zKUaIaFcdg\"\r\n"
 					+ "                name=\"" + threadEntry.getKey() + "\" timeBudgetUnit=\"ms\">\r\n";
-
 			for (Entry<String, AADLFunction> ThreadFunctionSet : threadEntry.getValue().getThreadFunctionSet().entrySet()) {
-				if(ThreadFunctionSet.getValue().getSubFunctionSet().isEmpty())
+				functionDecompositionLevel = fileDecompositionMap.get(functionFileMap.get(ThreadFunctionSet.getKey()));
+
+				if(ThreadFunctionSet.getValue().getSubFunctionSet().isEmpty() || functionDecompositionLevel == 0) {
 					str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
-							+ functionTabs + functionTabs +"name=\"" + ThreadFunctionSet.getKey() + "::" + functionFileMap.get(ThreadFunctionSet.getKey()) + "\"/>\r\n";
+							+ functionTabs + functionTabs +"name=\"" + ThreadFunctionSet.getKey() + " " + functionDecompositionLevel + " (" + functionFileMap.get(ThreadFunctionSet.getKey()) + ")\"/>\r\n";
+				}
 				else {
 					str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
-							+ functionTabs + functionTabs +"name=\"" + ThreadFunctionSet.getKey() + "::" + functionFileMap.get(ThreadFunctionSet.getKey()) + "\">\r\n";
+							+ functionTabs + functionTabs +"name=\"" + ThreadFunctionSet.getKey() + " " + functionDecompositionLevel + " (" + functionFileMap.get(ThreadFunctionSet.getKey()) + ")\">\r\n";
 					for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {
+
 						str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
 								+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\"/>\r\n";
 					}
 					str += "</ownedExtensions>\n";
 				}
 			}
-
-
-
-
 			str += "<header xsi:type=\"deployment:AADLThreadHeader\" id=\"_T_SWgdA7Eey3zKUaIaFcdg\"/>\r\n"
 					+ "            </AADLThreadSet>\n";
 		}
-
 		return str;
 	}
 
@@ -189,26 +136,23 @@ public class CPPXMLTransformer
 
 		CPP14Parser parser = new CPP14Parser(tokens);
 
-		CPPCustomListener listener = new CPPCustomListener();
+		CPPCustomListener listener = new CPPCustomListener(fileDecompositionMap);
 
 		parser.addParseListener(listener);
 
 
 		ParseTree tree = parser.translationUnit();
 	}
-	
+
 	public static void addEntriesToFunctionMap(ArrayList<String> functionList, String fileName) {
 		for (String functionName : functionList) {
 			functionFileMap.put(functionName, fileName);
 		}
 	}
-	
+
 	public static void printFunctionFileMap() {
 		for(Entry<String,String> entry: functionFileMap.entrySet()) {
 			System.out.println("function name : " + entry.getKey() +" ======> " + entry.getValue()+"\n\n" );
-//			System.err.print(" ======> " + entry.getValue()+"\n\n");
-			
 		}
 	}
-
 }

@@ -59,7 +59,7 @@ public class FileHelper {
 
 	}
 
-	public static Map<String, Integer> convertFileToMap(File file) {
+	public static HashMap<String, Integer> convertFileToMap(File file) {
 		HashMap<String, Integer> fileToMap = new HashMap<>();
 
 		try {  
@@ -67,9 +67,11 @@ public class FileHelper {
 			FileInputStream fis=new FileInputStream(file);       
 			Scanner sc=new Scanner(fis);    //file to be scanned  
 			//returns true if there is another line to read  
-			while(sc.hasNextLine())  {  
-				System.out.println(sc.nextLine());      //returns the line that was skipped 
-				fileToMap.put(sc.nextLine().split(",")[0], Integer.parseInt(sc.nextLine().split(",")[1]));
+			String textline = "";
+			while(sc.hasNextLine())  { 
+				textline = sc.nextLine();
+//				System.out.println("text line ====> " + textline.split(",")[0]);      //returns the line that was skipped 
+				fileToMap.put(textline.split(";")[0], Integer.parseInt(textline.split(";")[1]));
 			}  
 			sc.close();     //closes the scanner  
 		}  
@@ -94,7 +96,7 @@ public class FileHelper {
 				getFolderTextContent(fileEntry);
 			} else {
 				fileName = "\n\n//" + asterisks + fileEntry.getName() + asterisks +"\n\n";
-				System.err.println(fileEntry.getName());
+//				System.err.println(fileEntry.getName());
 				@SuppressWarnings("resource")
 				Scanner useDelimiter = new Scanner(fileEntry).useDelimiter("\\Z");
 				String content = useDelimiter.next();
