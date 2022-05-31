@@ -180,22 +180,23 @@ public class CPPXMLTransformer {
 		String functionTabs = "\t";
 
 		System.err.println("subfunction name : " + subFunctionName);
+		System.out.println(functionSet.get(subFunctionName));
 		System.err.println(functionSet);
-		//		if(functionSet.containsKey(subFunctionName)){
-		if( functionSet.get(subFunctionName).getSubFunctionSet().isEmpty())
-			str += functionTabs  + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
-					+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\"/>\r\n";
-		else {
+		if(functionSet.containsKey(subFunctionName)){
+			if(functionSet.get(subFunctionName).getSubFunctionSet() == null || functionSet.get(subFunctionName).getSubFunctionSet().isEmpty())
+				str += functionTabs  + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
+						+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\"/>\r\n";
+			else {
 
-			str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
-					+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\">\r\n";
+				str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
+						+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\">\r\n";
 
-			for (String subSubFunctionName : functionSet.get(subFunctionName).getSubFunctionSet()) {
-				str += injectSubFunction(subSubFunctionName);
+				for (String subSubFunctionName : functionSet.get(subFunctionName).getSubFunctionSet()) {
+					str += injectSubFunction(subSubFunctionName);
+				}
+				str += "</ownedExtensions>\n";
 			}
-			str += "</ownedExtensions>\n";
 		}
-		//		}
 		return str;
 	}
 
