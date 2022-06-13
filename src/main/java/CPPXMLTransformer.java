@@ -1,10 +1,8 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.Set;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -34,14 +32,14 @@ public class CPPXMLTransformer {
 
 	public static void main(String[] args) throws Exception {
 
-		final File folder = new File("C:\\Users\\kamnis\\Downloads\\lower");
+		final File folder = new File("/home/decoutd/Documents/lower");
 		//    	System.out.println(FileHelper.listFilesForFolder(folder));
 		String wholeFolderContent = FileHelper.getFolderTextContent(folder);
 
 
-		//		String content = FileHelper.getFolderTextContent(folder);
+		String content = FileHelper.getFolderTextContent(folder);
 
-		fileDecompositionMap = FileHelper.convertFileToMap(new File("Z:\\xtextWS\\ANTLR4\\HelloANTLR\\src\\main\\java\\paparazzi files.csv"));
+		fileDecompositionMap = FileHelper.convertFileToMap(new File("/home/decoutd/Java/paparazzi-capella/src/main/java/paparazzi_files.csv"));
 		//		System.out.println(fileDecompositionMap);
 
 		//		for (Entry<String,Integer> entry : fileDecompositionMap.entrySet()) {
@@ -53,7 +51,7 @@ public class CPPXMLTransformer {
 		//        Scanner useDelimiter = new Scanner(new File("Z:\\xtextWS\\ANTLR4\\HelloANTLR\\src\\main\\java\\input.txt")).useDelimiter("\\Z");
 		//		String content = useDelimiter.next();
 
-		String content = "";
+//		String content = "";
 		for (final File fileEntry : folder.listFiles()) {
 
 			@SuppressWarnings("resource")
@@ -87,12 +85,12 @@ public class CPPXMLTransformer {
 
 		String XMLTags = getXMLfromThreadDataStructure(listener.threadSet);
 
-		String FileName = "Z:\\capella-1.4.2.latest\\capella\\eclipse\\workspace\\test-papparrazi\\test-papparrazi.melodymodeller";
+		String FileName = "test-papparrazi.melodymodeller";
 		String startpoint = "\"deployment:AADLProcess\"";
 
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 
-		//        System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
+		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
 	}
 
 	private static String getXMLfromThreadDataStructure(HashMap<String, AADLThread>  threadSet) {
