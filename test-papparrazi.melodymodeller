@@ -7,3 +7,2083 @@
 </ownedExtensions>
 <header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
             </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>
+<AADLThreadSet xsi:type="deployment:AADLThread" id="_T_SWgNA7Eey3zKUaIaFcdg"
+                name="adc_init" timeBudgetUnit="ms">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_init::actuators.c.008t.lower">
+	<ownedExtensions xsi:type="deployment:AADLFunction" id="baaec95a-deed-4d91-9998-c10e6aec4ad2"
+		name="adc_dev_init"/>
+</ownedExtensions>
+<header xsi:type="deployment:AADLThreadHeader" id="_T_SWgdA7Eey3zKUaIaFcdg"/>
+            </AADLThreadSet>

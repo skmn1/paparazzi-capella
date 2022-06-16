@@ -1,8 +1,10 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -37,7 +39,7 @@ public class CPPXMLTransformer {
 		String wholeFolderContent = FileHelper.getFolderTextContent(folder);
 
 
-		String content = FileHelper.getFolderTextContent(folder);
+		//		String content = FileHelper.getFolderTextContent(folder);
 
 		fileDecompositionMap = FileHelper.convertFileToMap(new File("/home/decoutd/Java/paparazzi-capella/src/main/java/paparazzi_files.csv"));
 		//		System.out.println(fileDecompositionMap);
@@ -51,7 +53,7 @@ public class CPPXMLTransformer {
 		//        Scanner useDelimiter = new Scanner(new File("Z:\\xtextWS\\ANTLR4\\HelloANTLR\\src\\main\\java\\input.txt")).useDelimiter("\\Z");
 		//		String content = useDelimiter.next();
 
-//		String content = "";
+		String content = "";
 		for (final File fileEntry : folder.listFiles()) {
 
 			@SuppressWarnings("resource")
@@ -90,7 +92,8 @@ public class CPPXMLTransformer {
 
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 
-		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
+		       // System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
+		System.out.println(functionSet.toString());
 	}
 
 	private static String getXMLfromThreadDataStructure(HashMap<String, AADLThread>  threadSet) {

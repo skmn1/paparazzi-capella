@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 //
-//import businessStructure.AADLFunction;
+import businessStructure.AADLFunction;
 //import businessStructure.AADLThread;
 
 public class CPPFunctionFileListener extends CPP14ParserBaseListener {
@@ -29,9 +29,12 @@ public class CPPFunctionFileListener extends CPP14ParserBaseListener {
 		//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
 
 		String currrentfunctionName = ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText();
-//		System.err.println("currrent function Name : " + currrentfunctionName);
+		System.err.println("currrent function Name : " + currrentfunctionName);
 		functionList.add(currrentfunctionName);
-//		AADLFunction currentFunction = new AADLFunction(currrentfunctionName);
+		AADLFunction currentFunction = new AADLFunction(currrentfunctionName);
+		
+		
+		
 //		ArrayList<String> subFunctionSet = new ArrayList<>();
 //
 //		CPP14Parser.StatementSeqContext statementSeq = getStatmentSeq(ctx);

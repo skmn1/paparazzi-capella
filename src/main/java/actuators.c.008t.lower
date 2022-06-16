@@ -1,9 +1,11 @@
-********************** actuators.c.008t.lower **************************
 
 ;; Function actuators_init (actuators_init, funcdef_no=238, decl_uid=11319, cgraph_uid=239, symbol_order=242)
 
 actuators_init ()
 {
+
+
+  _1 = pthread_create(x,y,adc_init,x);
   # DEBUG BEGIN_STMT
   actuators_delay_done = 1;
   # DEBUG BEGIN_STMT
@@ -15,4 +17,12 @@ actuators_init ()
   return;
 }
 
-********************** air_data.c.008t.lower **************************
+;; Function adc_init (adc_init, funcdef_no=262, decl_uid=5739, cgraph_uid=263, symbol_order=264)
+
+adc_init ()
+{
+  # DEBUG BEGIN_STMT
+  adc_dev_init (&adc0);
+  return;
+}
+
