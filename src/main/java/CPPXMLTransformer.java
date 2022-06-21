@@ -13,6 +13,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import businessStructure.AADLFunction;
 import businessStructure.AADLThread;
 import helpers.FileHelper;
+import sun.tools.tree.ThisExpression;
 
 public class CPPXMLTransformer {
 
@@ -92,8 +93,14 @@ public class CPPXMLTransformer {
 
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 
-		       // System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
-		System.out.println(functionSet.toString());
+//		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
+		System.out.println("~~tostring");
+		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
+			Object key = i.next();
+			System.out.println(key + "-- \n" +functionSet.get(key).toString() +"\n");
+			
+		}
+			
 	}
 
 	private static String getXMLfromThreadDataStructure(HashMap<String, AADLThread>  threadSet) {
@@ -204,9 +211,11 @@ public class CPPXMLTransformer {
 	public void injectX (String x) {
 
 	}
+	
 
-
-
+	
+	
+	
 
 
 }
