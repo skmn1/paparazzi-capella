@@ -81,13 +81,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						if (trySubStatementFunction.FunctionType == 1) {
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
 						//case f(x,y,...)
-							if (tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChildCount() == 3) {
+							if (getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChildCount() == 3) {
 
 //								System.out.println("statement n" + j + "is a function with multiples args");
 
-								for (int k = 0; k < tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-									if (!tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")) {
-										trylistArguments.get(j).add(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
+								for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
+									if (!getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")) {
+										trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 									}
 								}
 							}
@@ -101,23 +101,23 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						if(trySubStatementFunction.FunctionType == 2) {					
 						// case f(&x)
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
-							if (tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChildCount() ==2) {//cas(&x)
+							if (getxChild0(getxChild0(tryStatementSeq.getChild(j),3).getChild(1),4).getChild(1).getChildCount() ==2) {//cas(&x)
 //								System.out.println("statement n "+ j +" pointer");
-								trylistArguments.get(j).add(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getText());
+								trylistArguments.get(j).add(getxChild0(getxChild0(tryStatementSeq.getChild(j),3).getChild(1),4).getChild(1).getText());
 							}
 						// case f(x)
 							else {
 //								System.out.println("statement n "+ j +" 1 arg");
-								trylistArguments.get(j).add(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getText());
+								trylistArguments.get(j).add(getxChild0(getxChild0(tryStatementSeq.getChild(j),3).getChild(1),4).getChild(1).getText());
 							}
 						}
 						// case function(&abc, x, ...)
 						if (trySubStatementFunction.FunctionType == 3) { 
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
 //							System.out.println("statement n" + j + "is a function with multiples args&pointer");
-							for (int k = 0; k < tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-								if (!(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(","))) {
-									trylistArguments.get(j).add(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
+							for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
+								if (!(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(","))) {
+									trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 //									System.out.println(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 								}	
 							}
@@ -157,13 +157,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					//arguments
 				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();	
 				//case f(x,y,...)
-					if (statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChildCount() == 3) {
+					if (getxChild0(statementSeq.getChild(i),8).getChild(1).getChildCount() == 3) {
 						
 //						System.out.println("statement n" + i + "is a function with multiples args");
 						
-						for (int k = 0; k < statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-							if (!statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")) {
-								listArguments.get(i).add(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
+						for (int k = 0; k < getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
+							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")) {
+								listArguments.get(i).add(getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 							}
 						}
 					}
@@ -177,23 +177,23 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			if(statementFunction.FunctionType == 2)	{				
 				// case f(&)
 				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
-				if (statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChildCount() ==2) {//cas(&x)
+				if (getxChild0(getxChild0( statementSeq.getChild(i),3).getChild(1),4).getChild(1).getChildCount() ==2) {//cas(&x)
 //					System.out.println("statement n "+ i+" pointer");
-					listArguments.get(i).add(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getText());
+					listArguments.get(i).add(getxChild0(getxChild0(statementSeq.getChild(i),3).getChild(1),4).getChild(1).getText());
 				}
 			   // case f(x)
 				else {
 //					System.out.println("statement n "+ i+" 1 arg");
-					listArguments.get(i).add(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getText());
+					listArguments.get(i).add(getxChild0(getxChild0(statementSeq.getChild(i),3).getChild(1),4).getChild(1).getText());
 				}
 			}
 			   //case function(&abc, x, ...)
 			if (statementFunction.FunctionType == 3) { 
 				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
 //				System.out.println("statement n" + i + "is a function with multiples args&pointer");
-				for (int j = 0; j < statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
-					if (!(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(","))) {
-						listArguments.get(i).add(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText());
+				for (int j = 0; j < getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
+					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(","))) {
+						listArguments.get(i).add(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 //					    System.out.println(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 					}	
 				}
