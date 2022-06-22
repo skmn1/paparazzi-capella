@@ -86,7 +86,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //								System.out.println("statement n" + j + "is a function with multiples args");
 
 								for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-									if (!getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")) {
+									if (!getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") 
+											&& !getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")) {
 										trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 									}
 								}
@@ -116,7 +117,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
 //							System.out.println("statement n" + j + "is a function with multiples args&pointer");
 							for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-								if (!(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(","))) {
+								if (!(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")
+										&& !getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()"))) {
 									trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 //									System.out.println(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 								}	
@@ -126,7 +128,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 								trySubFunctionName = getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 17).getText();
 //									System.out.println(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
 									for (int k = 0; k < getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
-										if (!getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",")) {
+										if (!getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") 
+												&& !getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")) {
 											trylistArguments.get(j).add(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
 										}
 									}
@@ -162,7 +165,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //						System.out.println("statement n" + i + "is a function with multiples args");
 						
 						for (int k = 0; k < getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")) {
+							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") && !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")) {
 								listArguments.get(i).add(getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 							}
 						}
@@ -192,7 +195,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
 //				System.out.println("statement n" + i + "is a function with multiples args&pointer");
 				for (int j = 0; j < getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
-					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(","))) {
+					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(",") && !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().contains("()"))) {
 						listArguments.get(i).add(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 //					    System.out.println(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 					}	
@@ -204,7 +207,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	
 //				System.out.println(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
 				for (int k = 0; k < getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
-					if (!getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",")) {
+					if (!getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()") ) {
 						listArguments.get(i).add(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
 					}
 				}
@@ -354,8 +357,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		while (true) {
 			if(grammarElement.getChild(0) == null) 
 				break;
-			// key = 1 : functions without parameters & multiples arguments : f(); ou  f(x,y,...);
-			// key = 2 functions with 1 parameter with ou without pointer : f(x); ou f(&x);
+			// key = 1 : functions without parameters & multiples arguments : f(); or  f(x,y,...);
+			// key = 2 functions with 1 parameter with ou without pointer : f(x); or f(&x);
 			// key = 3 functions with multiples arguments including at least 1 pointer : f(&x,y,...);
 			// key = 4 functions called for a temporary variable _1 = f(..) ;
 

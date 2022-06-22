@@ -25,9 +25,10 @@ public class AADLFunction {
 		this.parentName = parentName;
 	}
 	
-	public AADLFunction(String functionName, ArrayList<String> parameters) {
+	public AADLFunction(String functionName,String parent ,ArrayList<String> parameters) {
 		this.functionName = functionName;
 		this.parameters = parameters;
+		this.parentName = parent;
 	}
 	
 
