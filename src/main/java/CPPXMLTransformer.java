@@ -97,10 +97,8 @@ public class CPPXMLTransformer {
 		System.out.println("~~tostring");
 		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
 			Object key = i.next();
-			System.out.println(key + "-- \n" +functionSet.get(key).toString() +"\n");
-			
+			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
 		}
-			
 	}
 
 	private static String getXMLfromThreadDataStructure(HashMap<String, AADLThread>  threadSet) {
@@ -211,11 +209,4 @@ public class CPPXMLTransformer {
 	public void injectX (String x) {
 
 	}
-	
-
-	
-	
-	
-
-
 }

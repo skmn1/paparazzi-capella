@@ -165,7 +165,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //						System.out.println("statement n" + i + "is a function with multiples args");
 						
 						for (int k = 0; k < getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") && !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")) {
+							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") 
+									&& !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")) {
 								listArguments.get(i).add(getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 							}
 						}
@@ -195,7 +196,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
 //				System.out.println("statement n" + i + "is a function with multiples args&pointer");
 				for (int j = 0; j < getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
-					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(",") && !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().contains("()"))) {
+					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(",") 
+							&& !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().contains("()"))) {
 						listArguments.get(i).add(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 //					    System.out.println(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 					}	
@@ -207,7 +209,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	
 //				System.out.println(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
 				for (int k = 0; k < getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
-					if (!getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()") ) {
+					if (!getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") 
+					 && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")) {
 						listArguments.get(i).add(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
 					}
 				}
@@ -364,30 +367,22 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 
 			grammarElement =  grammarElement.getChild(0);
 			if(grammarElement instanceof CPP14Parser.NoPointerDeclaratorContext &&  grammarElement.getChild(1) instanceof CPP14Parser.ParametersAndQualifiersContext) {
-				Sfun.setFunctionType(1);
-				Sfun.setIsstatfunction(true);
-				break;
+				return new StatFunction(true, 1);
 			}
-			if(grammarElement instanceof CPP14Parser.SimpleDeclarationContext &&  grammarElement.getChild(0) instanceof CPP14Parser.DeclSpecifierSeqContext && grammarElement.getChild(0).getChild(0).getChild(0).getChild(0)  instanceof CPP14Parser.TrailingTypeSpecifierContext) {
+			if(grammarElement instanceof CPP14Parser.SimpleDeclarationContext &&  grammarElement.getChild(0) instanceof CPP14Parser.DeclSpecifierSeqContext 
+					&& grammarElement.getChild(0).getChild(0).getChild(0).getChild(0)  instanceof CPP14Parser.TrailingTypeSpecifierContext) {
 				if (grammarElement.getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChildCount() == 3) {
-				Sfun.setFunctionType(2);
-				Sfun.setIsstatfunction(true);	
+					return new StatFunction(true, 2);
 				}
-				break;
 			}
 			if(grammarElement instanceof CPP14Parser.InitDeclaratorContext &&  grammarElement.getChild(1) instanceof CPP14Parser.InitializerContext) {
 				if (grammarElement.getChild(1).getChildCount() == 3) {
-					Sfun.setFunctionType(3);
-					Sfun.setIsstatfunction(true);
-					break;
+					return new StatFunction(true, 3);
 				}
-				else if (grammarElement.getChild(1).getChild(0).getChild(1).toStringTree(parser).contains("initializerList (")&& grammarElement.getChild(1).getChild(0).getChild(1).toStringTree(parser).contains("postfixExpression (")) {
-//					System.out.println(grammarElement.toStringTree(parser));
-					Sfun.setFunctionType(4);
-					Sfun.setIsstatfunction(true);
-					break;
+				else if (grammarElement.getChild(1).getChild(0).getChild(1).toStringTree(parser).contains("initializerList (")
+						&& grammarElement.getChild(1).getChild(0).getChild(1).toStringTree(parser).contains("postfixExpression (")) {
+					return new StatFunction(true, 4);
 				}
-				
 			}
 		}
 		return Sfun ;

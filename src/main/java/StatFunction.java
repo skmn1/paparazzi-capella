@@ -21,6 +21,10 @@ public class StatFunction {
 	public void setIsstatfunction(boolean isstatfunction) {
 		Isstatfunction = isstatfunction;
 	}
+	public void setstatfunction(boolean isstatfunction, int FType) {
+		Isstatfunction = isstatfunction;
+		this.
+	}
 
 	public Integer getFunctionType() {
 		return FunctionType;
