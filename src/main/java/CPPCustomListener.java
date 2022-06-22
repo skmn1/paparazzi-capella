@@ -87,7 +87,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 
 								for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
 									if (!getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") 
-											&& !getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")) {
+											&& !getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")
+											&& !getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit )) {
 										trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 									}
 								}
@@ -118,7 +119,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //							System.out.println("statement n" + j + "is a function with multiples args&pointer");
 							for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
 								if (!(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")
-										&& !getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()"))) {
+										&& !getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()"))
+										&& !getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit)) {
 									trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 //									System.out.println(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 								}	
@@ -129,7 +131,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //									System.out.println(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
 									for (int k = 0; k < getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
 										if (!getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") 
-												&& !getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")) {
+												&& !getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")
+												&& !getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit)) {
 											trylistArguments.get(j).add(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
 										}
 									}
@@ -137,10 +140,24 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 								else {
 									trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 9).getText();
 								}
-						subFunctionSet.add(trySubFunctionName);
+						
 						
 //						System.out.println("~~~    " + trySubFunctionName +trylistArguments.get(j));
-						functionSet.put(trySubFunctionName, new AADLFunction(trySubFunctionName, currrentfunctionName, trylistArguments.get(j)));
+						if (!functionSet.containsKey(trySubFunctionName)) {
+					    functionSet.put(trySubFunctionName, new AADLFunction(trySubFunctionName, currrentfunctionName, trylistArguments.get(j)));
+						}
+						else {
+							int n = 0;
+							while(true) {
+								n++;
+								if (!functionSet.containsKey(trySubFunctionName+"/"+n))  {
+									trySubFunctionName=trySubFunctionName+"/"+n;
+									functionSet.put(trySubFunctionName, new AADLFunction(trySubFunctionName, currrentfunctionName, trylistArguments.get(j)));
+									break;
+								}
+							}
+						}
+						subFunctionSet.add(trySubFunctionName);
 					}
 //					System.err.println(" try sub statement : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getText());	
 				}
@@ -166,7 +183,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						
 						for (int k = 0; k < getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
 							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") 
-									&& !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")) {
+									&& !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")
+									&& !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit )) {
 								listArguments.get(i).add(getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
 							}
 						}
@@ -197,7 +215,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //				System.out.println("statement n" + i + "is a function with multiples args&pointer");
 				for (int j = 0; j < getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
 					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(",") 
-							&& !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().contains("()"))) {
+							&& !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().contains("()"))
+							&& !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().chars().allMatch( Character::isDigit )) {
 						listArguments.get(i).add(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 //					    System.out.println(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText());
 					}	
@@ -210,7 +229,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //				System.out.println(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
 				for (int k = 0; k < getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
 					if (!getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") 
-					 && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")) {
+					 && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")
+					 && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit )) {
 						listArguments.get(i).add(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
 					}
 				}
@@ -222,9 +242,22 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			    
 //				String subFunctionName = statementSeq.getChild(i).getChild(0).getChild(0).getChild(0)
 //						.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
-				subFunctionSet.add(subFunctionName);
 //				System.out.println( "i = " + i + subFunctionName + listArguments.get(i) );
-				functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName ,listArguments.get(i)));//ajouter les arguments	
+				if (!functionSet.containsKey(subFunctionName)) {
+				    functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName, listArguments.get(i)));
+					}
+					else {
+						int n = 0;
+						while(true) {
+							n++;
+							if (!functionSet.containsKey(subFunctionName+"/"+n))  {
+								subFunctionName=subFunctionName+"/"+n;
+								functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName, listArguments.get(i)));
+								break;
+							}
+						}
+					}
+				subFunctionSet.add(subFunctionName);
 			}
 
 			
