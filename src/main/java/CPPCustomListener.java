@@ -153,22 +153,10 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 										tryfglobalvariableParameters.add("write");
 								}
 							}
-							if (!globalvariablesSet.containsKey(tryfglobalvariableName)) {
-								globalvariablesSet.put(tryfglobalvariableName, tryfglobalvariableParameters);
-							}
-							else {
-								int n = 0;
-								while(true) {
-									n++;
-									if (!functionSet.containsKey(tryfglobalvariableName+"/"+n))  {
-										tryfglobalvariableName=tryfglobalvariableName+"/"+n;
-										globalvariablesSet.put(tryfglobalvariableName, tryfglobalvariableParameters);
-										break;
-									}
-								}
-							}
+							addGlobalVariables(tryfglobalvariableName, tryfglobalvariableParameters);
 						}
 	// add function into function set
+// TODO transform to method
 						if (!functionSet.containsKey(trySubFunctionName)) {
 							functionSet.put(trySubFunctionName, new AADLFunction(trySubFunctionName, currrentfunctionName, trylistArguments.get(j)));
 						}
@@ -185,8 +173,28 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						}
 						subFunctionSet.add(trySubFunctionName);
 					}
+					// global variables retrieving
+					if (!trySubStatementFunction.Isstatfunction) {
+						if (GlobalVariablesEnum.testenumb(tryStatementSeq.getChild(j).getText())) {
+							String tryglobalvariableName = new String();
+							ArrayList<String> tryglobalvariableParameters = new ArrayList<String>();
+							tryglobalvariableParameters.add(currrentfunctionName);					
+							if (GlobalVariablesEnum.testenumb(getxChild0(statementSeq.getChild(j),8).getText())) {
+								tryglobalvariableName = getxChild0(tryStatementSeq.getChild(j),8).getText();
+								tryglobalvariableParameters.add("write");
+							}
+
+							else if (GlobalVariablesEnum.testenumb(getxChild0(statementSeq.getChild(i),5).getChild(1).getText())) {
+								tryglobalvariableName = getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(0).getChild(1).getText();
+								tryglobalvariableParameters.add("read");
+							}
+							addGlobalVariables(tryglobalvariableName, tryglobalvariableParameters);
+						}
+					}
+					
 					//					System.err.println(" try sub statement : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getText());	
 				}
+				
 			}
 // end try statement
 
@@ -281,27 +289,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 							fglobalvariableName = listArguments.get(i).get(m);
 							fglobalvariableParameters.add(currrentfunctionName);
 
-							if (statementFunction.FunctionType == 4) 
-								fglobalvariableParameters.add("read");
-
-							else 
-								fglobalvariableParameters.add("write");
+							if (statementFunction.FunctionType == 4) fglobalvariableParameters.add("read");
+							else fglobalvariableParameters.add("write");
 						}
 					}
-					if (!globalvariablesSet.containsKey(fglobalvariableName)) {
-						globalvariablesSet.put(fglobalvariableName, fglobalvariableParameters);
-					}
-					else {
-						int n = 0;
-						while(true) {
-							n++;
-							if (!functionSet.containsKey(fglobalvariableName+"/"+n))  {
-								fglobalvariableName=fglobalvariableName+"/"+n;
-								globalvariablesSet.put(fglobalvariableName, fglobalvariableParameters);
-								break;
-							}
-						}
-					}
+					addGlobalVariables(fglobalvariableName, fglobalvariableParameters);
 				}
 			}
 
@@ -320,29 +312,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						globalvariableName = getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(0).getChild(1).getText();
 						globalvariableParameters.add("read");
 					}
-					if (!globalvariablesSet.containsKey(globalvariableName)) {
-						globalvariablesSet.put(globalvariableName, globalvariableParameters);
-					}
-					else {
-						int n = 0;
-						while(true) {
-							n++;
-							if (!functionSet.containsKey(globalvariableName+"/"+n))  {
-								globalvariableName=globalvariableName+"/"+n;
-								globalvariablesSet.put(globalvariableName, globalvariableParameters);
-								break;
-							}
-						}
-					}
+					addGlobalVariables(globalvariableName, globalvariableParameters);
 				}
 			}
 			// thread 
 			// get the threadfunctions and save them in the threadSet map
 			if(!statementSeq.getChild(i).getText().contains("try{") && statementSeq.getChild(i).getText().contains("pthread_create"))
 				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), new AADLThread());
-
-
-
 		}
 
 		currentFunction.setSubFunctionSet(subFunctionSet);
@@ -518,6 +494,23 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	private String getFunctionName (CPP14Parser.StatementContext ctx) {
 		return ctx.getText().split(",")[2];
 
+	}
+	
+	public void addGlobalVariables(String gvName, ArrayList<String> gvParameters  ) {
+		if (!globalvariablesSet.containsKey(gvName)) {
+			globalvariablesSet.put(gvName, gvParameters);
+		}
+		else {
+			int n = 0;
+			while(true) {
+				n++;
+				if (!globalvariablesSet.containsKey(gvName+"/"+n))  {
+					gvName=gvName+"/"+n;
+					globalvariablesSet.put(gvName, gvParameters);
+					break;
+				}
+			}
+		}
 	}
 
 }
