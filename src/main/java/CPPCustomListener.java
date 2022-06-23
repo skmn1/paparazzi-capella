@@ -73,34 +73,32 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					StatFunction trySubStatementFunction = isStatementFuntion((CPP14Parser.StatementContext) tryStatementSeq.getChild(j));
 // try statement
 					if(trySubStatementFunction.Isstatfunction) {
-// function name + arguments retrieving 
+	// function name + arguments retrieving 
 						String trySubFunctionName = new String();
 						//						System.out.println("debug = " + statementSeq.getChild(i).getChild(0).getChild(1).getClass());
 						//						String trySubFunctionName = statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getChild(0).getChild(0).getChild(0)
 						//								.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
-						
-						
+
+
 						trylistArguments.put(j, new ArrayList<String>());
-//						System.out.println(j);
+						//						System.out.println(j);
 						if (trySubStatementFunction.FunctionType == 1) {
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
 						//case f(x,y,...)
 							if (getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChildCount() == 3) {
 
-//								System.out.println("statement n" + j + "is a function with multiples args");
+								//								System.out.println("statement n" + j + "is a function with multiples args");
 
 								for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-									if (!getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") 
-											&& !getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")
-											&& !getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit )) {
-										trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
+									String str = getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText();
+									if (!str.equals(",") && !str.contains("()")&& str.chars().allMatch( Character::isDigit )) {
+										trylistArguments.get(j).add(str);
 									}
 								}
 							}
 							else {
 						// case  f()	
 								trylistArguments.get(j).add("");
-//								System.out.println("statement n "+ j +"NoArg");
 							}
 						}
 
@@ -108,62 +106,51 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						// case f(&x)
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
 							if (getxChild0(getxChild0(tryStatementSeq.getChild(j),3).getChild(1),4).getChild(1).getChildCount() ==2) {//cas(&x)
-//								System.out.println("statement n "+ j +" pointer");
+								//								System.out.println("statement n "+ j +" pointer");
 								trylistArguments.get(j).add(getxChild0(getxChild0(tryStatementSeq.getChild(j),3).getChild(1),4).getChild(1).getText());
 							}
-						// case f(x)
+							// case f(x)
 							else {
-//								System.out.println("statement n "+ j +" 1 arg");
 								trylistArguments.get(j).add(getxChild0(getxChild0(tryStatementSeq.getChild(j),3).getChild(1),4).getChild(1).getText());
 							}
 						}
 						// case function(&abc, x, ...)
 						if (trySubStatementFunction.FunctionType == 3) { 
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
-//							System.out.println("statement n" + j + "is a function with multiples args&pointer");
 							for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-								if (!(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",")
-										&& !getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()"))
-										&& !getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit)) {
-									trylistArguments.get(j).add(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText());
-//									System.out.println(tryStatementSeq.getChild(j).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(k).getText());
+								String str = getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(1).getChild(0).getChild(k).getText();
+								if (!str.equals(",") && !str.contains("()") && !str.chars().allMatch( Character::isDigit)) {
+									trylistArguments.get(j).add(str);
 								}	
 							}
 						}
 						if (trySubStatementFunction.FunctionType == 4) {
 						//case _1 = f(...)
-								trySubFunctionName = getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 17).getText();
-//									System.out.println(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
-									for (int k = 0; k < getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
-										if (!getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") 
-												&& !getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")
-												&& !getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit)) {
-											trylistArguments.get(j).add(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
-										}
-									}
+							trySubFunctionName = getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 17).getText();
+							//									System.out.println(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
+							for (int k = 0; k < getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
+								String str = getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText();
+								if (!str.equals(",") && !str.contains("()")&& str.chars().allMatch( Character::isDigit)) {
+									trylistArguments.get(j).add(str);
 								}
-								else {
-									trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 9).getText();
-								}			
+							}
+						}
+						else {
+							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 9).getText();
+						}			
 
-//	try global variables retrieving
+	//	try global variables retrieving
 						if (GlobalVariablesEnum.testenumb(trylistArguments.toString())) {
 							String tryfglobalvariableName = new String ();
 							ArrayList<String> tryfglobalvariableParameters = new ArrayList<String>();
-//							System.out.println("fonction avec glob");
 							for (int m = 0; m < trylistArguments.size(); m++) {
 								if (GlobalVariablesEnum.testenumb(listArguments.get(j).get(m))) {
-
-									if (trySubStatementFunction.FunctionType == 4) {
-										tryfglobalvariableName = listArguments.get(j).get(m);
-										tryfglobalvariableParameters.add(currrentfunctionName);
+									tryfglobalvariableName = listArguments.get(j).get(m);
+									tryfglobalvariableParameters.add(currrentfunctionName);
+									if (trySubStatementFunction.FunctionType == 4) 
 										tryfglobalvariableParameters.add("read");
-									}
-									else {
-										tryfglobalvariableName = listArguments.get(j).get(m);
-										tryfglobalvariableParameters.add(currrentfunctionName);
+									else 
 										tryfglobalvariableParameters.add("write");
-									}
 								}
 							}
 							if (!globalvariablesSet.containsKey(tryfglobalvariableName)) {
@@ -181,10 +168,9 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 								}
 							}
 						}
-// add function into function set
-//						System.out.println("~~~    " + trySubFunctionName +trylistArguments.get(j));
+	// add function into function set
 						if (!functionSet.containsKey(trySubFunctionName)) {
-					    functionSet.put(trySubFunctionName, new AADLFunction(trySubFunctionName, currrentfunctionName, trylistArguments.get(j)));
+							functionSet.put(trySubFunctionName, new AADLFunction(trySubFunctionName, currrentfunctionName, trylistArguments.get(j)));
 						}
 						else {
 							int n = 0;
@@ -199,125 +185,107 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						}
 						subFunctionSet.add(trySubFunctionName);
 					}
-//					System.err.println(" try sub statement : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getText());	
+					//					System.err.println(" try sub statement : " + statementSeq.getChild(i).getChild(0).getChild(1).getChild(1).getChild(j).getText());	
 				}
 			}
 // end try statement
-			
+
 // classic statement
-			// get arguments + name inside a statement
+	// get arguments + name inside a statement
 			StatFunction statementFunction = isStatementFuntion((CPP14Parser.StatementContext) statementSeq.getChild(i));
-//						System.out.println("isStatementFuntion "+ statementFunction);
+			//System.out.println("isStatementFuntion "+ statementFunction);
 			if(statementFunction.Isstatfunction) {
+				
 				String subFunctionName = new String();
-				// arguments 
 				listArguments.put(i, new ArrayList<String>());
-//				System.out.println("i = " + i);
+				
 				if (statementFunction.FunctionType == 1) {
-					//arguments
-				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();	
+					subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();	
 				//case f(x,y,...)
 					if (getxChild0(statementSeq.getChild(i),8).getChild(1).getChildCount() == 3) {
-						
-//						System.out.println("statement n" + i + "is a function with multiples args");
-						
+
 						for (int k = 0; k < getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-							if (!getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().equals(",") 
-									&& !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().contains("()")
-									&& !getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit )) {
-								listArguments.get(i).add(getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText());
+							String str = getxChild0(statementSeq.getChild(i),8).getChild(1).getChild(1).getChild(0).getChild(k).getText();
+							if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) {
+								listArguments.get(i).add(str);
 							}
 						}
 					}
 					else {
 				// case f()
 						listArguments.get(i).add("");
-//						System.out.println("statement n "+ i+"NoArg");
 					}
-			}
-				
-			if(statementFunction.FunctionType == 2)	{				
+				}
+
+				if(statementFunction.FunctionType == 2)	{				
 				// case f(&)
-				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
-				if (getxChild0(getxChild0( statementSeq.getChild(i),3).getChild(1),4).getChild(1).getChildCount() ==2) {//cas(&x)
-//					System.out.println("statement n "+ i+" pointer");
-					listArguments.get(i).add(getxChild0(getxChild0(statementSeq.getChild(i),3).getChild(1),4).getChild(1).getText());
-				}
-			   // case f(x)
-				else {
-//					System.out.println("statement n "+ i+" 1 arg");
-					listArguments.get(i).add(getxChild0(getxChild0(statementSeq.getChild(i),3).getChild(1),4).getChild(1).getText());
-				}
-			}
-			   //case function(&abc, x, ...)
-			if (statementFunction.FunctionType == 3) { 
-				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
-//				System.out.println("statement n" + i + "is a function with multiples args&pointer");
-				for (int j = 0; j < getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
-					if (!(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().equals(",") 
-							&& !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().contains("()"))
-							&& !getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText().chars().allMatch( Character::isDigit )) {
-						listArguments.get(i).add(getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText());
-//					    System.out.println(statementSeq.getChild(i).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText());
-					}	
-				}
-			}
-			// case _1 = function(...)
-			if (statementFunction.FunctionType==4){
-			subFunctionName = getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 17).getText();
-	
-//				System.out.println(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
-				for (int k = 0; k < getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
-					if (!getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().equals(",") 
-					 && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().contains("()")
-					 && !getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText().chars().allMatch( Character::isDigit )) {
-						listArguments.get(i).add(getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText());
+					subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
+					if (getxChild0(getxChild0( statementSeq.getChild(i),3).getChild(1),4).getChild(1).getChildCount() ==2) {
+				//case (&x)
+						listArguments.get(i).add(getxChild0(getxChild0(statementSeq.getChild(i),3).getChild(1),4).getChild(1).getText());
 					}
-				}
-			}
-			else {
-				subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
-			}
-			    
-			    
-//				String subFunctionName = statementSeq.getChild(i).getChild(0).getChild(0).getChild(0)
-//						.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getText();
-//				System.out.println( "i = " + i + subFunctionName + listArguments.get(i) );
-				if (!functionSet.containsKey(subFunctionName)) {
-				    functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName, listArguments.get(i)));
-					}
+				// case f(x)
 					else {
-						int n = 0;
-						while(true) {
-							n++;
-							if (!functionSet.containsKey(subFunctionName+"/"+n))  {
-								subFunctionName=subFunctionName+"/"+n;
-								functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName, listArguments.get(i)));
-								break;
-							}
+						//					System.out.println("statement n "+ i+" 1 arg");
+						listArguments.get(i).add(getxChild0(getxChild0(statementSeq.getChild(i),3).getChild(1),4).getChild(1).getText());
+					}
+				}
+				//case function(&abc, x, ...)
+				if (statementFunction.FunctionType == 3) { 
+					subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
+					for (int j = 0; j < getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
+						String str = getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(1).getChild(0).getChild(j).getText();
+						if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) {
+							listArguments.get(i).add(str);
+						}	
+					}
+				}
+				// case _1 = function(...)
+				if (statementFunction.FunctionType==4){
+					subFunctionName = getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 17).getText();
+
+					for (int k = 0; k < getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
+						String str = getxChild0( getxChild0(statementSeq.getChild(i), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText();
+						if (!str.equals(",") && !str.contains("()") && !str.chars().allMatch( Character::isDigit )) {
+							listArguments.get(i).add(str);
 						}
 					}
+				}
+				else {
+					subFunctionName = getxChild0(statementSeq.getChild(i), 9).getText();
+				}
+
+				if (!functionSet.containsKey(subFunctionName)) {
+					functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName, listArguments.get(i)));
+				}
+				else {
+					int n = 0;
+					while(true) {
+						n++;
+						if (!functionSet.containsKey(subFunctionName+"/"+n))  {
+							subFunctionName=subFunctionName+"/"+n;
+							functionSet.put(subFunctionName, new AADLFunction(subFunctionName, currrentfunctionName, listArguments.get(i)));
+							break;
+						}
+					}
+				}
 				subFunctionSet.add(subFunctionName);
-				
-				
-// global variables retrieving  in functions				
+
+
+				// global variables retrieving  in functions				
 				if (GlobalVariablesEnum.testenumb(listArguments.toString())) {
 					String fglobalvariableName = new String ();
 					ArrayList<String> fglobalvariableParameters = new ArrayList<String>();
-//					System.out.println("fonction avec glob");
 					for (int m = 0; m < listArguments.size(); m++) {
 						if (GlobalVariablesEnum.testenumb(listArguments.get(i).get(m))) {
+							fglobalvariableName = listArguments.get(i).get(m);
+							fglobalvariableParameters.add(currrentfunctionName);
 
-							if (statementFunction.FunctionType == 4) {
-								fglobalvariableName = listArguments.get(i).get(m);
-								fglobalvariableParameters.add(currrentfunctionName);
+							if (statementFunction.FunctionType == 4) 
 								fglobalvariableParameters.add("read");
-							}
-							else {
-								fglobalvariableName = listArguments.get(i).get(m);
-								fglobalvariableParameters.add(currrentfunctionName);
+
+							else 
 								fglobalvariableParameters.add("write");
-							}
 						}
 					}
 					if (!globalvariablesSet.containsKey(fglobalvariableName)) {
@@ -337,22 +305,20 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				}
 			}
 
-// global variables retrieving
+			// global variables retrieving
 			if (!statementFunction.Isstatfunction) {
 				if (GlobalVariablesEnum.testenumb(statementSeq.getChild(i).getText())) {
 					String globalvariableName = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
+					globalvariableParameters.add(currrentfunctionName);					
 					if (GlobalVariablesEnum.testenumb(getxChild0(statementSeq.getChild(i),8).getText())) {
 						globalvariableName = getxChild0(statementSeq.getChild(i),8).getText();
-						globalvariableParameters.add(currrentfunctionName);
 						globalvariableParameters.add("write");
 					}
 
 					else if (GlobalVariablesEnum.testenumb(getxChild0(statementSeq.getChild(i),5).getChild(1).getText())) {
 						globalvariableName = getxChild0(statementSeq.getChild(i),5).getChild(1).getChild(0).getChild(1).getText();
-						globalvariableParameters.add(currrentfunctionName);
 						globalvariableParameters.add("read");
-//						System.out.println("true");
 					}
 					if (!globalvariablesSet.containsKey(globalvariableName)) {
 						globalvariablesSet.put(globalvariableName, globalvariableParameters);
@@ -368,10 +334,9 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 							}
 						}
 					}
-//					System.out.println(globalvariableName);
 				}
 			}
-// thread 
+			// thread 
 			// get the threadfunctions and save them in the threadSet map
 			if(!statementSeq.getChild(i).getText().contains("try{") && statementSeq.getChild(i).getText().contains("pthread_create"))
 				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), new AADLThread());
