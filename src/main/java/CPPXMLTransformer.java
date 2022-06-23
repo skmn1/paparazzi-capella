@@ -20,6 +20,7 @@ public class CPPXMLTransformer {
 	public static HashMap<String,String> functionFileMap = new HashMap<String,String>();
 	public static HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
 	public static HashMap<String,AADLFunction> functionSet = new HashMap<String,AADLFunction>();
+	public static HashMap<String, ArrayList<String>> globalvariablesSet = new HashMap<String, ArrayList<String>>() ;
 
 
 	public static void listFilesForFolder(final File folder) {
@@ -85,6 +86,7 @@ public class CPPXMLTransformer {
 
 		ParseTree tree = parser.translationUnit();
 		functionSet = listener.functionSet;
+		globalvariablesSet =listener.globalvariablesSet;
 
 		String XMLTags = getXMLfromThreadDataStructure(listener.threadSet);
 
@@ -95,9 +97,13 @@ public class CPPXMLTransformer {
 
 //		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
 		System.out.println("~~tostring");
-		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
-			Object key = i.next();
-			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
+//		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
+//			Object key = i.next();
+//			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
+//		}
+		for (Iterator j = globalvariablesSet.keySet().iterator(); j.hasNext();) {
+			Object key = j.next();
+			System.out.println("- " +key + "\n" +globalvariablesSet.get(key).toString() +"\n");
 		}
 	}
 

@@ -23,7 +23,7 @@ public class StatFunction {
 	}
 	public void setstatfunction(boolean isstatfunction, int FType) {
 		Isstatfunction = isstatfunction;
-		this.
+		FunctionType = FType;
 	}
 
 	public Integer getFunctionType() {
