@@ -463,6 +463,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	}
 	
 	public void addGlobalVariablesToglobalvariablesSet(String gvName, ArrayList<String> gvParameters  ) {
+		if (gvName.contains("&this->_")) {
+			String str[] = gvName.split("s",2);
+			gvName = str[1];
+			System.out.println(gvName);
+		}
 		if (!globalvariablesSet.containsKey(gvName)) {
 			globalvariablesSet.put(gvName, gvParameters);
 		}
