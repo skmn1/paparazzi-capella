@@ -96,11 +96,12 @@ public class CPPXMLTransformer {
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 
 //		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
-		System.out.println("~~tostring");
-//		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
-//			Object key = i.next();
-//			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
-//		}
+		System.out.println("~~tostring func");
+		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
+			Object key = i.next();
+			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
+		}
+		System.out.println("~~tostring glob");
 		for (Iterator j = globalvariablesSet.keySet().iterator(); j.hasNext();) {
 			Object key = j.next();
 			System.out.println("- " +key + "\n" +globalvariablesSet.get(key).toString() +"\n");
@@ -113,9 +114,7 @@ public class CPPXMLTransformer {
 
 		for (Entry<String, AADLThread>  threadEntry : threadSet.entrySet()) {
 			str += injectFunction(threadEntry);
-
 		}
-
 		return str;
 	}
 
@@ -212,7 +211,20 @@ public class CPPXMLTransformer {
 		return str;
 	}
 
-	public void injectX (String x) {
+	public void injectGlobalVariables (String FunctionName) {
+		String str = "";
+		String globalVariablename = "\t";
+		for (ArrayList<String> Arl : globalvariablesSet.values()) {
+			if (Arl.get(0)== FunctionName) {
+				System.out.println("Function = " + FunctionName);
+				if(Arl.get(1) == "read") {
+					
+				}
+				if(Arl.get(1)== "write") {
+					
+				}
+			}
+		}
 
 	}
 }

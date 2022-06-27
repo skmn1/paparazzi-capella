@@ -85,12 +85,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 							trySubFunctionName = getxChild0(tryStatementSeq.getChild(j), 8).getText();
 						//case f(x,y,...)
 							if (getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChildCount() == 3) {
-
 								//								System.out.println("statement n" + j + "is a function with multiples args");
 
 								for (int k = 0; k < getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
 									String str = getxChild0(tryStatementSeq.getChild(j),8).getChild(1).getChild(1).getChild(0).getChild(k).getText();
-									if (!str.equals(",") && !str.contains("()")&& str.chars().allMatch( Character::isDigit )) {
+									if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) {
 										trylistArguments.get(j).add(str);
 									}
 								}
@@ -129,7 +128,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 							//									System.out.println(getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount());
 							for (int k = 0; k < getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
 								String str = getxChild0( getxChild0(tryStatementSeq.getChild(j), 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText();
-								if (!str.equals(",") && !str.contains("()")&& str.chars().allMatch( Character::isDigit)) {
+								if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit)) {
 									trylistArguments.get(j).add(str);
 								}
 							}
@@ -140,19 +139,21 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 
 	//	try global variables retrieving
 						if (GlobalVariablesEnum.testenumb(trylistArguments.toString())) {
-							String tryfglobalvariableName = new String ();
-							ArrayList<String> tryfglobalvariableParameters = new ArrayList<String>();
-							for (int m = 0; m < trylistArguments.size(); m++) {
-								if (GlobalVariablesEnum.testenumb(listArguments.get(j).get(m))) {
-									tryfglobalvariableName = listArguments.get(j).get(m);
+							
+							for (int m = 0; m < trylistArguments.get(j).size(); m++) {
+								if (GlobalVariablesEnum.testenumb(trylistArguments.get(j).get(m))) {
+									String tryfglobalvariableName = new String ();
+									ArrayList<String> tryfglobalvariableParameters = new ArrayList<String>();
+									tryfglobalvariableName = trylistArguments.get(j).get(m);
 									tryfglobalvariableParameters.add(currrentfunctionName);
+									System.out.println(tryfglobalvariableParameters + tryfglobalvariableName);
 									if (trySubStatementFunction.FunctionType == 4) 
 										tryfglobalvariableParameters.add("read");
 									else 
 										tryfglobalvariableParameters.add("write");
+									addGlobalVariablesToglobalvariablesSet(tryfglobalvariableName, tryfglobalvariableParameters);
 								}
 							}
-							addGlobalVariablesToglobalvariablesSet(tryfglobalvariableName, tryfglobalvariableParameters);
 						}
 						addFunctionTofunctionSet(trySubFunctionName, currrentfunctionName, trylistArguments.get(j));
 						subFunctionSet.add(trySubFunctionName);
@@ -254,7 +255,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				if (GlobalVariablesEnum.testenumb(listArguments.toString())) {
 					String fglobalvariableName = new String ();
 					ArrayList<String> fglobalvariableParameters = new ArrayList<String>();
-					for (int m = 0; m < listArguments.size(); m++) {
+					for (int m = 0; m < listArguments.get(i).size(); m++) {
 						if (GlobalVariablesEnum.testenumb(listArguments.get(i).get(m))) {
 							fglobalvariableName = listArguments.get(i).get(m);
 							fglobalvariableParameters.add(currrentfunctionName);
