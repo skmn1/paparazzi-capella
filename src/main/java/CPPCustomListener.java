@@ -159,17 +159,17 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					}
 					// global variables retrieving 
 					if (!trySubStatementFunction.Isstatfunction) {
-						
+
 						if (GlobalVariablesEnum.testenumb(tryStatementSeq.getChild(j).getText())) {
 							String tryglobalvariableName = new String();
 							ArrayList<String> tryglobalvariableParameters = new ArrayList<String>();
 							tryglobalvariableParameters.add(currrentfunctionName);					
-							if (GlobalVariablesEnum.testenumb(getxChild0(statementSeq.getChild(j),8).getText())) {
+							if (GlobalVariablesEnum.testenumb(getxChild0(tryStatementSeq.getChild(j),8).getText())) {
 								tryglobalvariableName = getxChild0(tryStatementSeq.getChild(j),8).getText();
 								tryglobalvariableParameters.add("write");
 							}
 
-							else if (GlobalVariablesEnum.testenumb(getxChild0(statementSeq.getChild(i),5).getChild(1).getText())) {
+							else if (GlobalVariablesEnum.testenumb(getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getText())) {
 								tryglobalvariableName = getxChild0(tryStatementSeq.getChild(j),5).getChild(1).getChild(0).getChild(1).getText();
 								tryglobalvariableParameters.add("read");
 							}
@@ -268,7 +268,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 
 			// global variables retrieving
-			if (!statementFunction.Isstatfunction) {
+			if (!statementFunction.Isstatfunction && !statementSeq.getChild(i).getText().contains("try{")) {
 				if (GlobalVariablesEnum.testenumb(statementSeq.getChild(i).getText())) {
 					String globalvariableName = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
@@ -464,10 +464,26 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	
 	public void addGlobalVariablesToglobalvariablesSet(String gvName, ArrayList<String> gvParameters  ) {
 		if (gvName.contains("&this->_")) {
-			String str[] = gvName.split("s",2);
+			String str[] = gvName.split("->_",2);
 			gvName = str[1];
 			System.out.println(gvName);
 		}
+		else if (gvName.contains("&")) {
+			String str[] = gvName.split("&",2);
+			gvName = str[1];
+			System.out.println(gvName);
+		}
+		else if (gvName.contains("this->D.")) {
+			String str[] = gvName.split("._",2);
+			gvName = str[1];
+			System.out.println(gvName);
+		}
+		if (gvName.contains(".D.")) {
+			String str[] = gvName.split(".D.",2);
+			gvName = str[0];
+			System.out.println(gvName);
+		}
+		
 		if (!globalvariablesSet.containsKey(gvName)) {
 			globalvariablesSet.put(gvName, gvParameters);
 		}
