@@ -96,6 +96,7 @@ public class CPPXMLTransformer {
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 
 //		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
+		System.out.println(listener.toString());
 		System.out.println("~~tostring func");
 		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
 			Object key = i.next();
@@ -168,14 +169,12 @@ public class CPPXMLTransformer {
 				//				we create the function and then parcour the functions by calling the injectsubfunction method
 				str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
 						+ functionTabs + functionTabs +"name=\"" + ThreadFunctionSet.getKey() + "::" + functionFileMap.get(ThreadFunctionSet.getKey()) + "\">\r\n";
-
 				// the injectsubfunction must be called here
-
+				str += injectSoftwareBus(ThreadFunctionSet.getKey());
 				for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {
 					str += injectSubFunction(subFunctionName);
 				}
-
-				str += "</ownedExtensions>\n";
+//				str += "</ownedExtensions>\n";
 			}
 		}
 
@@ -204,27 +203,32 @@ public class CPPXMLTransformer {
 
 				for (String subSubFunctionName : functionSet.get(subFunctionName).getSubFunctionSet()) {
 					str += injectSubFunction(subSubFunctionName);
+					str += injectSoftwareBus(subSubFunctionName);
 				}
-				str += "</ownedExtensions>\n";
+//				str += "</ownedExtensions>\n";
 			}
 		}
 		return str;
 	}
 
-	public void injectGlobalVariables (String FunctionName) {
+	public static String injectSoftwareBus (String FunctionName) {
+		
 		String str = "";
-		String globalVariablename = "\t";
-		for (ArrayList<String> Arl : globalvariablesSet.values()) {
-			if (Arl.get(0)== FunctionName) {
-				System.out.println("Function = " + FunctionName);
-				if(Arl.get(1) == "read") {
-					
+		String globalVariablTabs = "\t\t";
+		System.out.println("Function = " + FunctionName);
+		for (String variableName : globalvariablesSet.keySet()) {
+		if (globalvariablesSet.get(variableName).get(0).contains(FunctionName)) {
+				System.out.println("                       Function = " + FunctionName);
+				if(globalvariablesSet.get(variableName).get(1) == "read") {
+					str += globalVariablTabs + globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" bustType=\"Paparazzi ABI\"/>\r\n"
+							+ variableName + "\n"; 
 				}
-				if(Arl.get(1)== "write") {
-					
+				else {
+					str += globalVariablTabs + globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" bustType=\"ROS2\"/>\r\n"
+							+variableName + "\n";
 				}
 			}
 		}
-
+		return str;
 	}
 }
