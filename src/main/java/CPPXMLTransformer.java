@@ -18,7 +18,7 @@ import sun.tools.tree.ThisExpression;
 public class CPPXMLTransformer {
 
 	public static HashMap<String,String> functionFileMap = new HashMap<String,String>();
-	public static HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
+	public static HashMap<String,Integer> Breakdown = new HashMap<String,Integer>();
 	public static HashMap<String,AADLFunction> functionSet = new HashMap<String,AADLFunction>();
 	public static HashMap<String, ArrayList<String>> globalvariablesSet = new HashMap<String, ArrayList<String>>() ;
 
@@ -40,10 +40,9 @@ public class CPPXMLTransformer {
 		//    	System.out.println(FileHelper.listFilesForFolder(folder));
 		String wholeFolderContent = FileHelper.getFolderTextContent(folder);
 
-
 		//		String content = FileHelper.getFolderTextContent(folder);
 
-		fileDecompositionMap = FileHelper.convertFileToMap(new File("/home/decoutd/Java/paparazzi-capella/src/main/java/paparazzi_files.csv"));
+		Breakdown = FileHelper.convertFileToMap(new File("/home/decoutd/Java/paparazzi-capella/src/main/java/paparazzi_files.csv"));
 		//		System.out.println(fileDecompositionMap);
 
 		//		for (Entry<String,Integer> entry : fileDecompositionMap.entrySet()) {
@@ -69,6 +68,7 @@ public class CPPXMLTransformer {
 			parser.addParseListener(listenerff);
 			ParseTree tree = parser.translationUnit();
 			addEntriesToFunctionMap(listenerff.functionList, fileEntry.getName());
+			System.out.println("                  " +fileEntry.getName()+ Breakdown.get(fileEntry.getName()));
 		}
 
 		ANTLRInputStream input = new ANTLRInputStream( wholeFolderContent );
@@ -79,7 +79,7 @@ public class CPPXMLTransformer {
 
 		CPP14Parser parser = new CPP14Parser(tokens);
 
-		CPPCustomListener listener = new CPPCustomListener(fileDecompositionMap);
+		CPPCustomListener listener = new CPPCustomListener(Breakdown);
 		//		CPPFunctionFileListener listenerff = new CPPFunctionFileListener();
 
 		parser.addParseListener(listener);
@@ -96,7 +96,7 @@ public class CPPXMLTransformer {
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 
 //		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
-		System.out.println(listener.toString());
+//		System.out.println(listener.toString());
 		System.out.println("~~tostring func");
 		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
 			Object key = i.next();
@@ -129,7 +129,7 @@ public class CPPXMLTransformer {
 
 		CPP14Parser parser = new CPP14Parser(tokens);
 
-		CPPCustomListener listener = new CPPCustomListener(fileDecompositionMap);
+		CPPCustomListener listener = new CPPCustomListener(Breakdown);
 
 		parser.addParseListener(listener);
 
@@ -170,11 +170,19 @@ public class CPPXMLTransformer {
 				str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
 						+ functionTabs + functionTabs +"name=\"" + ThreadFunctionSet.getKey() + "::" + functionFileMap.get(ThreadFunctionSet.getKey()) + "\">\r\n";
 				// the injectsubfunction must be called here
+				
+				System.out.println("ff= " + ThreadFunctionSet.getKey()+ "  //value = " + getFileValue(ThreadFunctionSet.getKey()));
 				str += injectSoftwareBus(ThreadFunctionSet.getKey());
-				for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {
-					str += injectSubFunction(subFunctionName);
+				
+				if (getFileValue(ThreadFunctionSet.getKey()) > 0) {
+					System.out.println("+++++++++++++++++++++" + getFileValue(ThreadFunctionSet.getKey()));
+					for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {
+						System.out.println("oooooooooooooooooo" + subFunctionName);
+		
+						str += injectSubFunction(subFunctionName, getFileValue(ThreadFunctionSet.getKey()) );
+					}
 				}
-//				str += "</ownedExtensions>\n";
+				//				str += "</ownedExtensions>\n";
 			}
 		}
 
@@ -185,25 +193,31 @@ public class CPPXMLTransformer {
 
 	}
 
-	public static String  injectSubFunction (String subFunctionName) {
+	public static String  injectSubFunction (String subFunctionName, Integer FileValue) {
 		String str = "";
 		String functionTabs = "\t";
 
-		System.err.println("subfunction name : " + subFunctionName);
-		System.out.println(functionSet.get(subFunctionName));
-		System.err.println(functionSet);
+//		System.err.println("subfunction name : " + subFunctionName);
+//		System.out.println(functionSet.get(subFunctionName));
+//		System.err.println(functionSet);
 		if(functionSet.containsKey(subFunctionName)){
-			if(functionSet.get(subFunctionName).getSubFunctionSet() == null || functionSet.get(subFunctionName).getSubFunctionSet().isEmpty())
+			if(functionSet.get(subFunctionName).getSubFunctionSet() == null || functionSet.get(subFunctionName).getSubFunctionSet().isEmpty()) {
 				str += functionTabs  + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
 						+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\"/>\r\n";
+				
+			System.out.println("+++++++++++++++++++++" +"pbbbb");}
+			
+			
 			else {
-
 				str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
 						+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\">\r\n";
-
-				for (String subSubFunctionName : functionSet.get(subFunctionName).getSubFunctionSet()) {
-					str += injectSubFunction(subSubFunctionName);
-					str += injectSoftwareBus(subSubFunctionName);
+				System.out.println("-----------------" +FileValue);
+				str += injectSoftwareBus(subFunctionName);
+				if (FileValue > 1) {
+					for (String subSubFunctionName : functionSet.get(subFunctionName).getSubFunctionSet()) {
+						str += injectSubFunction(subSubFunctionName,FileValue);
+						str += injectSoftwareBus(subSubFunctionName);
+					}
 				}
 //				str += "</ownedExtensions>\n";
 			}
@@ -231,4 +245,9 @@ public class CPPXMLTransformer {
 		}
 		return str;
 	}
+	public static int getFileValue (String Name) {
+		Integer value;
+		return value = Breakdown.get(functionFileMap.get(Name)) ;
+	}
+	
 }
