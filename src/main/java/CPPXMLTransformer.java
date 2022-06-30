@@ -68,7 +68,7 @@ public class CPPXMLTransformer {
 			parser.addParseListener(listenerff);
 			ParseTree tree = parser.translationUnit();
 			addEntriesToFunctionMap(listenerff.functionList, fileEntry.getName());
-			System.out.println("                  " +fileEntry.getName()+ Breakdown.get(fileEntry.getName()));
+			System.out.println("                  " +fileEntry.getName()+ "  CSV value = " +Breakdown.get(fileEntry.getName()));
 		}
 
 		ANTLRInputStream input = new ANTLRInputStream( wholeFolderContent );
@@ -153,7 +153,7 @@ public class CPPXMLTransformer {
 
 	public static String injectFunction (Entry<String, AADLThread>  threadEntry) {
 
-		String str = "\r\n test csv = \n";
+		String str = "";
 
 		//		 thread creation
 		str += "<AADLThreadSet xsi:type=\"deployment:AADLThread\" id=\"_T_SWgNA7Eey3zKUaIaFcdg\"\r\n"
@@ -247,5 +247,4 @@ public class CPPXMLTransformer {
 		Integer value;
 		return value = Breakdown.get(functionFileMap.get(Name)) ;
 	}
-	
 }
