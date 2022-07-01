@@ -97,28 +97,29 @@ public class CPPXMLTransformer {
 
 //		System.out.println( "ParseTree:\n" + tree.toStringTree( parser ) + "\n"); 
 //		System.out.println(listener.toString());
-		System.out.println("\r\n");
-		System.out.println("~~all AADLfunctions : ");
-		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
-			Object key = i.next();
-			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
-		}
-		System.out.println("\r\n");
-		System.out.println("\n ~~all Global variables : ");
-		for (Iterator j = globalvariablesSet.keySet().iterator(); j.hasNext();) {
-			Object key = j.next();
-			System.out.println("- " +key + "\n" +globalvariablesSet.get(key).toString() +"\n");
-		}
-		System.out.println("\r\n");
+//		System.out.println("\r\n");
+//		System.out.println("~~all AADLfunctions : ");
+//		for (Iterator i = functionSet.keySet().iterator(); i.hasNext();) {
+//			Object key = i.next();
+//			System.out.println("- " +key + "\n" +functionSet.get(key).toString() +"\n");
+//		}
+//		System.out.println("\r\n");
+//		System.out.println("\n ~~all Global variables : ");
+//		for (Iterator j = globalvariablesSet.keySet().iterator(); j.hasNext();) {
+//			Object key = j.next();
+//			System.out.println("- " +key + "\n" +globalvariablesSet.get(key).toString() +"\n");
+//		}
+//		System.out.println("\r\n");
 	}
 
 	private static String getXMLfromThreadDataStructure(HashMap<String, AADLThread>  threadSet) {
-		String str = "";
+		String str = "bou";
 		final String functionTabs = "\t";
 
 		for (Entry<String, AADLThread>  threadEntry : threadSet.entrySet()) {
 			str += injectFunction(threadEntry);
 		}
+		System.out.println(str);
 		return str;
 	}
 
@@ -181,7 +182,7 @@ public class CPPXMLTransformer {
 						str += injectSubFunction(subFunctionName, getFileValue(ThreadFunctionSet.getKey()) );
 					}
 				}
-								str += functionTabs + "</ownedExtensions>\n";
+								
 			}
 		}
 
@@ -207,7 +208,7 @@ public class CPPXMLTransformer {
 			}
 			else {
 				str += functionTabs + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad2\"\r\n"
-						+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\">\r\n";
+						+ functionTabs + functionTabs +"name=\"" + subFunctionName + "\"";
 //				System.out.println("-----------------" +FileValue);
 				
 				if (FileValue > 1) {
@@ -218,7 +219,7 @@ public class CPPXMLTransformer {
 					}
 				}
 				else
-				str += "\t</ownedExtensions>\n";
+				str += "/>\r\n";
 			}
 		}
 		return str;
@@ -228,9 +229,11 @@ public class CPPXMLTransformer {
 		
 		String str = "";
 		String globalVariablTabs = "\t\t";
+		Boolean flag = false;
 //		System.out.println("Function = " + FunctionName);
 		for (String variableName : globalvariablesSet.keySet()) {
 		if (globalvariablesSet.get(variableName).get(0).contains(FunctionName)) {
+			flag = true; 
 //				System.out.println("                       Function = " + FunctionName);
 				if(globalvariablesSet.get(variableName).get(1) == "read") {
 					str += globalVariablTabs + globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" bustType=\"Paparazzi ABI\"/>\r\n"; 
@@ -239,8 +242,10 @@ public class CPPXMLTransformer {
 					str += globalVariablTabs + globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" bustType=\"ROS2\"/>\r\n";
 				}
 			}
+		// add />
 		}
-		str += "\t</ownedExtensions>\n";
+		if (flag) 
+			str += "\t</ownedExtensions>\n";
 		return str;
 	}
 	public static int getFileValue (String Name) {
