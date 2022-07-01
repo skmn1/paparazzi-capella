@@ -24,8 +24,13 @@ public class AADLFunction {
 		this.subFunctionSet = subFunctionSet;
 		this.parentName = parentName;
 	}
-
-
+	
+	public AADLFunction(String functionName,String parent ,ArrayList<String> parameters) {
+		this.functionName = functionName;
+		this.parameters = parameters;
+		this.parentName = parent;
+	}
+	
 
 	public String getParentName() {
 		return parentName;
@@ -68,6 +73,10 @@ public class AADLFunction {
 	
 	public void setParameters(ArrayList<String> parameters) {
 		this.parameters = parameters;
+	}
+	
+	public void addParameters(String param) {
+		this.parameters.add(param);
 	}
 	
 	public ArrayList<String> getSubFunctionSet() {

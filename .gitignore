@@ -1,0 +1,14 @@
+
+build/
+
+.classpath
+
+test-papparrazi.melodymodeller
+
+src/main/java/.~lock.paparazzi_files.csv#
+
+src/main/java/actuators.c.008t.lower
+
+src/main/java/input.txt
+
+src/main/java/paparazzi_files.csv
