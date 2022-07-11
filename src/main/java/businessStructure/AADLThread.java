@@ -7,23 +7,22 @@ public class AADLThread {
 	
 	private String threadName;
 	private String threadfunctionName;
-	private HashMap<String, AADLFunction> ThreadFunctionSet = new HashMap<String, AADLFunction> ();
+	private HashMap<String, DECL_AADLFunction> ThreadFunctionSet = new HashMap<String, DECL_AADLFunction> ();
 	
 	
 	
-	
-	public AADLThread(String threadName, String threadfunctionName, HashMap<String, AADLFunction> threadFunctionSet) {
+	public AADLThread(String threadName, String threadfunctionName, HashMap<String, DECL_AADLFunction> threadFunctionSet) {
 		super();
 		this.threadName = threadName;
 		this.threadfunctionName = threadfunctionName;
 		ThreadFunctionSet = threadFunctionSet;
 	}
 
-	public HashMap<String, AADLFunction> getThreadFunctionSet() {
+	public HashMap<String, DECL_AADLFunction> getThreadFunctionSet() {
 		return ThreadFunctionSet;
 	}
 
-	public void setThreadFunctionSet(HashMap<String, AADLFunction> threadFunctionSet) {
+	public void setThreadFunctionSet(HashMap<String, DECL_AADLFunction> threadFunctionSet) {
 		ThreadFunctionSet = threadFunctionSet;
 	}
 
@@ -56,7 +55,7 @@ public class AADLThread {
 	
 	private String ThreadFunctionSetPattern () {
 		String temp = "functionSet [";
-		for (Entry<String, AADLFunction> functionEntry : ThreadFunctionSet.entrySet()) {
+		for (Entry<String, DECL_AADLFunction> functionEntry : ThreadFunctionSet.entrySet()) {
 			for (String subFunctionName : functionEntry.getValue().getSubFunctionSet()) {				
 				temp += subFunctionName +",\n\t\t\t\t\t\t ";
 			}

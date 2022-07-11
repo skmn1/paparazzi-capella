@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 //
 import businessStructure.AADLFunction;
 //import businessStructure.AADLThread;
+import businessStructure.DECL_AADLFunction;
 
 public class CPPFunctionFileListener extends CPP14ParserBaseListener {
 
@@ -27,13 +28,9 @@ public class CPPFunctionFileListener extends CPP14ParserBaseListener {
 		// find all functions during the definition and save them in memory
 
 		//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
-
-		String currrentfunctionName = ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText();
-		System.err.println("currrent function Name : " + currrentfunctionName);
-		functionList.add(currrentfunctionName);
-		AADLFunction currentFunction = new AADLFunction(currrentfunctionName);
 		
-		
+		String currrentfunctionName = getxChild0(ctx.getChild(0).getChild(1), 3).getText();
+		functionList.add(currrentfunctionName);;
 		
 //		ArrayList<String> subFunctionSet = new ArrayList<>();
 //
@@ -128,7 +125,12 @@ public class CPPFunctionFileListener extends CPP14ParserBaseListener {
 
 	}
 
-
+	public ParseTree getxChild0(ParseTree ctx, int x) {
+		for (int i = 0; i < x; i++) {
+			ctx = ctx.getChild(0);
+		}
+	return ctx;
+	}
 
 	private String getFunctionName (CPP14Parser.StatementContext ctx) {
 		return ctx.getText().split(",")[2];

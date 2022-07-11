@@ -11,18 +11,22 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 import com.sun.jdi.connect.Connector.Argument;
 
-import CPP14Parser.StatementSeqContext;
 import businessStructure.AADLFunction;
+import businessStructure.DECL_AADLFunction;
+import businessStructure.CALLED_AADLFunction;
 import businessStructure.AADLThread;
-import helpers.CPP14Parser;
 import helpers.GlobalVariablesEnum;
 import helpers.treeHelpers;
 
 public class CPPCustomListener extends CPP14ParserBaseListener {
 
-
 	public HashMap<String, AADLThread>  threadSet = new HashMap<String,AADLThread>();
-	public HashMap<String,AADLFunction> functionSet = new HashMap<String,AADLFunction>();
+	public HashMap<String,CALLED_AADLFunction> callfunctionSet = new HashMap<String,CALLED_AADLFunction>();
+	public HashMap<String,DECL_AADLFunction> declfunctionSet = new HashMap<String,DECL_AADLFunction>();
+	//supp
+//	public HashMap<String,AADLFunction> functionSet = new HashMap<String,AADLFunction>();
+	///
+	
 	public HashMap<String,String> functionFileMap = new HashMap<String,String>();
 	public HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
 	public HashMap<String, ArrayList<String>> globalvariablesSet = new HashMap<String, ArrayList<String>>() ;
@@ -41,11 +45,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		//		System.err.println(fileDecompositionMap);
 		// find all functions during the definition and save them in memory
 
-		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
+//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
 		
 		String currrentfunctionName = getxChild0(ctx.getChild(0).getChild(1), 3).getText();
+		DECL_AADLFunction currentFunction = new DECL_AADLFunction(currrentfunctionName);
 		
-		AADLFunction currentFunction = new AADLFunction(currrentfunctionName);
 		ArrayList<String> subFunctionSet = new ArrayList<>();
 		CPP14Parser.StatementSeqContext statementSeq = getStatmentSeq(ctx);
 		
@@ -62,7 +66,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				if (!statementSeq.getChild(i).getChild(0).getClass().toString().contains("LabeledStatement"))
 					tryStatementSeq = (CPP14Parser.StatementSeqContext) statementSeq.getChild(i).getChild(0).getChild(1).getChild(1);
 				else
-					tryStatementSeq = (CPP14Parser.StatementSeqContext) statementSeq.getChild(i).getChild(0).getChild(2).getChild(0).getChild(1).getChild(1);
+					tryStatementSeq = (CPP14Parser.StatementSeqContext) LabeledStatementdebug(statementSeq.getChild(i)).getChild(0).getChild(1).getChild(1); 
 				
 				
 				for (int j = 0; j < tryStatementSeq.getChildCount(); j++) {
@@ -70,13 +74,16 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					/////////////////////////////////////////////////////////////
 					
 					if(tryStatementSeq.getChild(j).getText().contains("try{")) {
-
 						CPP14Parser.StatementSeqContext trytryStatementSeq = null;
 						if (!tryStatementSeq.getChild(j).getChild(0).getClass().toString().contains("LabeledStatement"))
 							trytryStatementSeq = (CPP14Parser.StatementSeqContext) tryStatementSeq.getChild(j).getChild(0).getChild(1).getChild(1);
-						else
-							trytryStatementSeq = (CPP14Parser.StatementSeqContext) tryStatementSeq.getChild(j).getChild(0).getChild(2).getChild(0).getChild(1).getChild(1);
-						
+						else {
+//							trytryStatementSeq = (CPP14Parser.StatementSeqContext) tryStatementSeq.getChild(j).getChild(0).getChild(2).getChild(0).getChild(1).getChild(1);
+							trytryStatementSeq = (CPP14Parser.StatementSeqContext) LabeledStatementdebug(tryStatementSeq.getChild(j)).getChild(0).getChild(1).getChild(1);
+							
+//					
+//							System.out.println( LabeledStatementdebug(tryStatementSeq.getChild(j)).getChild(0).getChild(1).getChild(1).getText()    )  ;
+						}
 						
 						for (int z = 0; z < trytryStatementSeq.getChildCount(); z++) {
 							
@@ -157,16 +164,16 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), new AADLThread());
 		}
 		if (!currrentfunctionName.contains("matrix::") && !currrentfunctionName.contains("math::") && !currrentfunctionName.contains("sqrtf")
-				&& !currrentfunctionName.contains("std::")) {
+				&& !currrentfunctionName.contains("std::") && !currrentfunctionName.contains("perror") && !currrentfunctionName.contains("fprintf")) {
 		currentFunction.setSubFunctionSet(subFunctionSet);
 		// insert entry in the functionSet
-		functionSet.put(currrentfunctionName, currentFunction);
+		declfunctionSet.put(currrentfunctionName, currentFunction);
 		}
 
 		// join the thread with its subfunctions
 		if(threadSet.containsKey(currrentfunctionName))
 			threadSet.get(currrentfunctionName).getThreadFunctionSet().put(currrentfunctionName, currentFunction);
-		else System.out.println("thread not found yet");
+//		else System.out.println("thread not found yet");
 		//		System.out.println(currentFunction);
 
 	}
@@ -256,10 +263,10 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "CPPCustomListener [threadSet=" + threadSet + ",\n\t\t\t\t\t functionSet=" + functionSet + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "CPPCustomListener [threadSet=" + threadSet + ",\n\t\t\t\t\t functionSet=" + functionSet + "]";
+//	}
 	
 // StatFunction : defines if a statement contains a function and its type (key)
 	private StatFunction isStatementFuntion (ParseTree ctx) {
@@ -343,6 +350,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			String str[] = gvName.split("._",2);
 			gvName = str[1];
 		}
+		if (gvName.contains("->i2c_")) {
+			String str[] = gvName.split("->i2c_",2);
+			gvName = str[1];
+		}
+		
 		if (gvName.contains(".D.")) {
 			String str[] = gvName.split(".D.",2);
 			gvName = str[0];
@@ -356,6 +368,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			while(true) {
 				n++;
 				if (!globalvariablesSet.containsKey(gvName+"/"+n))  {
+					//TODO add fuse if parent are the same  
+					
 					gvName=gvName+"/"+n;
 					globalvariablesSet.put(gvName, gvParameters);
 					break;
@@ -363,20 +377,30 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 		}
 	}
-	public void addFunctionTofunctionSet(String fname, String cfunctionName, ArrayList<String >arguments, ArrayList<String> subfonctionset ) {
-		if (!functionSet.containsKey(fname)) {
-			functionSet.put(fname, new AADLFunction(fname, cfunctionName, arguments));
-			subfonctionset.add((fname));
+	public void addFunctionTofunctionSet(String fname, String cfunctionName, ArrayList<String > arguments, ArrayList<String> subfonctionset ) {
+		
+		//		System.out.println(arguments);
+		if (fname.charAt(0) == "_".charAt(0) ) {
+			if(fname.split("_",2)[1].chars().allMatch(Character::isDigit)) {
+				fname="";
+			}
 		}
-		else {
-			int n = 0;
-			while(true) {
-				n++;
-				if (!functionSet.containsKey(fname+"/"+n))  {
-					fname=fname+"/"+n;
-					functionSet.put(fname, new AADLFunction(fname, cfunctionName, arguments));
-					subfonctionset.add((fname));
-					break;
+		if (!fname.isEmpty()) {
+			if (!callfunctionSet.containsKey(fname)) {
+				callfunctionSet.put(fname, new CALLED_AADLFunction(fname, cfunctionName, arguments));
+				subfonctionset.add((fname));
+			}
+			else {
+				String fnamebis = fname+"/";
+				int n = 0;
+				while(true) {
+					n++;
+					if (!callfunctionSet.containsKey(fnamebis+n))  {
+						fnamebis = fnamebis + n;
+						callfunctionSet.put(fnamebis, new CALLED_AADLFunction(fname, cfunctionName, arguments));
+						subfonctionset.add((fnamebis));
+						break;
+					}
 				}
 			}
 		}
@@ -409,7 +433,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				if (GlobalVariablesEnum.testenumb(ctx.getText())) {
 					String globalvariableName = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
-					globalvariableParameters.add(currentfonctionName);					
+					globalvariableParameters.add(currentfonctionName);
+//					System.out.println(currentfonctionName + ctx.getText());
 					if (GlobalVariablesEnum.testenumb(getxChild0(ctx,8).getText())) {
 						globalvariableName = getxChild0(ctx,8).getText();
 						globalvariableParameters.add("write");
@@ -499,13 +524,10 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					listArgs.get(i).add(str);
 			}
 		}
-		else {
-			subFunctionName = getxChild0(State, 9).getText();
 			if (!subFunctionName.contains("matrix::") && !subFunctionName.contains("math::") && !subFunctionName.contains("sqrtf")
-					&& !subFunctionName.contains("std::")) {
+					&& !subFunctionName.contains("std::")&& !subFunctionName.contains("perror") && !subFunctionName.contains("printf")) {
 				addFunctionTofunctionSet(subFunctionName, currentFunctionName, listArgs.get(i), subfonctionset);
 			}
-		}
 	}
 	public ParseTree LabeledStatementdebug(ParseTree ctx) {
 		while (ctx.getChild(0).getClass().toString().contains("LabeledStatement") && !(ctx.getChild(0).getChildCount()==2)) {
@@ -513,5 +535,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 		return ctx;
 	}
+
 }
 
