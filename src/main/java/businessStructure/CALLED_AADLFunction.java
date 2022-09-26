@@ -5,16 +5,20 @@ import java.util.ArrayList;
 public class CALLED_AADLFunction extends AADLFunction {
 	private String parentName;
 	private ArrayList<String> parameters;
+	private String Label;
+	private Integer Id;
 	
-	
-	
-	public CALLED_AADLFunction(String functionName, String parent , ArrayList<String> parameters) {
-		super(functionName);
-		this.parameters = parameters;
-		this.parentName = parent;
+
+
+	public CALLED_AADLFunction(String fname, String cfunctionName, ArrayList<String> arguments, String currentLabel) {
+		super(fname);
+		this.parameters = arguments;
+		this.parentName = cfunctionName;
+		this.Label = currentLabel;
+		
 	}
-	
-	
+
+
 	public ArrayList<String> getParameters() {
 		return parameters;
 	}
@@ -31,10 +35,27 @@ public class CALLED_AADLFunction extends AADLFunction {
 		return parentName;
 	}
 	
+	
+	public String getLabel() {
+		return Label;
+	}
+	
+	public void setLabel(String label) {
+		this.Label = label;
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		this.Id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "AADLFunction [functionName=" + getFunctionName() + ", containingFile=" + getContainingFile() + ", parameters="
-				+ parameters + ", parentName=" + parentName + "]";
+		return " functionName=" + getFunctionName()  + ", parameters="
+				+ parameters + ", parentName=" + parentName + " Label : " +Label + "   id : " +Id ;
 	}
 
 }

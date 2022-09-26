@@ -2,11 +2,10 @@ package businessStructure;
 
 import java.util.ArrayList;
 
-//in order to differentiate a function called by another of a function declaration we must create 2 subclass of AADL FUNCTION
-
 public class AADLFunction {
 	private String functionName;
 	private String containingFile;
+	
 	
 	public AADLFunction() {
 		super();

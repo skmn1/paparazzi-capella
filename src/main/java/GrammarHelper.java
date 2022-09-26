@@ -1,6 +1,5 @@
 import org.antlr.v4.runtime.misc.NotNull;
 
-import CPP14Parser.DeclarationContext;
 import businessStructure.AADLFunction;
 import businessStructure.AADLThread;
 

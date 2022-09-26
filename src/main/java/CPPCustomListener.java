@@ -1,4 +1,3 @@
-import java.beans.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,152 +8,95 @@ import org.antlr.v4.runtime.misc.Interval;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
-import com.sun.jdi.connect.Connector.Argument;
-
-import businessStructure.AADLFunction;
 import businessStructure.DECL_AADLFunction;
+import businessStructure.GotoStructure;
+import businessStructure.IfStructure;
 import businessStructure.CALLED_AADLFunction;
 import businessStructure.AADLThread;
 import helpers.GlobalVariablesEnum;
 import helpers.treeHelpers;
 
+
+
+@SuppressWarnings("unused")
 public class CPPCustomListener extends CPP14ParserBaseListener {
 
 	public HashMap<String, AADLThread>  threadSet = new HashMap<String,AADLThread>();
 	public HashMap<String,CALLED_AADLFunction> callfunctionSet = new HashMap<String,CALLED_AADLFunction>();
 	public HashMap<String,DECL_AADLFunction> declfunctionSet = new HashMap<String,DECL_AADLFunction>();
-	//supp
-//	public HashMap<String,AADLFunction> functionSet = new HashMap<String,AADLFunction>();
-	///
 	
 	public HashMap<String,String> functionFileMap = new HashMap<String,String>();
+	
 	public HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
 	public HashMap<String, ArrayList<String>> globalvariablesSet = new HashMap<String, ArrayList<String>>() ;
-
+	public HashMap<String, IfStructure> ifstructureSet = new HashMap<String, IfStructure>() ;
+	public HashMap<String, GotoStructure> gotostructureSet = new HashMap<String, GotoStructure>() ;
+	public HashMap<String, String> LabeledStatementDef = new HashMap<String, String>();
 	
+	public Integer Id = 0;
+	public String LastFunctionCalled;
+	treeHelpers tH= new treeHelpers() ;
 	
-
 	public CPPCustomListener(HashMap<String, Integer> fileDecompositionMap) {
 		super();
 		this.fileDecompositionMap = fileDecompositionMap;
 	}
-
+    String currentLabel = new String();
 	@Override
 	public void exitDeclaration(CPP14Parser.DeclarationContext ctx) {
 
-		//		System.err.println(fileDecompositionMap);
-		// find all functions during the definition and save them in memory
-
-//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
+		currentLabel = "";
+		String currrentfunctionName = tH.getxChild0(ctx.getChild(0).getChild(1), 3).getText();
 		
-		String currrentfunctionName = getxChild0(ctx.getChild(0).getChild(1), 3).getText();
-		DECL_AADLFunction currentFunction = new DECL_AADLFunction(currrentfunctionName);
-		
-		ArrayList<String> subFunctionSet = new ArrayList<>();
 		CPP14Parser.StatementSeqContext statementSeq = getStatmentSeq(ctx);
+		ArrayList<String> subFunctionSet = new ArrayList<String>();
+		DECL_AADLFunction currentFunction = new DECL_AADLFunction(currrentfunctionName, subFunctionSet , null);
+		
+		
 		
 		HashMap<Integer, ArrayList<String>> listArguments = new HashMap<Integer, ArrayList<String>>();
-		HashMap<Integer, ArrayList<String>> trylistArguments = new HashMap<Integer, ArrayList<String>>();
-		HashMap<Integer, ArrayList<String>> trytrylistArguments = new HashMap<Integer, ArrayList<String>>();
-		
-		
+		currentFunction.setWeight(statementSeq.getChildCount() - 1);
+		declfunctionSet.put(currrentfunctionName, currentFunction);
+		Boolean LastStatement = false;
 		for(int i=0; i < statementSeq.getChildCount() ; i++) {
 			
+			if ((i+1)== statementSeq.getChildCount())
+				 LastStatement = true;
+			
+//			System.out.println("LastStatement : "+ LastStatement);
 			if(statementSeq.getChild(i).getText().contains("try{")) {
-
-				CPP14Parser.StatementSeqContext tryStatementSeq = null;
-				if (!statementSeq.getChild(i).getChild(0).getClass().toString().contains("LabeledStatement"))
-					tryStatementSeq = (CPP14Parser.StatementSeqContext) statementSeq.getChild(i).getChild(0).getChild(1).getChild(1);
-				else
-					tryStatementSeq = (CPP14Parser.StatementSeqContext) LabeledStatementdebug(statementSeq.getChild(i)).getChild(0).getChild(1).getChild(1); 
-				
-				
-				for (int j = 0; j < tryStatementSeq.getChildCount(); j++) {
-
-					/////////////////////////////////////////////////////////////
-					
-					if(tryStatementSeq.getChild(j).getText().contains("try{")) {
-						CPP14Parser.StatementSeqContext trytryStatementSeq = null;
-						if (!tryStatementSeq.getChild(j).getChild(0).getClass().toString().contains("LabeledStatement"))
-							trytryStatementSeq = (CPP14Parser.StatementSeqContext) tryStatementSeq.getChild(j).getChild(0).getChild(1).getChild(1);
-						else {
-//							trytryStatementSeq = (CPP14Parser.StatementSeqContext) tryStatementSeq.getChild(j).getChild(0).getChild(2).getChild(0).getChild(1).getChild(1);
-							trytryStatementSeq = (CPP14Parser.StatementSeqContext) LabeledStatementdebug(tryStatementSeq.getChild(j)).getChild(0).getChild(1).getChild(1);
-							
-//					
-//							System.out.println( LabeledStatementdebug(tryStatementSeq.getChild(j)).getChild(0).getChild(1).getChild(1).getText()    )  ;
-						}
-						
-						for (int z = 0; z < trytryStatementSeq.getChildCount(); z++) {
-							
-//							StatFunction trytrySubStatementFunction = isStatementFuntion((CPP14Parser.StatementContext) trytryStatementSeq.getChild(z));
-							
-							ParseTree trytryState ;
-							if (trytryStatementSeq.getChild(z).getChild(0).getClass().toString().contains("LabeledStatement")) {
-								trytryState = LabeledStatementdebug(trytryStatementSeq.getChild(z));
-							}
-							else 
-								trytryState = trytryStatementSeq.getChild(z);
-							StatFunction trytrySubStatementFunction = isStatementFuntion(trytryState);
-							
-							// trytry statement
-							if(trytrySubStatementFunction.Isstatfunction) {
-								//Args retrieving from function
-								getArgumentsfromfunctionStatementtoFunctionSet(trytrySubStatementFunction, trytryStatementSeq, currrentfunctionName, z, trytrylistArguments, subFunctionSet);
-								//	try global variables retrieving
-								getGlobalVariablesfromListArgstoGlobVSet(trytrylistArguments, currrentfunctionName, trytrySubStatementFunction, z);
-							}
-							// global variables retrieving 
-						    getGlobalVariablesfromStatementtoGlobVSet(trytryStatementSeq.getChild(z), trytrySubStatementFunction, currrentfunctionName);	
-						}
-					}
-					//////////////////////////////////////////////////////////////
-					//end trytry
-				
-					ParseTree tryState ;
-					if (tryStatementSeq.getChild(j).getChild(0).getClass().toString().contains("LabeledStatement")) {
-						tryState = LabeledStatementdebug(tryStatementSeq.getChild(j));
-					}
-					else 
-						tryState = tryStatementSeq.getChild(j);
-
-					StatFunction trySubStatementFunction = isStatementFuntion(tryState);
-					
-					// try statement
-					if(trySubStatementFunction.Isstatfunction) {
-						//Args retrieving from function
-						getArgumentsfromfunctionStatementtoFunctionSet(trySubStatementFunction, tryStatementSeq, currrentfunctionName, j, trylistArguments, subFunctionSet);
-//						System.out.println(trylistArguments);
-						//	try global variables retrieving
-						getGlobalVariablesfromListArgstoGlobVSet(trylistArguments, currrentfunctionName, trySubStatementFunction, j);
-					}
-					// global variables retrieving 
-				    getGlobalVariablesfromStatementtoGlobVSet(tryStatementSeq.getChild(j), trySubStatementFunction, currrentfunctionName);
-				}
-				
+				// all try statements managed at any level 
+				tryStatementdebug(statementSeq.getChild(i), i, currrentfunctionName, subFunctionSet);
 			}
-// end try statement
+			String Label = new String("");
 
-// classic statement
 			//LabeledStatement DEBUG
 			ParseTree State ;
+			RetrieveJumpStatement(statementSeq.getChild(i), currrentfunctionName,LastStatement );
 			if (statementSeq.getChild(i).getChild(0).getClass().toString().contains("LabeledStatement")) {
 				State = LabeledStatementdebug(statementSeq.getChild(i));
+				Label = tH.getxChild0(statementSeq.getChild(i), 2).getText();
+				currentLabel = Label;
 			}
-			else 
-				State = statementSeq.getChild(i);
-
-			StatFunction statementFunction = isStatementFuntion(State);
-
-			if(statementFunction.Isstatfunction) {
-
-				// Arguments retrieving
-				getArgumentsfromfunctionStatementtoFunctionSet(statementFunction, statementSeq, currrentfunctionName, i, listArguments, subFunctionSet);
+			else {
+				State = statementSeq.getChild(i); 
+				}
+			
+			if (statementSeq.getChild(i).getText().contains("if(")) {
+				RetrieveIfStatement(State, currrentfunctionName);
+			}
+			
+			// We check if the statement is a function
+			StatFunction statefunction = new StatFunction();
+			StatFunction statementFunction = statefunction.isStatementFuntion(State);
+			if(statementFunction.getIsstatfunction()) {
+				// Arguments and called functions retrieving 
+				getArgumentsfromfunctionStatementtoFunctionSet(statementFunction, statementSeq, currrentfunctionName, i, listArguments, subFunctionSet, Label);
 
 				// global variables retrieving  in functions		
 				getGlobalVariablesfromListArgstoGlobVSet(listArguments, currrentfunctionName, statementFunction, i);
 			}
-
+			
 			// global variables retrieving from common statement (!try, !if, !function) 
 			getGlobalVariablesfromStatementtoGlobVSet(statementSeq.getChild(i), statementFunction, currrentfunctionName);
 			
@@ -165,19 +107,16 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 		if (!currrentfunctionName.contains("matrix::") && !currrentfunctionName.contains("math::") && !currrentfunctionName.contains("sqrtf")
 				&& !currrentfunctionName.contains("std::") && !currrentfunctionName.contains("perror") && !currrentfunctionName.contains("fprintf")) {
-		currentFunction.setSubFunctionSet(subFunctionSet);
-		// insert entry in the functionSet
-		declfunctionSet.put(currrentfunctionName, currentFunction);
+		declfunctionSet.get(currrentfunctionName).setSubFunctionSet(subFunctionSet);
 		}
 
 		// join the thread with its subfunctions
 		if(threadSet.containsKey(currrentfunctionName))
 			threadSet.get(currrentfunctionName).getThreadFunctionSet().put(currrentfunctionName, currentFunction);
-//		else System.out.println("thread not found yet");
-		//		System.out.println(currentFunction);
-
 	}
-// end
+
+
+	
 	ParseTree tree = new ParseTree() {
 		
 		@Override
@@ -239,16 +178,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	
 	@Override
 	public void exitDeclarator(CPP14Parser.DeclaratorContext ctx) {
-		// TODO Auto-generated method stub
 		super.exitDeclarator(ctx);
 	}
 
 	@Override
 	public void exitStatement(CPP14Parser.StatementContext ctx) {
-		// TODO Auto-generated method stub
-		//		super.exitStatement(ctx);
-
-		//		System.out.println("hello from custom listener ###########");
 
 		String statementContent = ctx.getText();
 		if (statementContent.contains("pthread_create") && !statementContent.contains("try{")) {
@@ -268,66 +202,9 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //		return "CPPCustomListener [threadSet=" + threadSet + ",\n\t\t\t\t\t functionSet=" + functionSet + "]";
 //	}
 	
-// StatFunction : defines if a statement contains a function and its type (key)
-	private StatFunction isStatementFuntion (ParseTree ctx) {
 
-		StatFunction Sfun = new StatFunction(false, 0);
-		ANTLRInputStream input = new ANTLRInputStream(  );
-		CPP14Lexer lexer = new CPP14Lexer(input);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
-		CPP14Parser parser = new CPP14Parser(tokens);
-
-		//		if(ctx != null) {
-		//		System.out.println(ctx.getText());
-		//	    Object grammarElement = ctx.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(1);
-		//	    System.err.println(grammarElement.getClass());
-		//	      if(grammarElement instanceof CPP14Parser.ParametersAndQualifiersContext) 
-		//	        flag = true;
-		//		}
-		ParseTree grammarElement = ctx;
-		while (true) {
-			if(grammarElement.getChild(0) == null) 
-				break;
-			// key = 1 : functions without parameters & multiples arguments : f(); or  f(x,y,...);
-			// key = 2 functions with 1 parameter with ou without pointer : f(x); or f(&x);
-			// key = 3 functions with multiples arguments including at least 1 pointer : f(&x,y,...);
-			// key = 4 functions called for a temporary variable _1 = f(..) ;
-
-			grammarElement =  grammarElement.getChild(0);
-			if(grammarElement instanceof CPP14Parser.NoPointerDeclaratorContext &&  grammarElement.getChild(1) instanceof CPP14Parser.ParametersAndQualifiersContext) {
-				return new StatFunction(true, 1);
-			}
-			if(grammarElement instanceof CPP14Parser.SimpleDeclarationContext &&  grammarElement.getChild(0) instanceof CPP14Parser.DeclSpecifierSeqContext 
-					&& grammarElement.getChild(0).getChild(0).getChild(0).getChild(0)  instanceof CPP14Parser.TrailingTypeSpecifierContext) {
-				if (grammarElement.getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChildCount() == 3) {
-					return new StatFunction(true, 2);
-				}
-			}
-			if(grammarElement instanceof CPP14Parser.InitDeclaratorContext &&  grammarElement.getChild(1) instanceof CPP14Parser.InitializerContext) {
-				if (grammarElement.getChild(1).getChildCount() == 3) {
-					return new StatFunction(true, 3);
-				}
-				else if (grammarElement.getChild(1).getChild(0).getChild(1).toStringTree(parser).contains("initializerList (")
-						&& grammarElement.getChild(1).getChild(0).getChild(1).toStringTree(parser).contains("postfixExpression (")) {
-					return new StatFunction(true, 4);
-				}
-			}
-		}
-		return Sfun ;
-	}
-	
-	// TODO move this to helpers
-	// limit uses of multiple getchild(0)
-	public ParseTree getxChild0(ParseTree ctx, int x) {
-		for (int i = 0; i < x; i++) {
-			ctx = ctx.getChild(0);
-		}
-	return ctx;
-	}
-	// until here
 	private CPP14Parser.StatementSeqContext getStatmentSeq(CPP14Parser.DeclarationContext ctx) {
 
-		//		System.err.println("class....... " + ctx.getChild(0).getChild(2).getChild(0).getChild(1).getClass());
 		return (CPP14Parser.StatementSeqContext) ctx.getChild(0).getChild(2).getChild(0).getChild(1);
 
 	}
@@ -338,6 +215,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	}
 	
 	public void addGlobalVariablesToglobalvariablesSet(String gvName, ArrayList<String> gvParameters  ) {
+		// global variable extraction 
 		if (gvName.contains("&this->_")) {
 			String str[] = gvName.split("->_",2);
 			gvName = str[1];
@@ -348,10 +226,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 		else if (gvName.contains("this->D.")) {
 			String str[] = gvName.split("._",2);
-			gvName = str[1];
-		}
-		if (gvName.contains("->i2c_")) {
-			String str[] = gvName.split("->i2c_",2);
 			gvName = str[1];
 		}
 		
@@ -368,8 +242,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			while(true) {
 				n++;
 				if (!globalvariablesSet.containsKey(gvName+"/"+n))  {
-					//TODO add fuse if parent are the same  
-					
 					gvName=gvName+"/"+n;
 					globalvariablesSet.put(gvName, gvParameters);
 					break;
@@ -377,9 +249,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 		}
 	}
-	public void addFunctionTofunctionSet(String fname, String cfunctionName, ArrayList<String > arguments, ArrayList<String> subfonctionset ) {
+	public void addFunctionTofunctionSet(String fname, String cfunctionName, ArrayList<String > arguments, ArrayList<String> subfonctionset, String Label) {
 		
-		//		System.out.println(arguments);
 		if (fname.charAt(0) == "_".charAt(0) ) {
 			if(fname.split("_",2)[1].chars().allMatch(Character::isDigit)) {
 				fname="";
@@ -387,8 +258,15 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 		if (!fname.isEmpty()) {
 			if (!callfunctionSet.containsKey(fname)) {
-				callfunctionSet.put(fname, new CALLED_AADLFunction(fname, cfunctionName, arguments));
+				callfunctionSet.put(fname, new CALLED_AADLFunction(fname, cfunctionName, arguments, currentLabel));
+				callfunctionSet.get(fname).setId(Id);
+				Id+=1;
 				subfonctionset.add((fname));
+				LastFunctionCalled = fname;
+				if (!Label.equals("")) {
+					LabeledStatementDef.put(Label, fname);
+					
+				}
 			}
 			else {
 				String fnamebis = fname+"/";
@@ -397,17 +275,26 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					n++;
 					if (!callfunctionSet.containsKey(fnamebis+n))  {
 						fnamebis = fnamebis + n;
-						callfunctionSet.put(fnamebis, new CALLED_AADLFunction(fname, cfunctionName, arguments));
+						callfunctionSet.put(fnamebis, new CALLED_AADLFunction(fname, cfunctionName, arguments, currentLabel));
+						LastFunctionCalled = fnamebis;
+						callfunctionSet.get(fnamebis).setId(Id);
+						Id+=1;
 						subfonctionset.add((fnamebis));
+						if (!Label.equals("")) {
+							LabeledStatementDef.put(Label, fnamebis);
+							LastFunctionCalled = fnamebis;
+						}
 						break;
 					}
 				}
 			}
+			
 		}
 	}
+	
 	public void getGlobalVariablesfromStatementtoGlobVSet(ParseTree ctx, StatFunction stf, String currentfonctionName ) {
 
-		if (!stf.Isstatfunction && !ctx.getText().contains("try{") && !ctx.getText().contains("if")&&!ctx.getText().contains("case")) {
+		if (!stf.getIsstatfunction() && !ctx.getText().contains("try{") && !ctx.getText().contains("if")&&!ctx.getText().contains("case")) {
 			if (ctx.getChild(0).getClass().toString().contains("LabeledStatement") && !ctx.getText().contains("return")
 					&& !ctx.getText().contains("goto") && GlobalVariablesEnum.testenumb(ctx.getText())) {
 //				System.out.println(ctx.getText());
@@ -418,12 +305,12 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					String globalvariableName = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
 					globalvariableParameters.add(currentfonctionName);					
-					if (GlobalVariablesEnum.testenumb(getxChild0(labstatement,8).getText())) {
-						globalvariableName = getxChild0(labstatement,8).getText();
+					if (GlobalVariablesEnum.testenumb(tH.getxChild0(labstatement,8).getText())) {
+						globalvariableName = tH.getxChild0(labstatement,8).getText();
 						globalvariableParameters.add("write");
 					}
-					else if (GlobalVariablesEnum.testenumb(getxChild0(labstatement,5).getChild(1).getText())) {
-						globalvariableName = getxChild0(labstatement,5).getChild(1).getChild(0).getChild(1).getText();
+					else if (GlobalVariablesEnum.testenumb(tH.getxChild0(labstatement,5).getChild(1).getText())) {
+						globalvariableName = tH.getxChild0(labstatement,5).getChild(1).getChild(0).getChild(1).getText();
 						globalvariableParameters.add("read");
 					}
 					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariableParameters);
@@ -433,14 +320,15 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				if (GlobalVariablesEnum.testenumb(ctx.getText())) {
 					String globalvariableName = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
-					globalvariableParameters.add(currentfonctionName);
-//					System.out.println(currentfonctionName + ctx.getText());
-					if (GlobalVariablesEnum.testenumb(getxChild0(ctx,8).getText())) {
-						globalvariableName = getxChild0(ctx,8).getText();
+					
+					if (GlobalVariablesEnum.testenumb(tH.getxChild0(ctx,8).getText())) {
+						globalvariableParameters.add(currentfonctionName);
+						globalvariableName = tH.getxChild0(ctx,8).getText();
 						globalvariableParameters.add("write");
 					}
-					else if (GlobalVariablesEnum.testenumb(getxChild0(ctx,5).getChild(1).getText())) {
-						globalvariableName = getxChild0(ctx,5).getChild(1).getChild(0).getChild(1).getText();
+					else if (GlobalVariablesEnum.testenumb(tH.getxChild0(ctx,5).getChild(1).getText())) {
+						globalvariableParameters.add(currentfonctionName);
+						globalvariableName = tH.getxChild0(ctx,5).getChild(1).getChild(0).getChild(1).getText();
 						globalvariableParameters.add("read");
 					}
 					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariableParameters);
@@ -448,6 +336,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 		}
 	}
+	
+	
 	public void getGlobalVariablesfromListArgstoGlobVSet(HashMap<Integer, ArrayList<String>> listArgs,String currentFunctionName, StatFunction stf ,Integer j) {
 		if (GlobalVariablesEnum.testenumb(listArgs.toString())) {
 			for (int m = 0; m < listArgs.get(j).size(); m++) {
@@ -455,9 +345,10 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 					String globalvariableName = new String ();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
 					globalvariableName = listArgs.get(j).get(m);
+					globalvariableName.replace("<", "-"); // character bug xml
 					globalvariableParameters.add(currentFunctionName);
-//					System.out.println(globalvariableParameters + globalvariableName);
-					if (stf.FunctionType == 4) 
+
+				if (stf.getFunctionType() == 4) 
 						globalvariableParameters.add("read");
 					else 
 						globalvariableParameters.add("write");
@@ -466,75 +357,264 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 		}
 	}
-	public void getArgumentsfromfunctionStatementtoFunctionSet (StatFunction stf, ParseTree ctx, 
-			String currentFunctionName, Integer i, HashMap<Integer, ArrayList<String>> listArgs,ArrayList<String> subfonctionset) {
-		
+	
+	
+	// add called function to calledfunctionset and retrieve arguments
+	/**
+	 * @implSpec this function extract function name and its parameters from a statement then put them into calledfunctionSet
+	 * @param stf refer to StatFunction class
+	 * @param ctx Must be a statement context
+	 * @param currentFunctionName
+	 * @param i
+	 * @param listArgs 
+	 * @param subfonctionset
+	 * @param Label
+	 * 
+	 */
+	public void getArgumentsfromfunctionStatementtoFunctionSet (StatFunction stf, ParseTree ctx, String currentFunctionName, 
+			Integer i, HashMap<Integer, ArrayList<String>> listArgs, ArrayList<String> subfonctionset, String Label) {
 		String subFunctionName = new String();
-		
 		ParseTree State ;
+		
+		// check if the statement is labeled
 		if (ctx.getChild(i).getChild(0).getClass().toString().contains("LabeledStatement")) {
 			State = LabeledStatementdebug(ctx.getChild(i));
 		}
 		else State = ctx.getChild(i);
 		
+		// for each case we idientify the structure, we retrieve the function name, we check if arguments aren't numbers
 		listArgs.put(i, new ArrayList<String>());
-		if (stf.FunctionType == 1) {
-			subFunctionName = getxChild0(State, 9).getText();	
-		//case f(x,y,...)
-			if (getxChild0(State,8).getChild(1).getChildCount() == 3) {
+		switch (stf.getFunctionType()) {
+		case (1) : {
+			subFunctionName = tH.getxChild0(State, 9).getText();	
+			//case f(x,y,...)
+			if (tH.getxChild0(State,8).getChild(1).getChildCount() == 3) {
 
-				for (int k = 0; k < getxChild0(State,8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
-					String str = getxChild0(State,8).getChild(1).getChild(1).getChild(0).getChild(k).getText();
+				for (int k = 0; k < tH.getxChild0(State,8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
+					String str = tH.getxChild0(State,8).getChild(1).getChild(1).getChild(0).getChild(k).getText();
 					if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) {
 						listArgs.get(i).add(str);
 					}
 				}
-				
+
 			}
 			else listArgs.get(i).add("");// case f()
+			break;
 		}
-
-		if(stf.FunctionType == 2)	{				
-		// case f(&)
-			subFunctionName = getxChild0(State, 9).getText();
-			if (getxChild0(getxChild0( State,3).getChild(1),4).getChild(1).getChildCount() ==2) {
-		//case (&x)
-				listArgs.get(i).add(getxChild0(getxChild0(State,3).getChild(1),4).getChild(1).getText());
-			}
-		// case f(x)
-			else //					System.out.println("statement n "+ i+" 1 arg");
-				listArgs.get(i).add(getxChild0(getxChild0(State,3).getChild(1),4).getChild(1).getText());
+		
+		case (11) : {
+			subFunctionName = tH.getxChild0(State, 4).getText() + tH.getxChild0(tH.getxChild0(State, 3).getChild(1),5).getText();
+			break;
 		}
-		//case function(&abc, x, ...)
-		if (stf.FunctionType == 3) { 
-			subFunctionName = getxChild0(State, 9).getText();
-			for (int j = 0; j < getxChild0(State,5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
-				String str = getxChild0(State,5).getChild(1).getChild(1).getChild(0).getChild(j).getText();
-				if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) 
-					listArgs.get(i).add(str);
-			}
-		}
-		// case _1 = function(...)
-		if (stf.FunctionType==4){
-			subFunctionName = getxChild0( getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 17).getText();
-
-			for (int k = 0; k < getxChild0( getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
-				String str = getxChild0( getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText();
+		
+		case (12) : {
+			subFunctionName = tH.getxChild0(State, 4).getText() + tH.getxChild0(tH.getxChild0(State, 3).getChild(1),5).getText();
+			for (int k = 0; k < tH.getxChild0(tH.getxChild0(State, 3).getChild(1),4).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
+				String str = tH.getxChild0(tH.getxChild0(State, 3).getChild(1),4).getChild(1).getChild(1).getChild(0).getChild(k).getText();
 				if (!str.equals(",") && !str.contains("()") && !str.chars().allMatch( Character::isDigit )) 
 					listArgs.get(i).add(str);
 			}
+			break;
 		}
+		
+		case (2) :	{				
+			subFunctionName = tH.getxChild0(State, 9).getText();
+			if (tH.getxChild0(tH.getxChild0( State,3).getChild(1),4).getChild(1).getChildCount() ==2) {
+			//case (&x)
+				listArgs.get(i).add(tH.getxChild0(tH.getxChild0(State,3).getChild(1),4).getChild(1).getText());
+			}
+			// case f(x)
+			else listArgs.get(i).add(tH.getxChild0(tH.getxChild0(State,3).getChild(1),4).getChild(1).getText());
+			break;
+		}
+		case (22) :	{			
+			subFunctionName = tH.getxChild0(State, 5).getText()  ;
+			if (tH.getxChild0(tH.getxChild0( State,3).getChild(1),4).getChild(1).getChildCount() ==2) {
+			//case (&x)
+				listArgs.get(i).add(tH.getxChild0(tH.getxChild0(State,3).getChild(1),4).getChild(1).getText());
+			}
+			// case f(x)
+			else listArgs.get(i).add(tH.getxChild0(tH.getxChild0(State,3).getChild(1),4).getChild(1).getText());
+			break;
+		}
+		
+		
+		
+		//case function(&abc, x, ...)
+		case (3) : { 
+			subFunctionName = tH.getxChild0(State, 9).getText();
+			for (int j = 0; j < tH.getxChild0(State,5).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
+				String str = tH.getxChild0(State,5).getChild(1).getChild(1).getChild(0).getChild(j).getText();
+				if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) 
+					listArgs.get(i).add(str);
+			}
+			break;
+		}
+
+		case(33) : {
+
+			subFunctionName = tH.getxChild0(State, 9).getText() + tH.getxChild0(tH.getxChild0(State, 3).getChild(1).getChild(0),2).getText();
+			for (int j = 0; j < tH.getxChild0(State, 3).getChild(1).getChild(0).getChild(1).getChild(1).getChild(0).getChildCount(); j++) {
+				String str = tH.getxChild0(State, 3).getChild(1).getChild(0).getChild(1).getChild(1).getChild(0).getChild(j).getText();
+				if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit ))
+					listArgs.get(i).add(str);
+			}
+			break;
+		}
+
+		// case _1 = function(...)
+		case (4) : {
+			subFunctionName = tH.getxChild0( tH.getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 17).getText();
+
+			for (int k = 0; k < tH.getxChild0( tH.getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChildCount(); k++) {
+				String str = tH.getxChild0( tH.getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 16).getChild(2).getChild(0).getChild(k).getText();
+				if (!str.equals(",") && !str.contains("()") && !str.chars().allMatch( Character::isDigit )) 
+					listArgs.get(i).add(str);
+			}
+			break;
+		}
+		case (44) : {
+			subFunctionName = tH.getxChild0( tH.getxChild0(State, 5).getChild(1).getChild(0).getChild(1), 17).getText();
+			break;
+		}
+		}
+		
+		// we delete math function that are no relevant and add function to function set
 			if (!subFunctionName.contains("matrix::") && !subFunctionName.contains("math::") && !subFunctionName.contains("sqrtf")
 					&& !subFunctionName.contains("std::")&& !subFunctionName.contains("perror") && !subFunctionName.contains("printf")) {
-				addFunctionTofunctionSet(subFunctionName, currentFunctionName, listArgs.get(i), subfonctionset);
+				addFunctionTofunctionSet(subFunctionName, currentFunctionName, listArgs.get(i), subfonctionset, Label);
 			}
 	}
-	public ParseTree LabeledStatementdebug(ParseTree ctx) {
+	// permits to go through the labeled statement and get the statement only
+	public ParseTree LabeledStatementdebug(ParseTree ctx) { 
 		while (ctx.getChild(0).getClass().toString().contains("LabeledStatement") && !(ctx.getChild(0).getChildCount()==2)) {
 			ctx = ctx.getChild(0).getChild(2);
 		}
 		return ctx;
 	}
+	
+	/**
+	 * @implSpec manage all try statement even nested ones, information extraction is included in that function
+	 * @param ctx
+	 * @param iterator
+	 * @param currrentfunctionName
+	 * @param subFunctionSet
+	 */
+	// process all "try" statements recursively
+	public void tryStatementdebug (ParseTree ctx, Integer iterator, String currrentfunctionName, ArrayList<String>  subFunctionSet ) {
 
+		HashMap<Integer, ArrayList<String>> trylistArguments = new HashMap<Integer, ArrayList<String>>();
+		ParseTree tryStatementSeq;
+		
+		
+		//check if the statement is labeled and get the statement through labeled 
+		if (ctx.getChild(0).getClass().toString().contains("LabeledStatement")) {
+//			System.out.println("/1 : " + ctx.getText() + "\n /2 :" + LabeledStatementdebug(ctx).getText() );
+			tryStatementSeq = LabeledStatementdebug(ctx).getChild(0).getChild(1).getChild(1);
+			// this variable is create in order to identify an entire try statement labeled
+			//TODO manage try statement label
+			String tryLabel = tH.getxChild0(ctx, 2).getText();
+			System.out.println("trylabel" + tryLabel);
+		}	
+		else tryStatementSeq = ctx.getChild(0).getChild(1).getChild(1);
+		 
+		// add try statement to function weight
+		declfunctionSet.get(currrentfunctionName).setWeight(declfunctionSet.get(currrentfunctionName).getWeight() + tryStatementSeq.getChildCount());
+		
+		// iterate over each statement
+		for (int j = 0; j < tryStatementSeq.getChildCount(); j++) {
+			String Label = new String("");
+			// check if the statement contains try if true call try statement debug
+			if (tryStatementSeq.getChild(j).getText().contains("try{")) {
+				iterator = j;
+				tryStatementdebug(tryStatementSeq.getChild(iterator), iterator,currrentfunctionName, subFunctionSet);
+			}
+			else {
+				ParseTree tryState;
+				//check if the statement is labeled and get the statement through labeled
+				if (tryStatementSeq.getChild(j).getChild(0).getClass().toString().contains("LabeledStatement")) {
+					tryState = LabeledStatementdebug(tryStatementSeq.getChild(j));
+					RetrieveIfStatement(tryState, currrentfunctionName);
+					Label = tH.getxChild0(tryStatementSeq.getChild(j), 2).getText();
+					currentLabel = Label;
+				}
+				else tryState = tryStatementSeq.getChild(j);
+				
+				//check if the statement contains a "if structure" 
+				RetrieveIfStatement(tryState, currrentfunctionName);
+				// create a local variable to call Statfunction class 
+				StatFunction statefunction = new StatFunction();
+				StatFunction trySubStatementFunction = statefunction.isStatementFuntion(tryState);
+				
+				//if the statement is a function retrieve data 
+				if(trySubStatementFunction.getIsstatfunction()) {
+					getArgumentsfromfunctionStatementtoFunctionSet(trySubStatementFunction, tryStatementSeq, currrentfunctionName, j, 
+							trylistArguments, subFunctionSet, Label);
+					getGlobalVariablesfromListArgstoGlobVSet(trylistArguments, currrentfunctionName, trySubStatementFunction, j);
+				}
+				//retrieve global variable from statement
+				getGlobalVariablesfromStatementtoGlobVSet(tryStatementSeq.getChild(j), trySubStatementFunction, currrentfunctionName);
+				
+			}
+		}
+	}
+	
+	// process "if" statement and save them in ifstructure
+	public void RetrieveIfStatement (ParseTree ctx, String currentFunctionName) {
+		if (ctx.getText().contains("if(") && !ctx.getText().contains("try{")) {
+
+			String ifElse = new String();
+			String ifThen = new String();
+			String ifCondition = ctx.getChild(0).getChild(2).getText();
+			if (!(ctx.getChild(0).getChild(4).getChild(0).getChild(1)==null))
+			ifThen = ctx.getChild(0).getChild(4).getChild(0).getChild(1).getText();
+			
+			if (ctx.getText().contains("else")) {
+			ifElse = ctx.getChild(0).getChild(6).getChild(0).getChild(1).getText();
+			}
+			IfStructure ifstruct = new IfStructure(LastFunctionCalled,ifCondition,ifThen,ifElse);
+			if (!ifstructureSet.containsKey(currentFunctionName)) {
+			ifstructureSet.put(currentFunctionName, ifstruct);
+			}
+			else {
+				int n = 0;
+				while(true) {
+					n++;
+					if (!ifstructureSet.containsKey(currentFunctionName+"/"+n))  {
+						currentFunctionName=currentFunctionName+"/"+n;
+						ifstructureSet.put(currentFunctionName, ifstruct);
+						break;
+					}
+				}
+			}			
+		}
+	}
+	
+	public void RetrieveJumpStatement (ParseTree ctx, String currentFunctionName, Boolean LastStatement) {
+		
+		if (!LastStatement) {
+			if (ctx.getChild(0).getClass().toString().contains("JumpStatement") && !ctx.getText().contains("if(") && !ctx.getText().contains("try{") ) {
+//				System.out.println("goto:::::::::::" +ctx.getText());
+				GotoStructure Goto = new GotoStructure(LastFunctionCalled, LastStatement);
+				Goto.setLabel(ctx.getChild(0).getChild(1).getText());
+				Goto.setLastFunctionId(callfunctionSet.get(LastFunctionCalled).getId());
+				gotostructureSet.put(currentLabel, Goto);
+			}
+		}
+		else {
+			if(ctx.getChild(0).getClass().toString().contains("LabeledStatement")) {
+				GotoStructure Goto = new GotoStructure(LastFunctionCalled, LastStatement);
+				Goto.setLabel(ctx.getChild(0).getChild(1).getText());
+				Goto.setLastFunctionId(callfunctionSet.get(LastFunctionCalled).getId());
+				gotostructureSet.put(currentLabel, Goto);
+			}
+		}
+	}
+	
 }
+
+
+
+
+
 
