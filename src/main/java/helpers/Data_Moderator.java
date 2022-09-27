@@ -27,7 +27,7 @@ public class Data_Moderator {
 			for (String testGlobVar : globalvariablesSet.keySet()) {
 				if(!(Todelete.contains(GlobVar))) {
 					if (!(GlobVar.equals(testGlobVar)) //if GV isn't itself
-							&& debugName(GlobVar).equals(debugName(testGlobVar)) //if gv has the same name despite call number "/x"
+							&& tH.debugFunctionName(GlobVar).equals(tH.debugFunctionName(testGlobVar)) //if gv has the same name despite call number "/x"
 							&& globalvariablesSet.get(GlobVar).get(0).equals(globalvariablesSet.get(testGlobVar).get(0)) // same parent?
 							&& globalvariablesSet.get(GlobVar).get(1).equals(globalvariablesSet.get(testGlobVar).get(1))) { // same mode ? 
 						Todelete.add(testGlobVar);	// add to delete List
@@ -45,6 +45,8 @@ public class Data_Moderator {
 	 * 
 	 * @param globalvariablesSet
 	 * @return
+	 * 
+	 * This function turn the global variable set witch
 	 */
 	public HashMap<String, ArrayList<String>> switchGlobalvariable(HashMap<String, ArrayList<String>> globalvariablesSet) {
 		
@@ -59,12 +61,6 @@ public class Data_Moderator {
 			globalVariableSetChanged.get(globalvariablesSet.get(GlobVar).get(0)).add(GlobVar);
 		}
 		return globalVariableSetChanged;
-	}
-	private String debugName(String functionName) {
-		if (functionName.contains("/")) {
-			functionName = functionName.split("/",2)[0];
-		}
-		return functionName;
 	}
 
 	
@@ -86,7 +82,7 @@ public class Data_Moderator {
 						Boolean flag = false;
 						if (globalvariablesSetKeyName.containsKey(functiontest.getFunctionName())) {
 							for (String GlobalVariableTest : globalvariablesSetKeyName.get(functiontest.getFunctionName())) {
-								if ( debugName(GlobalVariable).equals(debugName(GlobalVariableTest)) && !(functiontest.getFunctionName().equals(function.getFunctionName())) ) {
+								if ( tH.debugFunctionName(GlobalVariable).equals(tH.debugFunctionName(GlobalVariableTest)) && !(functiontest.getFunctionName().equals(function.getFunctionName())) ) {
 									flag = true;
 //									System.out.println(globalvariablesSet.get(GlobalVariable).get(1) +  "::" +GlobalVariable);
 									if(!Linklist.contains(globalvariablesSet.get(GlobalVariable).get(1) +  "::" +GlobalVariable))
@@ -129,7 +125,7 @@ public class Data_Moderator {
 						if (globalvariablesSetKeyName.containsKey(Subfunction)&&globalvariablesSetKeyName.containsKey(Subfunctiontest)) 
 						for (String Globalvariable : globalvariablesSetKeyName.get(Subfunction)) {
 							for (String GlobalvariableTest : globalvariablesSetKeyName.get(Subfunctiontest)) { //we verify if the to functions have common globalvariables 
-								if (debugName(Globalvariable).equals(debugName(GlobalvariableTest))) {
+								if (tH.debugFunctionName(Globalvariable).equals(tH.debugFunctionName(GlobalvariableTest))) {
 									
 									if(globalvariablesSet.get(Globalvariable).get(1).equals("read")&&!stopOut) {
 										linkAndIds.put(Subfunction+"///"+Subfunctiontest+"//in", Id);

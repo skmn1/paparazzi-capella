@@ -42,6 +42,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		this.fileDecompositionMap = fileDecompositionMap;
 	}
     String currentLabel = new String();
+    
 	@Override
 	public void exitDeclaration(CPP14Parser.DeclarationContext ctx) {
 
@@ -88,6 +89,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			
 			// We check if the statement is a function
 			StatFunction statefunction = new StatFunction();
+
 			StatFunction statementFunction = statefunction.isStatementFuntion(State);
 			if(statementFunction.getIsstatfunction()) {
 				// Arguments and called functions retrieving 
@@ -249,6 +251,18 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param function name
+	 * @param currentfunctionName (parent)
+	 * @param arguments
+	 * @param subfonctionset
+	 * @param Label
+	 * @ if the function already exist we add a "/" + a number 
+	 * @ 
+	 */
 	public void addFunctionTofunctionSet(String fname, String cfunctionName, ArrayList<String > arguments, ArrayList<String> subfonctionset, String Label) {
 		
 		if (fname.charAt(0) == "_".charAt(0) ) {
@@ -292,6 +306,15 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 	}
 	
+	
+	
+	/**
+	 * 
+	 * @param ctx
+	 * @param stf
+	 * @param currentfonctionName
+	 * This function is used to find global Variable in none function statement
+	 */
 	public void getGlobalVariablesfromStatementtoGlobVSet(ParseTree ctx, StatFunction stf, String currentfonctionName ) {
 
 		if (!stf.getIsstatfunction() && !ctx.getText().contains("try{") && !ctx.getText().contains("if")&&!ctx.getText().contains("case")) {
@@ -337,7 +360,15 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @param listArgs
+	 * @param currentFunctionName
+	 * @param stf
+	 * @param j
+	 * @ this function retrieve global variables in a function statement
+	 * 
+	 */
 	public void getGlobalVariablesfromListArgstoGlobVSet(HashMap<Integer, ArrayList<String>> listArgs,String currentFunctionName, StatFunction stf ,Integer j) {
 		if (GlobalVariablesEnum.testenumb(listArgs.toString())) {
 			for (int m = 0; m < listArgs.get(j).size(); m++) {
@@ -438,8 +469,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			break;
 		}
 		
-		
-		
 		//case function(&abc, x, ...)
 		case (3) : { 
 			subFunctionName = tH.getxChild0(State, 9).getText();
@@ -480,8 +509,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 		
 		// we delete math function that are no relevant and add function to function set
-			if (!subFunctionName.contains("matrix::") && !subFunctionName.contains("math::") && !subFunctionName.contains("sqrtf")
-					&& !subFunctionName.contains("std::")&& !subFunctionName.contains("perror") && !subFunctionName.contains("printf")) {
+			if (!subFunctionName.contains("matrix::") && !subFunctionName.contains("math::") && !subFunctionName.equals("sqrtf")
+					&& !subFunctionName.equals("std::")&& !subFunctionName.equals("perror") && !subFunctionName.equals("printf")
+					&&!subFunctionName.equals("sinf")&&!subFunctionName.equals("cosf")&&!subFunctionName.equals("coshf")&&!subFunctionName.equals("sinhf")
+				    &&!subFunctionName.equals("asinf")&&!subFunctionName.equals("acosf")&&!subFunctionName.equals("printf")&&!subFunctionName.equals("expf")
+				    &&!subFunctionName.equals("atanf")&&!subFunctionName.equals("atanhf")&&!subFunctionName.equals("tanf")&&!subFunctionName.equals("expf")){
 				addFunctionTofunctionSet(subFunctionName, currentFunctionName, listArgs.get(i), subfonctionset, Label);
 			}
 	}
@@ -512,7 +544,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 //			System.out.println("/1 : " + ctx.getText() + "\n /2 :" + LabeledStatementdebug(ctx).getText() );
 			tryStatementSeq = LabeledStatementdebug(ctx).getChild(0).getChild(1).getChild(1);
 			// this variable is create in order to identify an entire try statement labeled
-			//TODO manage try statement label
 			String tryLabel = tH.getxChild0(ctx, 2).getText();
 			System.out.println("trylabel" + tryLabel);
 		}	
@@ -534,7 +565,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				//check if the statement is labeled and get the statement through labeled
 				if (tryStatementSeq.getChild(j).getChild(0).getClass().toString().contains("LabeledStatement")) {
 					tryState = LabeledStatementdebug(tryStatementSeq.getChild(j));
-					RetrieveIfStatement(tryState, currrentfunctionName);
 					Label = tH.getxChild0(tryStatementSeq.getChild(j), 2).getText();
 					currentLabel = Label;
 				}
@@ -542,6 +572,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				
 				//check if the statement contains a "if structure" 
 				RetrieveIfStatement(tryState, currrentfunctionName);
+				
 				// create a local variable to call Statfunction class 
 				StatFunction statefunction = new StatFunction();
 				StatFunction trySubStatementFunction = statefunction.isStatementFuntion(tryState);
@@ -559,6 +590,11 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 	}
 	
+	/**
+	 * @ 
+	 * @param ctx
+	 * @param currentFunctionName
+	 */
 	// process "if" statement and save them in ifstructure
 	public void RetrieveIfStatement (ParseTree ctx, String currentFunctionName) {
 		if (ctx.getText().contains("if(") && !ctx.getText().contains("try{")) {
@@ -590,11 +626,16 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		}
 	}
 	
+	/**
+	 * @ the goto statement will be put as : last Label encounter , GotoStructure : (LabelToreach, Last FunctionEncounter, Id) 
+	 * @param ctx
+	 * @param currentFunctionName
+	 * @param LastStatement
+	 */
 	public void RetrieveJumpStatement (ParseTree ctx, String currentFunctionName, Boolean LastStatement) {
 		
 		if (!LastStatement) {
 			if (ctx.getChild(0).getClass().toString().contains("JumpStatement") && !ctx.getText().contains("if(") && !ctx.getText().contains("try{") ) {
-//				System.out.println("goto:::::::::::" +ctx.getText());
 				GotoStructure Goto = new GotoStructure(LastFunctionCalled, LastStatement);
 				Goto.setLabel(ctx.getChild(0).getChild(1).getText());
 				Goto.setLastFunctionId(callfunctionSet.get(LastFunctionCalled).getId());

@@ -40,6 +40,7 @@ public class StatFunction {
 	
 	
 		/**
+		 *@ This function is used to know which kind of function the statement contains and therefore, how to get information
 		 *@ in :  parse tree
 		 *@ return : stat function type (Is the statement a function? true/false, type of function )		
 		 *@ key = 1   : functions without parameters & multiples arguments : f(); or  f(x,y,...);		

@@ -32,13 +32,12 @@ public class CPPXMLTransformer {
 	public static HashMap<String, ArrayList<String>> globalvariablesSetKeyName = new HashMap<String, ArrayList<String>>();
 	
 	public static HashMap<String, IfStructure> ifstructureSet = new HashMap<String, IfStructure>();
-	
 	public static HashMap<String, GotoStructure> gotoStructureSet = new HashMap<String, GotoStructure>();
 	
 	public static HashMap<String, String> LabeledStatementDef = new HashMap<String, String>();
 	public static HashMap<String, Integer> linkAndIds = new HashMap<String, Integer>();
-	public static ArrayList<String> Alreadydone =  new ArrayList<String>();
-	
+	public static ArrayList<String> FunctionAlreadydone =  new ArrayList<String>();
+	public static ArrayList<String> IfAlreadyDone = new ArrayList<String>();
 	static HashMap<String,String> labelAndCall = new HashMap<>();
 	
 	static treeHelpers tH = new treeHelpers();
@@ -114,6 +113,24 @@ public class CPPXMLTransformer {
 		String startpoint = "\"deployment:AADLProcess\"";
 		
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
+		
+		// display
+//		System.out.println("\r\n~~DECL");
+//		for (String Function : declfunctionSet.keySet()) {
+//			System.out.println("\r\n" + Function + "  =>  " +declfunctionSet.get(Function).toString());
+//		}
+//		System.out.println("\r\n~~Called");
+//		for (String Function : callfunctionSet.keySet()) {
+//			System.out.println("\r\n" + Function + "  =>  " +callfunctionSet.get(Function).toString());
+//		}
+//		System.out.println("\r\n\r\n~~If");
+//		for (String IfStructure : ifstructureSet.keySet()) {
+//			System.out.println("\r\n" + IfStructure + "  =>  " + ifstructureSet.get(IfStructure).toString());
+//		}
+//		System.out.println("\r\n~~Goto");
+//		for (String Label : gotoStructureSet.keySet()) {
+//			System.out.println("\r\n" + Label + "  =>  " +gotoStructureSet.get(Label).toString());
+//		}
 	}
 	
 
@@ -200,8 +217,8 @@ public class CPPXMLTransformer {
 			
 			// arguments must be called here 
 			// we check if the function has been already developed. if not we develop it
-			if (!Alreadydone.contains(tH.debugFunctionName(subFunctionName))) {
-				Alreadydone.add(tH.debugFunctionName(subFunctionName));
+			if (!FunctionAlreadydone.contains(tH.debugFunctionName(subFunctionName))) {
+				FunctionAlreadydone.add(tH.debugFunctionName(subFunctionName));
 				// inject software bus method we check if the function contains a variable first
 				Boolean containaGVariable = isFunctionHaveGlobalVariable(subFunctionName);
 				if (containaGVariable) {
@@ -258,31 +275,55 @@ public class CPPXMLTransformer {
 	
 	private static String injectDataFlow(String subFunctionName, String parent) {
 		String str = new String();
-		if (ifstructureSet.containsKey(parent)&& !declfunctionSet.get(parent).SubFunctionSetIsEmpty()) {
+		String ParentBis = new String();
+		if (IfAlreadyDone.contains(parent)) {
+			Integer i = 1;
+			while (true) {
+				ParentBis = parent +"/" + i;
+				if(!ifstructureSet.containsKey(ParentBis)) {
+					ParentBis = parent;
+					break; //y'en a plus
+				}
+				if (!IfAlreadyDone.contains(ParentBis)&&ifstructureSet.containsKey(ParentBis))
+					break;
+				i +=1;
+			}
+		}
+		else ParentBis = parent;
+		
+		System.out.println(ParentBis +" vs "+ IfAlreadyDone + subFunctionName);
+		if (ifstructureSet.containsKey(ParentBis)&& !declfunctionSet.get(parent).SubFunctionSetIsEmpty()) {
 			if ((declfunctionSet.get(parent).getSubFunctionSet().size()-1) > declfunctionSet.get(parent).getSubFunctionSet().indexOf(subFunctionName)) {
-				System.out.println(declfunctionSet.get(parent).getSubFunctionSet().size() + ">" + declfunctionSet.get(parent).getSubFunctionSet().indexOf(subFunctionName));
-				if (callfunctionSet.get(subFunctionName).getLabel().equals("")) {
-					if (!subFunctionName.equals(ifstructureSet.get(parent).getLastFunctionCalled()))
+				
+				// if the next step is a if statement 
+				if(subFunctionName.equals(ifstructureSet.get(ParentBis).getLastFunctionCalled())) {
+				System.out.println(" ---" +ParentBis);
+				Integer Idthen = 0;
+				Integer Idelse = 0;
+				for (int i = 0; i < declfunctionSet.get(parent).getSubFunctionSet().size(); i++) {
+					if( callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getLabel().equals(ifstructureSet.get(ParentBis).getThenLabel()) ) {
+						Idthen = callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getId();
+						break;
+					}
+				}
+				for (int i = 0; i < declfunctionSet.get(parent).getSubFunctionSet().size(); i++) {
+					if( callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getLabel().equals(ifstructureSet.get(ParentBis).getElseLabel()) ) {
+						Idelse = callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getId();
+						break;
+					}
+				}
+				if (Idthen==0 &&Idelse == 0)
+					System.out.println("Label not found");
+
+				str += " execution_dataflow=\"#baaec95a-deed-4d91-9998-c10e6aec4ad" + Idthen.toString() + " #baaec95a-deed-4d91-9998-c10e6aec4ad"+Idelse + "\"" ;
+				IfAlreadyDone.add(parent);
+
+				}
+				
+				
+				else if (callfunctionSet.get(subFunctionName).getLabel().equals("")) {
+					if (!subFunctionName.equals(ifstructureSet.get(ParentBis).getLastFunctionCalled())) {
 						str += " execution_dataflow=\"#baaec95a-deed-4d91-9998-c10e6aec4ad" + (callfunctionSet.get(subFunctionName).getId()+1)+"\"";
-					else {
-						Integer Idthen = 0;
-						Integer Idelse = 0;
-						for (int i = 0; i < declfunctionSet.get(parent).getSubFunctionSet().size(); i++) {
-							if( callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getLabel().equals(ifstructureSet.get(parent).getThenLabel()) ) {
-								Idthen = callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getId();
-								break;
-							}
-						}
-						for (int i = 0; i < declfunctionSet.get(parent).getSubFunctionSet().size(); i++) {
-							if( callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getLabel().equals(ifstructureSet.get(parent).getElseLabel()) ) {
-								Idelse = callfunctionSet.get(declfunctionSet.get(parent).getSubFunctionSet().get(i)).getId();
-								break;
-							}
-						}
-						if (Idthen==0 &&Idelse == 0)
-							System.out.println("error");
-						
-						str += " execution_dataflow=\"#baaec95a-deed-4d91-9998-c10e6aec4ad" + Idthen.toString() + " #baaec95a-deed-4d91-9998-c10e6aec4ad"+Idelse + "\"" ;
 					}
 				}
 				else if (callfunctionSet.get(subFunctionName).getLabel() == getNextLabel(parent, subFunctionName)) { //Label= NextLabel 
@@ -306,7 +347,6 @@ public class CPPXMLTransformer {
 					
 				}
 			}
-
 		}
 		return str;
 	}
@@ -322,27 +362,26 @@ public class CPPXMLTransformer {
 		
 		String str = "";
 		String globalVariablTabs = tabs+"\t";
-		// to delete after bus named
+		// use if you want 1 in/out max 
 		Boolean StopBus1 = false;
 		Boolean StopBus2 = false;
 		// we check across the global variable set in order to find GV parent names equal to the current function 
 		if (globalvariablesSetKeyName.containsKey(FunctionName))
-		for (String variableName : globalvariablesSetKeyName.get(FunctionName)) {
-//		if (StopBus1 && StopBus2) break;
-		if (globalvariablesSet.get(variableName).get(0).equals(FunctionName)) {
-			
-//			System.out.println(globalvariablesSet.get(variableName) +"-->" + variableName +"<--");
-				// we check the GV mode read/write
-				if(globalvariablesSet.get(variableName).get(1) == "read"&& !StopBus1 ) {
-					str += globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" variableName=\" "+ tH.debugFunctionName(variableName) +"\"/>\r\n";
-//					StopBus1 = true;
-				}
-				else if(globalvariablesSet.get(variableName).get(1) == "write" && !StopBus2){
-					str +=  globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" variableName=\""+ tH.debugFunctionName(variableName) +"\"/>\r\n";
-//					StopBus2 = true;
+			for (String variableName : globalvariablesSetKeyName.get(FunctionName)) {
+				//		if (StopBus1 && StopBus2) break;
+				if (globalvariablesSet.get(variableName).get(0).equals(FunctionName)) {
+
+					// we check the GV mode read/write
+					if(globalvariablesSet.get(variableName).get(1) == "read"&& !StopBus1 ) {
+						str += globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" variableName=\" "+ tH.debugFunctionName(variableName) +"\"/>\r\n";
+						//					StopBus1 = true;
+					}
+					else if(globalvariablesSet.get(variableName).get(1) == "write" && !StopBus2){
+						str +=  globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" variableName=\""+ tH.debugFunctionName(variableName) +"\"/>\r\n";
+						//					StopBus2 = true;
+					}
 				}
 			}
-		}
 		return str;
 	}
 
@@ -356,13 +395,9 @@ public class CPPXMLTransformer {
 		}
 		return flag;
 	}
-	
-
-	
 
 	public static int getFileValue1 (String FunctionName) {
 		if (Breakdown.containsKey(functionFileMap.get(tH.debugFunctionName(FunctionName)))) {
-			System.out.println();
 			if (functionFileMap.get(tH.debugFunctionName(FunctionName)).contains("sys_time")) {
 				return 2;
 			}
@@ -370,7 +405,6 @@ public class CPPXMLTransformer {
 				return 2;
 			}
 			if (functionFileMap.get(tH.debugFunctionName(FunctionName)).contains("autopilot") ) {
-				System.out.println(FunctionName+ "    :" + functionFileMap.get(tH.debugFunctionName(FunctionName)));
 				return 2;
 				
 			}
@@ -400,10 +434,6 @@ public class CPPXMLTransformer {
 	}
 	
 	
-
-	
-	
-	
 	public static Integer getNextFunctionIndex(String Parent, String subFunctionName) {
 		Integer Index = declfunctionSet.get(tH.debugFunctionName(Parent)).getSubFunctionSet().indexOf(subFunctionName)+1 ;
 		return Index;
@@ -414,7 +444,6 @@ public class CPPXMLTransformer {
 		Index = declfunctionSet.get(tH.debugFunctionName(Parent)).getSubFunctionSet().indexOf(subFunctionName)-1 ;
 		return Index;
 	}
-	
 	
 	public static boolean IsNextFunctionLinked(String Parent, String subFunctionName, String Label) {
 		String NextFunctionname = new String();
@@ -432,14 +461,9 @@ public class CPPXMLTransformer {
 	public static String getNextLabel(String ParentName, String subfunctionName) {
 		String NextLabel = new String();
 		Integer NextIndex = declfunctionSet.get(ParentName).getSubFunctionSet().indexOf(subfunctionName)+1;
-		System.out.println(subfunctionName + "index" + NextIndex);
 		String NextFunctionName = declfunctionSet.get(ParentName).getSubFunctionSet().get(NextIndex);
 		NextLabel = callfunctionSet.get(NextFunctionName).getLabel();
 		return NextLabel;
 	}
-	
-	
-	
 
-	
 }

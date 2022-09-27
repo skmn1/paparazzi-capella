@@ -65,10 +65,6 @@ public class DECL_AADLFunction extends AADLFunction {
 		this.GlobalWeight += weigth;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "functionName=" + getFunctionName() + " Weight = " + Weight + "  GlobalWeight = " + GlobalWeight +"\n" ;
-//	}
 	@Override
 	public String toString() {
 		return "AADLFunction functionName=" + getFunctionName() + " : {\ncontainingFile = " + getContainingFile() 
