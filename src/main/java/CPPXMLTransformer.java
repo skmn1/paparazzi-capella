@@ -12,6 +12,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import businessStructure.AADLThread;
 import businessStructure.CALLED_AADLFunction;
 import businessStructure.DECL_AADLFunction;
+import businessStructure.GlobalVariable;
 import businessStructure.GotoStructure;
 import businessStructure.IfStructure;
 import helpers.Data_Moderator;
@@ -24,24 +25,21 @@ public class CPPXMLTransformer {
 	public static HashMap<String,String> functionFileMap = new HashMap<String,String>();
 	public static HashMap<String,Integer> Breakdown = new HashMap<String,Integer>();
 	
+	
 	public static HashMap<String,CALLED_AADLFunction> callfunctionSet = new HashMap<String,CALLED_AADLFunction>();
-	public static HashMap<String,CALLED_AADLFunction> callfunctionSetbis = new HashMap<String,CALLED_AADLFunction>();
 	public static HashMap<String,DECL_AADLFunction> declfunctionSet = new HashMap<String,DECL_AADLFunction>();
 	
-	public static HashMap<String, ArrayList<String>> globalvariablesSet = new HashMap<String, ArrayList<String>>();
-	public static HashMap<String, ArrayList<String>> globalvariablesSetKeyName = new HashMap<String, ArrayList<String>>();
+	public static HashMap<String, GlobalVariable> globalvariablesSet = new HashMap<String, GlobalVariable>() ;
+	public static HashMap<String, ArrayList<String>> globalvariablesSetKeyName = new HashMap<String, ArrayList<String>>(); // [function name , list of global variable names that function contains]
 	
 	public static HashMap<String, IfStructure> ifstructureSet = new HashMap<String, IfStructure>();
 	public static HashMap<String, GotoStructure> gotoStructureSet = new HashMap<String, GotoStructure>();
 	
-	public static HashMap<String, String> LabeledStatementDef = new HashMap<String, String>();
-	public static HashMap<String, Integer> linkAndIds = new HashMap<String, Integer>();
-	public static ArrayList<String> FunctionAlreadydone =  new ArrayList<String>();
-	public static ArrayList<String> IfAlreadyDone = new ArrayList<String>();
-	static HashMap<String,String> labelAndCall = new HashMap<>();
+	public static HashMap<String, Integer> linkAndIds = new HashMap<String, Integer>(); // use to manage Id issues with function exchange
+	public static ArrayList<String> FunctionAlreadydone =  new ArrayList<String>(); // use to not build a function multiple times
+	public static ArrayList<String> IfAlreadyDone = new ArrayList<String>(); // use to manage conditional declaration
 	
-	static treeHelpers tH = new treeHelpers();
-	
+	static treeHelpers tH = new treeHelpers(); // use to call functions of this class
 		
 	public static void listFilesForFolder(final File folder) {
 		for (final File fileEntry : folder.listFiles()) {
@@ -80,6 +78,7 @@ public class CPPXMLTransformer {
 			System.out.println("  " +fileEntry.getName()+ "  CSV value = " +Breakdown.get(fileEntry.getName()));
 		}
 		
+		// parser initialization
 		ANTLRInputStream input = new ANTLRInputStream( wholeFolderContent );
 
 		CPP14Lexer lexer = new CPP14Lexer(input);
@@ -94,20 +93,22 @@ public class CPPXMLTransformer {
 
 		ParseTree tree = parser.translationUnit();
 		
+		// Data retrieving with custom listener 
 		callfunctionSet = listener.callfunctionSet;
 		globalvariablesSet =listener.globalvariablesSet;
 		declfunctionSet = listener.declfunctionSet;
 		ifstructureSet = listener.ifstructureSet;
-		LabeledStatementDef = listener.LabeledStatementDef;
 		gotoStructureSet = listener.gotostructureSet;
 		
 		Data_Moderator dataModerator = new Data_Moderator ();
 		
+		// data management with data_moderator class
 		globalvariablesSet = dataModerator.GlobalVariableSet(globalvariablesSet);
 		globalvariablesSetKeyName = dataModerator.switchGlobalvariable(globalvariablesSet);	
 		linkAndIds = dataModerator.ManageLinks(declfunctionSet, globalvariablesSetKeyName, globalvariablesSet);
 		declfunctionSet = Data_Moderator.CountGlobalWeight(declfunctionSet);
 		
+		// XML generation
 		String XMLTags = getXMLfromThreadDataStructure(listener.threadSet);
 		String FileName = "\\\\DATAETU\\Etudiants$\\decoutd\\Documents\\astageSI2022\\paparazzi-capella\\test-papparrazi.melodymodeller";
 		String startpoint = "\"deployment:AADLProcess\"";
@@ -115,19 +116,19 @@ public class CPPXMLTransformer {
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
 		
 		// display
-//		System.out.println("\r\n~~DECL");
+//		System.out.println("\r\n~~DECL Functions");
 //		for (String Function : declfunctionSet.keySet()) {
 //			System.out.println("\r\n" + Function + "  =>  " +declfunctionSet.get(Function).toString());
 //		}
-//		System.out.println("\r\n~~Called");
+//		System.out.println("\r\n~~ CalledFunctions");
 //		for (String Function : callfunctionSet.keySet()) {
 //			System.out.println("\r\n" + Function + "  =>  " +callfunctionSet.get(Function).toString());
 //		}
-//		System.out.println("\r\n\r\n~~If");
+//		System.out.println("\r\n\r\n~~ IfStructures");
 //		for (String IfStructure : ifstructureSet.keySet()) {
 //			System.out.println("\r\n" + IfStructure + "  =>  " + ifstructureSet.get(IfStructure).toString());
 //		}
-//		System.out.println("\r\n~~Goto");
+//		System.out.println("\r\n~~ Goto");
 //		for (String Label : gotoStructureSet.keySet()) {
 //			System.out.println("\r\n" + Label + "  =>  " +gotoStructureSet.get(Label).toString());
 //		}
@@ -291,13 +292,11 @@ public class CPPXMLTransformer {
 		}
 		else ParentBis = parent;
 		
-		System.out.println(ParentBis +" vs "+ IfAlreadyDone + subFunctionName);
 		if (ifstructureSet.containsKey(ParentBis)&& !declfunctionSet.get(parent).SubFunctionSetIsEmpty()) {
 			if ((declfunctionSet.get(parent).getSubFunctionSet().size()-1) > declfunctionSet.get(parent).getSubFunctionSet().indexOf(subFunctionName)) {
 				
 				// if the next step is a if statement 
 				if(subFunctionName.equals(ifstructureSet.get(ParentBis).getLastFunctionCalled())) {
-				System.out.println(" ---" +ParentBis);
 				Integer Idthen = 0;
 				Integer Idelse = 0;
 				for (int i = 0; i < declfunctionSet.get(parent).getSubFunctionSet().size(); i++) {
@@ -369,14 +368,14 @@ public class CPPXMLTransformer {
 		if (globalvariablesSetKeyName.containsKey(FunctionName))
 			for (String variableName : globalvariablesSetKeyName.get(FunctionName)) {
 				//		if (StopBus1 && StopBus2) break;
-				if (globalvariablesSet.get(variableName).get(0).equals(FunctionName)) {
-
+				if (globalvariablesSet.get(variableName).getFunctionName().equals(FunctionName)) {
+					
 					// we check the GV mode read/write
-					if(globalvariablesSet.get(variableName).get(1) == "read"&& !StopBus1 ) {
+					if(globalvariablesSet.get(variableName).getType() == "read"&& !StopBus1 ) {
 						str += globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" variableName=\" "+ tH.debugFunctionName(variableName) +"\"/>\r\n";
 						//					StopBus1 = true;
 					}
-					else if(globalvariablesSet.get(variableName).get(1) == "write" && !StopBus2){
+					else if(globalvariablesSet.get(variableName).getType() == "write" && !StopBus2){
 						str +=  globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" variableName=\""+ tH.debugFunctionName(variableName) +"\"/>\r\n";
 						//					StopBus2 = true;
 					}
@@ -388,7 +387,7 @@ public class CPPXMLTransformer {
 	public static Boolean isFunctionHaveGlobalVariable (String FunctionName) {
 		Boolean flag = false;
 		for (String variableName : globalvariablesSet.keySet()) {
-			if (globalvariablesSet.get(variableName).get(0).equals(FunctionName)) {
+			if (globalvariablesSet.get(variableName).getFunctionName().equals(FunctionName)) {
 				flag = true;
 				return flag;
 			}

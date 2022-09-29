@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 import businessStructure.DECL_AADLFunction;
+import businessStructure.GlobalVariable;
 import businessStructure.GotoStructure;
 import businessStructure.IfStructure;
 import businessStructure.CALLED_AADLFunction;
@@ -28,10 +29,9 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	public HashMap<String,String> functionFileMap = new HashMap<String,String>();
 	
 	public HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
-	public HashMap<String, ArrayList<String>> globalvariablesSet = new HashMap<String, ArrayList<String>>() ;
+	public HashMap<String, GlobalVariable> globalvariablesSet = new HashMap<String, GlobalVariable>() ;
 	public HashMap<String, IfStructure> ifstructureSet = new HashMap<String, IfStructure>() ;
 	public HashMap<String, GotoStructure> gotostructureSet = new HashMap<String, GotoStructure>() ;
-	public HashMap<String, String> LabeledStatementDef = new HashMap<String, String>();
 	
 	public Integer Id = 0;
 	public String LastFunctionCalled;
@@ -175,7 +175,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			return null;
 		}
 	};
-/////////////////////////////////////////////////
 	
 	
 	@Override
@@ -216,7 +215,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 
 	}
 	
-	public void addGlobalVariablesToglobalvariablesSet(String gvName, ArrayList<String> gvParameters  ) {
+	public void addGlobalVariablesToglobalvariablesSet(String gvName, GlobalVariable globalVariable) {
 		// global variable extraction 
 		if (gvName.contains("&this->_")) {
 			String str[] = gvName.split("->_",2);
@@ -235,9 +234,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			String str[] = gvName.split(".D.",2);
 			gvName = str[0];
 		}
+		if(gvName.contains("BIT_FIELD_REF<")) {
+			String str[] = gvName.split("BIT_FIELD_REF<",2);
+			gvName = str[1];
+		}
 		
 		if (!globalvariablesSet.containsKey(gvName)) {
-			globalvariablesSet.put(gvName, gvParameters);
+			globalvariablesSet.put(gvName, globalVariable);
 		}
 		else {
 			int n = 0;
@@ -245,7 +248,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				n++;
 				if (!globalvariablesSet.containsKey(gvName+"/"+n))  {
 					gvName=gvName+"/"+n;
-					globalvariablesSet.put(gvName, gvParameters);
+					globalvariablesSet.put(gvName, globalVariable);
 					break;
 				}
 			}
@@ -277,10 +280,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 				Id+=1;
 				subfonctionset.add((fname));
 				LastFunctionCalled = fname;
-				if (!Label.equals("")) {
-					LabeledStatementDef.put(Label, fname);
-					
-				}
+
 			}
 			else {
 				String fnamebis = fname+"/";
@@ -295,7 +295,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 						Id+=1;
 						subfonctionset.add((fnamebis));
 						if (!Label.equals("")) {
-							LabeledStatementDef.put(Label, fnamebis);
 							LastFunctionCalled = fnamebis;
 						}
 						break;
@@ -320,41 +319,53 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		if (!stf.getIsstatfunction() && !ctx.getText().contains("try{") && !ctx.getText().contains("if")&&!ctx.getText().contains("case")) {
 			if (ctx.getChild(0).getClass().toString().contains("LabeledStatement") && !ctx.getText().contains("return")
 					&& !ctx.getText().contains("goto") && GlobalVariablesEnum.testenumb(ctx.getText())) {
-//				System.out.println(ctx.getText());
 				//multiple LabeledStatement debug
 				ParseTree labstatement = LabeledStatementdebug(ctx);
 //				System.out.println(labstatement.getText());
 				if (GlobalVariablesEnum.testenumb(labstatement.getText())) {
 					String globalvariableName = new String();
+					String Type = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
+							
 					globalvariableParameters.add(currentfonctionName);					
 					if (GlobalVariablesEnum.testenumb(tH.getxChild0(labstatement,8).getText())) {
 						globalvariableName = tH.getxChild0(labstatement,8).getText();
+						Type = "write";
 						globalvariableParameters.add("write");
 					}
+					
 					else if (GlobalVariablesEnum.testenumb(tH.getxChild0(labstatement,5).getChild(1).getText())) {
 						globalvariableName = tH.getxChild0(labstatement,5).getChild(1).getChild(0).getChild(1).getText();
 						globalvariableParameters.add("read");
+						 Type = "read";
 					}
-					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariableParameters);
+					
+					GlobalVariable globalVariable = new GlobalVariable(globalvariableName, Type, currentfonctionName);
+					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalVariable);
 				}
 			}
 			else {
 				if (GlobalVariablesEnum.testenumb(ctx.getText())) {
 					String globalvariableName = new String();
+					String Type = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
 					
 					if (GlobalVariablesEnum.testenumb(tH.getxChild0(ctx,8).getText())) {
 						globalvariableParameters.add(currentfonctionName);
+						
+						
 						globalvariableName = tH.getxChild0(ctx,8).getText();
 						globalvariableParameters.add("write");
+						Type = "write";
 					}
 					else if (GlobalVariablesEnum.testenumb(tH.getxChild0(ctx,5).getChild(1).getText())) {
 						globalvariableParameters.add(currentfonctionName);
 						globalvariableName = tH.getxChild0(ctx,5).getChild(1).getChild(0).getChild(1).getText();
 						globalvariableParameters.add("read");
+						Type = "read";
 					}
-					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariableParameters);
+					GlobalVariable globalvariable = new GlobalVariable(globalvariableName, Type, currentfonctionName);
+					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariable);					
 				}
 			}
 		}
@@ -374,16 +385,23 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			for (int m = 0; m < listArgs.get(j).size(); m++) {
 				if (GlobalVariablesEnum.testenumb(listArgs.get(j).get(m))) {
 					String globalvariableName = new String ();
+					String Type = new String();
 					ArrayList<String> globalvariableParameters = new ArrayList<String>();
 					globalvariableName = listArgs.get(j).get(m);
 					globalvariableName.replace("<", "-"); // character bug xml
 					globalvariableParameters.add(currentFunctionName);
 
-				if (stf.getFunctionType() == 4) 
+					if (stf.getFunctionType() == 4) {
 						globalvariableParameters.add("read");
-					else 
+						Type ="read";
+					}
+
+					else {
+						Type = "write";
 						globalvariableParameters.add("write");
-					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariableParameters);
+					}
+					GlobalVariable globalvariable = new GlobalVariable(globalvariableName, Type, currentFunctionName);
+					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariable);
 				}
 			}
 		}
@@ -420,14 +438,12 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			subFunctionName = tH.getxChild0(State, 9).getText();	
 			//case f(x,y,...)
 			if (tH.getxChild0(State,8).getChild(1).getChildCount() == 3) {
-
 				for (int k = 0; k < tH.getxChild0(State,8).getChild(1).getChild(1).getChild(0).getChildCount(); k++) {
 					String str = tH.getxChild0(State,8).getChild(1).getChild(1).getChild(0).getChild(k).getText();
 					if (!str.equals(",") && !str.contains("()")&& !str.chars().allMatch( Character::isDigit )) {
 						listArgs.get(i).add(str);
 					}
 				}
-
 			}
 			else listArgs.get(i).add("");// case f()
 			break;
@@ -545,7 +561,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			tryStatementSeq = LabeledStatementdebug(ctx).getChild(0).getChild(1).getChild(1);
 			// this variable is create in order to identify an entire try statement labeled
 			String tryLabel = tH.getxChild0(ctx, 2).getText();
-			System.out.println("trylabel" + tryLabel);
+//			System.out.println("trylabel" + tryLabel);
 		}	
 		else tryStatementSeq = ctx.getChild(0).getChild(1).getChild(1);
 		 
@@ -653,9 +669,3 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	}
 	
 }
-
-
-
-
-
-

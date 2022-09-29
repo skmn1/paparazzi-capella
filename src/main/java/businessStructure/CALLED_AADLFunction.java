@@ -8,8 +8,7 @@ public class CALLED_AADLFunction extends AADLFunction {
 	private String Label;
 	private Integer Id;
 	
-
-
+	
 	public CALLED_AADLFunction(String fname, String cfunctionName, ArrayList<String> arguments, String currentLabel) {
 		super(fname);
 		this.parameters = arguments;

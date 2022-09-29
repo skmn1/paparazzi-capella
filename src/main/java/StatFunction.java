@@ -62,7 +62,6 @@ public class StatFunction {
 		CPP14Parser parser = new CPP14Parser(tokens);
 		treeHelpers tH = new treeHelpers();
 		ParseTree grammarElement = ctx;
-//		System.out.println(ctx.getText());
 		while (true) {
 			if(grammarElement.getChild(0) == null) 
 				break;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import businessStructure.DECL_AADLFunction;
+import businessStructure.GlobalVariable;
 
 
 public class Data_Moderator {
@@ -20,7 +21,7 @@ public class Data_Moderator {
 	 * @return
 	 */
 	//this function remove global variables (GVs) if they're called multiple times in the same function
-	public HashMap<String, ArrayList<String>> GlobalVariableSet(HashMap<String, ArrayList<String>> globalvariablesSet) {
+	public HashMap<String, GlobalVariable> GlobalVariableSet(HashMap<String, GlobalVariable> globalvariablesSet) {
 		
 		ArrayList<String> Todelete = new ArrayList<String>();
 		for (String GlobVar : globalvariablesSet.keySet()) {
@@ -28,8 +29,8 @@ public class Data_Moderator {
 				if(!(Todelete.contains(GlobVar))) {
 					if (!(GlobVar.equals(testGlobVar)) //if GV isn't itself
 							&& tH.debugFunctionName(GlobVar).equals(tH.debugFunctionName(testGlobVar)) //if gv has the same name despite call number "/x"
-							&& globalvariablesSet.get(GlobVar).get(0).equals(globalvariablesSet.get(testGlobVar).get(0)) // same parent?
-							&& globalvariablesSet.get(GlobVar).get(1).equals(globalvariablesSet.get(testGlobVar).get(1))) { // same mode ? 
+							&& globalvariablesSet.get(GlobVar).getFunctionName().equals(globalvariablesSet.get(testGlobVar).getFunctionName()) // same parent?
+							&& globalvariablesSet.get(GlobVar).getType().equals(globalvariablesSet.get(testGlobVar).getType())) { // same mode ? 
 						Todelete.add(testGlobVar);	// add to delete List
 					}	
 				}	
@@ -48,17 +49,17 @@ public class Data_Moderator {
 	 * 
 	 * This function turn the global variable set witch
 	 */
-	public HashMap<String, ArrayList<String>> switchGlobalvariable(HashMap<String, ArrayList<String>> globalvariablesSet) {
+	public HashMap<String, ArrayList<String>> switchGlobalvariable(HashMap<String, GlobalVariable> globalvariablesSet) {
 		
 		HashMap<String, ArrayList<String>> globalVariableSetChanged = new HashMap<String, ArrayList<String>>() ;
 		
 		for (String GlobVar : globalvariablesSet.keySet()) {
-			if (!globalVariableSetChanged.containsKey(globalvariablesSet.get(GlobVar).get(0))) 
-				globalVariableSetChanged.put(globalvariablesSet.get(GlobVar).get(0), new ArrayList<String>());
+			if (!globalVariableSetChanged.containsKey(globalvariablesSet.get(GlobVar).getFunctionName())) 
+				globalVariableSetChanged.put(globalvariablesSet.get(GlobVar).getFunctionName(), new ArrayList<String>());
 		}
 		
-		for (String GlobVar : globalvariablesSet.keySet()) {
-			globalVariableSetChanged.get(globalvariablesSet.get(GlobVar).get(0)).add(GlobVar);
+		for (String GlobVariable : globalvariablesSet.keySet()) {
+			globalVariableSetChanged.get(globalvariablesSet.get(GlobVariable).getFunctionName()).add(GlobVariable);
 		}
 		return globalVariableSetChanged;
 	}
@@ -72,7 +73,7 @@ public class Data_Moderator {
 	 * @return
 	 */
 	
-	public  HashMap<String, ArrayList<String>> ManageLinkedGBV (HashMap<String,DECL_AADLFunction> declfunctionSet, HashMap<String, ArrayList<String>> globalvariablesSetKeyName, HashMap<String, ArrayList<String>> globalvariablesSet) {
+	public  HashMap<String, ArrayList<String>> ManageLinkedGBV (HashMap<String,DECL_AADLFunction> declfunctionSet, HashMap<String, ArrayList<String>> globalvariablesSetKeyName, HashMap<String, GlobalVariable> globalvariablesSet) {
 		HashMap<String, ArrayList<String>> functionlink = new HashMap<String, ArrayList<String>>();
 		for (DECL_AADLFunction function : declfunctionSet.values()) {//parcour DECL_function
 			ArrayList<String> Linklist = new ArrayList<>();
@@ -85,8 +86,8 @@ public class Data_Moderator {
 								if ( tH.debugFunctionName(GlobalVariable).equals(tH.debugFunctionName(GlobalVariableTest)) && !(functiontest.getFunctionName().equals(function.getFunctionName())) ) {
 									flag = true;
 //									System.out.println(globalvariablesSet.get(GlobalVariable).get(1) +  "::" +GlobalVariable);
-									if(!Linklist.contains(globalvariablesSet.get(GlobalVariable).get(1) +  "::" +GlobalVariable))
-									Linklist.add(globalvariablesSet.get(GlobalVariable).get(1) +  "::" +GlobalVariable);
+									if(!Linklist.contains(globalvariablesSet.get(GlobalVariable).getType() +  "::" +GlobalVariable))
+									Linklist.add(globalvariablesSet.get(GlobalVariable).getType() +  "::" +GlobalVariable);
 								}
 							}
 						}
@@ -110,7 +111,7 @@ public class Data_Moderator {
 	 * @return
 	 */
 	
-	public  HashMap<String, Integer> ManageLinks (HashMap<String,DECL_AADLFunction> declfunctionSet, HashMap<String, ArrayList<String>> globalvariablesSetKeyName, HashMap<String, ArrayList<String>> globalvariablesSet) {
+	public  HashMap<String, Integer> ManageLinks (HashMap<String,DECL_AADLFunction> declfunctionSet, HashMap<String, ArrayList<String>> globalvariablesSetKeyName, HashMap<String, GlobalVariable> globalvariablesSet) {
 		// in this function we identify which function communicate with which function in each function set of declFunctionset
 		HashMap<String, Integer> linkAndIds = new HashMap<String, Integer>();
 		Integer Id = 100;
@@ -127,13 +128,13 @@ public class Data_Moderator {
 							for (String GlobalvariableTest : globalvariablesSetKeyName.get(Subfunctiontest)) { //we verify if the to functions have common globalvariables 
 								if (tH.debugFunctionName(Globalvariable).equals(tH.debugFunctionName(GlobalvariableTest))) {
 									
-									if(globalvariablesSet.get(Globalvariable).get(1).equals("read")&&!stopOut) {
+									if(globalvariablesSet.get(Globalvariable).getType().equals("read")&&!stopOut) {
 										linkAndIds.put(Subfunction+"///"+Subfunctiontest+"//in", Id);
 										linkAndIds.put(Subfunctiontest+"///"+ Subfunction+"//out", Id);
 										Id+=1;
 										stopOut=true;
 									}
-									if(globalvariablesSet.get(Globalvariable).get(1).equals("write")&&!stopIn) {
+									if(globalvariablesSet.get(Globalvariable).getType().equals("write")&&!stopIn) {
 										linkAndIds.put(Subfunction+"///"+Subfunctiontest+"//out", Id);
 										linkAndIds.put(Subfunctiontest+"///"+Subfunction+"//in", Id);
 										Id+=1;
