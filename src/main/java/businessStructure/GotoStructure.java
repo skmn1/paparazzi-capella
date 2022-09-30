@@ -3,10 +3,10 @@ package businessStructure;
 public class GotoStructure {
 	
 	
-	String Label;
-	Boolean IsaFunctionEnd;
-	String LastFunction;
-	Integer LastFunctionId;
+	private String Label;
+	private Boolean IsaFunctionEnd;
+	private String LastFunction;
+	private Integer LastFunctionId;
 	
 	
 	public GotoStructure(String lastFunctionCalled, Boolean lastStatement) {

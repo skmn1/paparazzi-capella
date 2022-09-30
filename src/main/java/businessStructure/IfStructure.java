@@ -4,10 +4,10 @@ package businessStructure;
 public class IfStructure {
 	
 	
- String lastFunctionCalled;
- String IfCondition;
- String ThenLabel;
- String ElseLabel;
+	private String lastFunctionCalled;
+	private String IfCondition;
+	private String ThenLabel;
+	private String ElseLabel;
  
 public IfStructure(String lastFunctionCalled, String ifCondition, String thenLabel, String elseLabel) {
 	super();

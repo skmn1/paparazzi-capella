@@ -17,10 +17,15 @@ public class AADLThread {
 		this.threadfunctionName = threadfunctionName;
 		ThreadFunctionSet = threadFunctionSet;
 	}
-
+	
+	public AADLThread(String threadName) {
+		super();
+		this.threadName = threadName;
+	}
 	public HashMap<String, DECL_AADLFunction> getThreadFunctionSet() {
 		return ThreadFunctionSet;
 	}
+	
 
 	public void setThreadFunctionSet(HashMap<String, DECL_AADLFunction> threadFunctionSet) {
 		ThreadFunctionSet = threadFunctionSet;

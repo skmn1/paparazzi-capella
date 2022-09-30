@@ -50,7 +50,6 @@ public class Data_Moderator {
 	 * This function turn the global variable set witch
 	 */
 	public HashMap<String, ArrayList<String>> switchGlobalvariable(HashMap<String, GlobalVariable> globalvariablesSet) {
-		
 		HashMap<String, ArrayList<String>> globalVariableSetChanged = new HashMap<String, ArrayList<String>>() ;
 		
 		for (String GlobVar : globalvariablesSet.keySet()) {

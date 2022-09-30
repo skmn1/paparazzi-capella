@@ -38,9 +38,17 @@ public class CPPXMLTransformer {
 	public static HashMap<String, Integer> linkAndIds = new HashMap<String, Integer>(); // use to manage Id issues with function exchange
 	public static ArrayList<String> FunctionAlreadydone =  new ArrayList<String>(); // use to not build a function multiple times
 	public static ArrayList<String> IfAlreadyDone = new ArrayList<String>(); // use to manage conditional declaration
-	
+	public static HashMap<String, AADLThread>  threadSet = new HashMap<String,AADLThread>();
 	static treeHelpers tH = new treeHelpers(); // use to call functions of this class
-		
+	
+	// config parameters
+	// modify output : set to true if you want to be exhaustive 
+	static Boolean BusLimited = false;
+	static Boolean SubfunctionsLimited = true;
+	static String lowerpath = "\\\\dataetu\\Etudiants$\\decoutd\\Documents\\astageSI2022\\lower";
+	static String Csvpath ="\\\\dataetu\\Etudiants$\\decoutd\\Documents\\astageSI2022\\paparazzi-capella\\src\\main\\java\\paparazzi_files.csv" ;
+	////
+	
 	public static void listFilesForFolder(final File folder) {
 		for (final File fileEntry : folder.listFiles()) {
 			if (fileEntry.isDirectory()) {
@@ -55,14 +63,14 @@ public class CPPXMLTransformer {
 
 	public static void main(String[] args) throws Exception {
 
-		final File folder = new File("\\\\dataetu\\Etudiants$\\decoutd\\Documents\\astageSI2022\\lower");
+		final File folder = new File(lowerpath);
 		
 		String wholeFolderContent = FileHelper.getFolderTextContent(folder);
 
-		Breakdown = FileHelper.convertFileToMap(new File("\\\\dataetu\\Etudiants$\\decoutd\\Documents\\astageSI2022\\paparazzi-capella\\src\\main\\java\\paparazzi_files.csv"));
+		Breakdown = FileHelper.convertFileToMap(new File(Csvpath));
 
 		String content = "";
-		
+		// build functionMap
 		for (final File fileEntry : folder.listFiles()) {
 			@SuppressWarnings("resource")
 			Scanner useDelimiter = new Scanner(fileEntry).useDelimiter("\\Z");
@@ -85,6 +93,7 @@ public class CPPXMLTransformer {
 
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 
+		
 		CPP14Parser parser = new CPP14Parser(tokens);
 
 		CPPCustomListener listener = new CPPCustomListener(Breakdown);
@@ -92,46 +101,31 @@ public class CPPXMLTransformer {
 		parser.addParseListener(listener);
 
 		ParseTree tree = parser.translationUnit();
-		
-		// Data retrieving with custom listener 
+
+		// Data retrieving from custom listener 
 		callfunctionSet = listener.callfunctionSet;
 		globalvariablesSet =listener.globalvariablesSet;
 		declfunctionSet = listener.declfunctionSet;
 		ifstructureSet = listener.ifstructureSet;
 		gotoStructureSet = listener.gotostructureSet;
-		
+		threadSet = listener.threadSet;
+		retrieveEmptyThread(); // if the thread is empty retrieve the ThreadfunctionSet
+
 		Data_Moderator dataModerator = new Data_Moderator ();
 		
 		// data management with data_moderator class
+		
 		globalvariablesSet = dataModerator.GlobalVariableSet(globalvariablesSet);
 		globalvariablesSetKeyName = dataModerator.switchGlobalvariable(globalvariablesSet);	
 		linkAndIds = dataModerator.ManageLinks(declfunctionSet, globalvariablesSetKeyName, globalvariablesSet);
 		declfunctionSet = Data_Moderator.CountGlobalWeight(declfunctionSet);
 		
 		// XML generation
-		String XMLTags = getXMLfromThreadDataStructure(listener.threadSet);
+		String XMLTags = getXMLfromThreadDataStructure(threadSet);
 		String FileName = "\\\\DATAETU\\Etudiants$\\decoutd\\Documents\\astageSI2022\\paparazzi-capella\\test-papparrazi.melodymodeller";
 		String startpoint = "\"deployment:AADLProcess\"";
 		
 		FileHelper.insertStringIntoFile(FileName, startpoint, XMLTags);
-		
-		// display
-//		System.out.println("\r\n~~DECL Functions");
-//		for (String Function : declfunctionSet.keySet()) {
-//			System.out.println("\r\n" + Function + "  =>  " +declfunctionSet.get(Function).toString());
-//		}
-//		System.out.println("\r\n~~ CalledFunctions");
-//		for (String Function : callfunctionSet.keySet()) {
-//			System.out.println("\r\n" + Function + "  =>  " +callfunctionSet.get(Function).toString());
-//		}
-//		System.out.println("\r\n\r\n~~ IfStructures");
-//		for (String IfStructure : ifstructureSet.keySet()) {
-//			System.out.println("\r\n" + IfStructure + "  =>  " + ifstructureSet.get(IfStructure).toString());
-//		}
-//		System.out.println("\r\n~~ Goto");
-//		for (String Label : gotoStructureSet.keySet()) {
-//			System.out.println("\r\n" + Label + "  =>  " +gotoStructureSet.get(Label).toString());
-//		}
 	}
 	
 
@@ -183,13 +177,21 @@ public class CPPXMLTransformer {
 						+ "\">\r\n";
 
 				str += injectSoftwareBus(ThreadFunctionSet.getKey(),functionTabs);
-				ArrayList<String> FunctionTest = new ArrayList<>();
-				for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {	
-					if (!FunctionTest.contains(tH.debugFunctionName(subFunctionName))) {
-					str += injectSubFunction(subFunctionName,ThreadFunctionSet.getValue().getFunctionName(),"\t");
-					FunctionTest.add(tH.debugFunctionName(subFunctionName));
+				if(SubfunctionsLimited) {
+					ArrayList<String> FunctionTest = new ArrayList<>();
+					for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {	
+						if (!FunctionTest.contains(tH.debugFunctionName(subFunctionName))) {
+							str += injectSubFunction(subFunctionName,ThreadFunctionSet.getValue().getFunctionName(),"\t");
+							FunctionTest.add(tH.debugFunctionName(subFunctionName));
+						}
 					}
 				}
+				else {
+					for (String subFunctionName : ThreadFunctionSet.getValue().getSubFunctionSet()) {	
+							str += injectSubFunction(subFunctionName,ThreadFunctionSet.getValue().getFunctionName(),"\t");		
+					}
+				}
+
 
 				str+= "\t</ownedExtensions>\r\n";
 			}
@@ -211,7 +213,7 @@ public class CPPXMLTransformer {
 		// we check if the function exist in the callFunction list if it doesnt autoclose xml function
 		if(callfunctionSet.containsKey(subFunctionName)) {
 			str += functionTabs  + "<ownedExtensions xsi:type=\"deployment:AADLFunction\" id=\"baaec95a-deed-4d91-9998-c10e6aec4ad" + callfunctionSet.get(subFunctionName).getId() +"\"\r\n"
-					+ functionTabs + "\t" +"name=\"" + tH.debugFunctionName(subFunctionName) ;
+					+ functionTabs + "\t" +"name=\"" + tH.debugFunctionName(subFunctionName.replace("<", "")) ;
 			str += injectLinesOfCode(subFunctionName);
 			str +="\"";
 			str += injectDataFlow(subFunctionName, Parent);
@@ -243,14 +245,20 @@ public class CPPXMLTransformer {
 							if (FileValue > 1) {
 								//if the file have a value = 2, we inject subfunctions by calling subfunction method
 								if (!containaGVariable) str += ">\r\n";
-								ArrayList<String> Functiontest = new ArrayList<>();
-								for (String subSubFunctionName : declfunctionSet.get(tH.debugFunctionName(subFunctionName)).getSubFunctionSet()) {
-									// we check if function has been already called 
-									if (!Functiontest.contains(tH.debugFunctionName(subSubFunctionName))) {
-										str += injectSubFunction(subSubFunctionName, subFunctionName, functionTabs);
-										Functiontest.add(tH.debugFunctionName(subSubFunctionName));
+								if (SubfunctionsLimited) {
+									ArrayList<String> Functiontest = new ArrayList<>();
+									for (String subSubFunctionName : declfunctionSet.get(tH.debugFunctionName(subFunctionName)).getSubFunctionSet()) {
+										// we check if function has been already called 
+										if (!Functiontest.contains(tH.debugFunctionName(subSubFunctionName))) {
+											str += injectSubFunction(subSubFunctionName, subFunctionName, functionTabs);
+											Functiontest.add(tH.debugFunctionName(subSubFunctionName));
+										}
 									}
-									
+								}
+								else {
+									for (String subSubFunctionName : declfunctionSet.get(tH.debugFunctionName(subFunctionName)).getSubFunctionSet()) {
+										str += injectSubFunction(subSubFunctionName, subFunctionName, functionTabs);
+									}
 								}
 								str+= functionTabs + "</ownedExtensions>\r\n";	
 							}
@@ -367,17 +375,20 @@ public class CPPXMLTransformer {
 		// we check across the global variable set in order to find GV parent names equal to the current function 
 		if (globalvariablesSetKeyName.containsKey(FunctionName))
 			for (String variableName : globalvariablesSetKeyName.get(FunctionName)) {
-				//		if (StopBus1 && StopBus2) break;
+				if (BusLimited)
+					if (StopBus1 && StopBus2) break;
+				
 				if (globalvariablesSet.get(variableName).getFunctionName().equals(FunctionName)) {
 					
 					// we check the GV mode read/write
 					if(globalvariablesSet.get(variableName).getType() == "read"&& !StopBus1 ) {
-						str += globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" variableName=\" "+ tH.debugFunctionName(variableName) +"\"/>\r\n";
-						//					StopBus1 = true;
+						str += globalVariablTabs + "<SofwareBusInputPort_set xsi:type=\"deployment:SoftwareBusInputPort\" id=\"0fd48a77-c477-4535-b51b-d7bdc5f53942\" variableName=\" "+ tH.debugFunctionName(variableName.replace("<", "")) +"\"/>\r\n";
+						if (BusLimited) StopBus1 = true;
+							
 					}
 					else if(globalvariablesSet.get(variableName).getType() == "write" && !StopBus2){
-						str +=  globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" variableName=\""+ tH.debugFunctionName(variableName) +"\"/>\r\n";
-						//					StopBus2 = true;
+						str +=  globalVariablTabs + "<SofwareBusOutputPort_set xsi:type=\"deployment:SoftwareBusOutputPort\" id=\"9e4a061e-378a-412e-8adb-e9f94a22ed47\" variableName=\""+ tH.debugFunctionName(variableName.replace("<", "")) +"\"/>\r\n";
+						if (BusLimited)	StopBus2 = true;
 					}
 				}
 			}
@@ -397,16 +408,6 @@ public class CPPXMLTransformer {
 
 	public static int getFileValue1 (String FunctionName) {
 		if (Breakdown.containsKey(functionFileMap.get(tH.debugFunctionName(FunctionName)))) {
-			if (functionFileMap.get(tH.debugFunctionName(FunctionName)).contains("sys_time")) {
-				return 2;
-			}
-			if (functionFileMap.get(tH.debugFunctionName(FunctionName)).contains("main") ) {
-				return 2;
-			}
-			if (functionFileMap.get(tH.debugFunctionName(FunctionName)).contains("autopilot") ) {
-				return 2;
-				
-			}
 			return Breakdown.get(functionFileMap.get(tH.debugFunctionName(FunctionName)));
 		}
 		else 
@@ -456,13 +457,28 @@ public class CPPXMLTransformer {
 		else 
 			return false;
 	}
-	
+
 	public static String getNextLabel(String ParentName, String subfunctionName) {
 		String NextLabel = new String();
 		Integer NextIndex = declfunctionSet.get(ParentName).getSubFunctionSet().indexOf(subfunctionName)+1;
 		String NextFunctionName = declfunctionSet.get(ParentName).getSubFunctionSet().get(NextIndex);
 		NextLabel = callfunctionSet.get(NextFunctionName).getLabel();
 		return NextLabel;
+	}
+	public static void retrieveEmptyThread() {
+		for (String threadname : threadSet.keySet()) {
+			if(threadSet.get(threadname).getThreadFunctionSet().isEmpty()){
+				if (declfunctionSet.containsKey(threadname)) {
+					
+					for (String subf : declfunctionSet.get(threadname).getSubFunctionSet()) {
+						subf = tH.debugFunctionName(threadname);
+						threadSet.get(threadname).getThreadFunctionSet().put(subf, declfunctionSet.get(subf));
+					}
+					System.out.println("thread " + threadname + " retrieved");
+				}
+				else System.out.println("thread " + threadname + " can't be retrieved");
+			}
+		}
 	}
 
 }

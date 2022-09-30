@@ -1,9 +1,12 @@
 package businessStructure;
 
+import helpers.GlobalVariablesEnum;
+
 public class GlobalVariable {
-	String VariableName;
-	String Type;
-	String FunctionName;
+	private String VariableName;
+	private GlobalVariablesEnum KeyName;
+	private String Type;
+	private String FunctionName;
 	
 	
 	
@@ -19,6 +22,13 @@ public class GlobalVariable {
 	}
 	public void setName(String name) {
 		this.VariableName = name;
+		for (GlobalVariablesEnum globalVariable : GlobalVariablesEnum.values()) {
+			if (VariableName.contains(globalVariable.toString())) {
+				KeyName = globalVariable;
+			}
+		}
+		
+		
 	}
 	public String getType() {
 		return Type;
@@ -26,11 +36,26 @@ public class GlobalVariable {
 	public void setType(String type) {
 		this.Type = type;
 	}
+	
 	public String getFunctionName() {
 		return FunctionName;
 	}
 	public void setFunctionName(String functionName) {
 		this.FunctionName = functionName;
+	}
+	
+	public String getVariableName() {
+		return VariableName;
+	}
+	public void setVariableName(String variableName) {
+		this.VariableName = variableName;
+	}
+
+	public GlobalVariablesEnum getKeyName() {
+		return KeyName;
+	}
+	public void setKeyName(GlobalVariablesEnum keyName) {
+		this.KeyName = keyName;
 	}
 
 	@Override

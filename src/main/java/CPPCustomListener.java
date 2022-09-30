@@ -22,19 +22,21 @@ import helpers.treeHelpers;
 @SuppressWarnings("unused")
 public class CPPCustomListener extends CPP14ParserBaseListener {
 
+	
+	
+	public HashMap<String,String> functionFileMap = new HashMap<String,String>();
+	public HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
+	
 	public HashMap<String, AADLThread>  threadSet = new HashMap<String,AADLThread>();
 	public HashMap<String,CALLED_AADLFunction> callfunctionSet = new HashMap<String,CALLED_AADLFunction>();
 	public HashMap<String,DECL_AADLFunction> declfunctionSet = new HashMap<String,DECL_AADLFunction>();
-	
-	public HashMap<String,String> functionFileMap = new HashMap<String,String>();
-	
-	public HashMap<String,Integer> fileDecompositionMap = new HashMap<String,Integer>();
 	public HashMap<String, GlobalVariable> globalvariablesSet = new HashMap<String, GlobalVariable>() ;
+	
 	public HashMap<String, IfStructure> ifstructureSet = new HashMap<String, IfStructure>() ;
 	public HashMap<String, GotoStructure> gotostructureSet = new HashMap<String, GotoStructure>() ;
 	
 	public Integer Id = 0;
-	public String LastFunctionCalled;
+	public String LastFunctionCalled = new String();
 	treeHelpers tH= new treeHelpers() ;
 	
 	public CPPCustomListener(HashMap<String, Integer> fileDecompositionMap) {
@@ -45,10 +47,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
     
 	@Override
 	public void exitDeclaration(CPP14Parser.DeclarationContext ctx) {
-
-		currentLabel = "";
-		String currrentfunctionName = tH.getxChild0(ctx.getChild(0).getChild(1), 3).getText();
 		
+		// variable to keep the last label encountered 
+		currentLabel = "";
+		
+		// get the name of the function which is currently declared
+		String currrentfunctionName = tH.getxChild0(ctx.getChild(0).getChild(1), 3).getText();
+		// retrieve statement in parse tree 
 		CPP14Parser.StatementSeqContext statementSeq = getStatmentSeq(ctx);
 		ArrayList<String> subFunctionSet = new ArrayList<String>();
 		DECL_AADLFunction currentFunction = new DECL_AADLFunction(currrentfunctionName, subFunctionSet , null);
@@ -59,12 +64,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		currentFunction.setWeight(statementSeq.getChildCount() - 1);
 		declfunctionSet.put(currrentfunctionName, currentFunction);
 		Boolean LastStatement = false;
+		
+		// we start iterate over each statement
 		for(int i=0; i < statementSeq.getChildCount() ; i++) {
 			
 			if ((i+1)== statementSeq.getChildCount())
 				 LastStatement = true;
 			
-//			System.out.println("LastStatement : "+ LastStatement);
 			if(statementSeq.getChild(i).getText().contains("try{")) {
 				// all try statements managed at any level 
 				tryStatementdebug(statementSeq.getChild(i), i, currrentfunctionName, subFunctionSet);
@@ -104,9 +110,16 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			
 			// thread 
 			// get the threadfunctions and save them in the threadSet map
-			if(!statementSeq.getChild(i).getText().contains("try{") && statementSeq.getChild(i).getText().contains("pthread_create"))
+			if(!statementSeq.getChild(i).getText().contains("try{") && statementSeq.getChild(i).getText().contains("pthread_create")) {
 				threadSet.put(getFunctionName((CPP14Parser.StatementContext) statementSeq.getChild(i)), new AADLThread());
+			}
+			if(!statementSeq.getChild(i).getText().contains("try{") && (statementSeq.getChild(i).getText().contains("chThdCreateStatic(")|| statementSeq.getChild(i).getText().contains("chThdCreateFromHeap("))) {
+				System.out.println("thread found : " + statementSeq.getChild(i).getText());
+				String Threadname = getFunctionNameChibios((CPP14Parser.StatementContext) statementSeq.getChild(i));
+				threadSet.put(Threadname, new AADLThread(Threadname));
+			}
 		}
+		//here we delete function that we don't want
 		if (!currrentfunctionName.contains("matrix::") && !currrentfunctionName.contains("math::") && !currrentfunctionName.contains("sqrtf")
 				&& !currrentfunctionName.contains("std::") && !currrentfunctionName.contains("perror") && !currrentfunctionName.contains("fprintf")) {
 		declfunctionSet.get(currrentfunctionName).setSubFunctionSet(subFunctionSet);
@@ -116,8 +129,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		if(threadSet.containsKey(currrentfunctionName))
 			threadSet.get(currrentfunctionName).getThreadFunctionSet().put(currrentfunctionName, currentFunction);
 	}
-
-
 	
 	ParseTree tree = new ParseTree() {
 		
@@ -193,8 +204,6 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			//			System.out.println("Thread \n thread Function name +++++++> " + threadFunctionName);		
 
 			threadSet.put(threadFunctionName, GrammarHelper.getThread(ctx));
-
-			//			System.out.println(this);
 		}
 	}
 
@@ -212,9 +221,10 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 
 	private String getFunctionName (CPP14Parser.StatementContext ctx) {
 		return ctx.getText().split(",")[2];
-
 	}
-	
+	private String getFunctionNameChibios (CPP14Parser.StatementContext ctx) {
+		return ctx.getText().split(",")[3];
+	}
 	public void addGlobalVariablesToglobalvariablesSet(String gvName, GlobalVariable globalVariable) {
 		// global variable extraction 
 		if (gvName.contains("&this->_")) {
@@ -315,13 +325,13 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	 * This function is used to find global Variable in none function statement
 	 */
 	public void getGlobalVariablesfromStatementtoGlobVSet(ParseTree ctx, StatFunction stf, String currentfonctionName ) {
-
+		// check if the statement is a common statement
 		if (!stf.getIsstatfunction() && !ctx.getText().contains("try{") && !ctx.getText().contains("if")&&!ctx.getText().contains("case")) {
+			
 			if (ctx.getChild(0).getClass().toString().contains("LabeledStatement") && !ctx.getText().contains("return")
 					&& !ctx.getText().contains("goto") && GlobalVariablesEnum.testenumb(ctx.getText())) {
 				//multiple LabeledStatement debug
 				ParseTree labstatement = LabeledStatementdebug(ctx);
-//				System.out.println(labstatement.getText());
 				if (GlobalVariablesEnum.testenumb(labstatement.getText())) {
 					String globalvariableName = new String();
 					String Type = new String();
@@ -381,24 +391,19 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	 * 
 	 */
 	public void getGlobalVariablesfromListArgstoGlobVSet(HashMap<Integer, ArrayList<String>> listArgs,String currentFunctionName, StatFunction stf ,Integer j) {
+		
 		if (GlobalVariablesEnum.testenumb(listArgs.toString())) {
 			for (int m = 0; m < listArgs.get(j).size(); m++) {
 				if (GlobalVariablesEnum.testenumb(listArgs.get(j).get(m))) {
 					String globalvariableName = new String ();
 					String Type = new String();
-					ArrayList<String> globalvariableParameters = new ArrayList<String>();
 					globalvariableName = listArgs.get(j).get(m);
-					globalvariableName.replace("<", "-"); // character bug xml
-					globalvariableParameters.add(currentFunctionName);
-
 					if (stf.getFunctionType() == 4) {
-						globalvariableParameters.add("read");
 						Type ="read";
 					}
 
 					else {
 						Type = "write";
-						globalvariableParameters.add("write");
 					}
 					GlobalVariable globalvariable = new GlobalVariable(globalvariableName, Type, currentFunctionName);
 					addGlobalVariablesToglobalvariablesSet(globalvariableName, globalvariable);
@@ -557,11 +562,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 		
 		//check if the statement is labeled and get the statement through labeled 
 		if (ctx.getChild(0).getClass().toString().contains("LabeledStatement")) {
-//			System.out.println("/1 : " + ctx.getText() + "\n /2 :" + LabeledStatementdebug(ctx).getText() );
 			tryStatementSeq = LabeledStatementdebug(ctx).getChild(0).getChild(1).getChild(1);
-			// this variable is create in order to identify an entire try statement labeled
-			String tryLabel = tH.getxChild0(ctx, 2).getText();
-//			System.out.println("trylabel" + tryLabel);
 		}	
 		else tryStatementSeq = ctx.getChild(0).getChild(1).getChild(1);
 		 
@@ -579,6 +580,8 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			else {
 				ParseTree tryState;
 				//check if the statement is labeled and get the statement through labeled
+				
+				
 				if (tryStatementSeq.getChild(j).getChild(0).getClass().toString().contains("LabeledStatement")) {
 					tryState = LabeledStatementdebug(tryStatementSeq.getChild(j));
 					Label = tH.getxChild0(tryStatementSeq.getChild(j), 2).getText();
@@ -651,7 +654,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 	public void RetrieveJumpStatement (ParseTree ctx, String currentFunctionName, Boolean LastStatement) {
 		
 		if (!LastStatement) {
-			if (ctx.getChild(0).getClass().toString().contains("JumpStatement") && !ctx.getText().contains("if(") && !ctx.getText().contains("try{") ) {
+			if (ctx.getChild(0).getClass().toString().contains("JumpStatement") && !ctx.getText().contains("if(") && !ctx.getText().contains("try{")&& !LastFunctionCalled.equals("")) {
 				GotoStructure Goto = new GotoStructure(LastFunctionCalled, LastStatement);
 				Goto.setLabel(ctx.getChild(0).getChild(1).getText());
 				Goto.setLastFunctionId(callfunctionSet.get(LastFunctionCalled).getId());
@@ -659,7 +662,7 @@ public class CPPCustomListener extends CPP14ParserBaseListener {
 			}
 		}
 		else {
-			if(ctx.getChild(0).getClass().toString().contains("LabeledStatement")) {
+			if(ctx.getChild(0).getClass().toString().contains("LabeledStatement")&&!LastFunctionCalled.equals("")) {
 				GotoStructure Goto = new GotoStructure(LastFunctionCalled, LastStatement);
 				Goto.setLabel(ctx.getChild(0).getChild(1).getText());
 				Goto.setLastFunctionId(callfunctionSet.get(LastFunctionCalled).getId());

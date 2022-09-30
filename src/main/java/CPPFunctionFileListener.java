@@ -15,7 +15,7 @@ public class CPPFunctionFileListener extends CPP14ParserBaseListener {
 
 	@Override
 	public void exitDeclaration(CPP14Parser.DeclarationContext ctx) {
-		//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
+//		System.out.println(" function def : " + ctx.getChild(0).getChild(1).getChild(0).getChild(0).getChild(0).getText());
 		String currrentfunctionName = tH.getxChild0(ctx.getChild(0).getChild(1), 3).getText();
 		functionList.add(currrentfunctionName);;
 		
